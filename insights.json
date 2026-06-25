@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "last_updated": "2026-06-25",
+    "total_calls": 3,
+    "version": "1.0"
+  },
+  "insights": [
+    {
+      "id": "insight-001",
+      "date": "2026-06-20",
+      "title": "ASR Team – Phase 3 Time Close Skip Analysis",
+      "campaign": "PG1 Membership Drive",
+      "offer": "PG1 Scratch Membership",
+      "product": "PG1 Scratch",
+      "funnel": "Inbound",
+      "team_member": "ASR Team (All)",
+      "call_type": "Appointment Setting",
+      "call_duration": "8–14 min avg",
+      "summary": "Analyzed 47 ASR calls from the week of June 16–20. Found near-universal skip of the Phase 3 two-slot time close, with reps jumping from discovery directly to pitch close. This pattern correlated with significantly lower booking conversion.",
+      "main_findings": [
+        "96% of reps skipped the Phase 3 two-slot time close entirely",
+        "Reps who completed Phase 3 converted at 34% vs 18% for those who skipped",
+        "Average call time was 2.3 minutes shorter on skipped calls — reps are rushing",
+        "Most common skip point: after prospect confirms interest, rep immediately pitches the calendar link"
+      ],
+      "positive_patterns": [
+        "Discovery questions (Phase 1) executed well across 82% of calls",
+        "Tone was warm and conversational — no aggressive closers identified",
+        "Product knowledge was solid; reps answered product questions confidently"
+      ],
+      "customer_objections": [
+        "I need to check my schedule first",
+        "Can you just send me the info?",
+        "I'm not sure I have time right now",
+        "What exactly are we meeting about?"
+      ],
+      "winning_language": [
+        "'I want to make sure this is worth your time — I have two slots that work for most folks...'",
+        "'Before I pull up the calendar, which works better for you — mornings or afternoons?'",
+        "'Most of our members said the same thing before they saw the full picture — 20 minutes is all it takes.'"
+      ],
+      "pain_points": [
+        "Golfers feel they've already tried 'everything' to improve",
+        "Time commitment concerns around training programs",
+        "Skepticism about online/digital coaching vs in-person"
+      ],
+      "buying_triggers": [
+        "Mention of specific handicap improvement numbers",
+        "Peer social proof ('other golfers just like you')",
+        "Money-back guarantee mention",
+        "Limited slot / urgency framing"
+      ],
+      "opportunities": [
+        "Implement mandatory Phase 3 checkpoint in QA rubric",
+        "Create a two-slot time close script card for ASR reps",
+        "Add Phase 3 as a scored item in AI QA rubric immediately"
+      ],
+      "recommendations": [
+        "Update QA rubric to score Phase 3 as a required checkpoint (not optional)",
+        "Run targeted Phase 3 role-play session in next team training",
+        "Add time-close language to the Master Script Hub sidebar",
+        "Flag any call under 9 minutes for supervisor review"
+      ],
+      "action_items": [
+        { "task": "Update AI QA rubric to include Phase 3 scoring", "owner": "Lee", "due": "2026-06-23", "status": "In Progress" },
+        { "task": "Create Phase 3 two-slot time close script card", "owner": "Lee", "due": "2026-06-25", "status": "Pending" },
+        { "task": "Schedule team role-play session", "owner": "Team Lead", "due": "2026-06-27", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "Example of skipped Phase 3 (common pattern)",
+          "text": "Rep: 'Great, so you're interested in improving your short game?' Prospect: 'Yeah, definitely.' Rep: 'Perfect, let me go ahead and send you a calendar link for the call!' [Phase 3 skipped entirely]"
+        },
+        {
+          "label": "Example of Phase 3 done correctly",
+          "text": "Rep: 'Perfect. Before I pull this up — do mornings or afternoons tend to work better for you?' Prospect: 'Afternoons are easier.' Rep: 'Great. I've got Tuesday at 2pm or Thursday at 3pm — which one works?' Prospect: 'Thursday works.' [Booked.]"
+        }
+      ],
+      "tags": ["phase-3", "time-close", "booking-conversion", "QA", "ASR"]
+    },
+    {
+      "id": "insight-002",
+      "date": "2026-06-18",
+      "title": "Retention Team – Billing Surprise as #1 Cancellation Driver",
+      "campaign": "Scratch Club Trial Retention",
+      "offer": "Scratch Club $29/month",
+      "product": "Scratch Club",
+      "funnel": "Retention",
+      "team_member": "Retention Team",
+      "call_type": "Cancellation Save",
+      "call_duration": "6–18 min avg",
+      "summary": "Retention call analysis across June 8–18 reveals that billing surprise around the $29/month Scratch Club subscription is the top stated reason for cancellation. Approximately 48% of callers expressed some form of 'I didn't know I was going to be charged.' Save rate currently running at 43% vs the 60% target.",
+      "main_findings": [
+        "48% of cancellation calls cited billing surprise as primary reason",
+        "Save rate at 43% MTD vs 60% target — 17-point gap",
+        "Refund rate well above 12% goal",
+        "65% of retention calls had zero golf context established before pitching the save offer",
+        "Reps are leading with price defense rather than value re-anchoring"
+      ],
+      "positive_patterns": [
+        "Reps who led with empathy and golf context first had a 61% save rate",
+        "Scratch Club value proposition resonated when explained clearly with specifics",
+        "Tone was generally calm and non-confrontational"
+      ],
+      "customer_objections": [
+        "I didn't know I was being charged $29 a month",
+        "I thought this was a one-time thing",
+        "I haven't even used it",
+        "It's not worth it for me right now",
+        "I'm just not playing golf right now"
+      ],
+      "winning_language": [
+        "'I completely understand — let me take a look at your account and see what makes the most sense for you.'",
+        "'A lot of members feel that way before they actually log in — can I show you what's actually in there?'",
+        "'What's your game like right now? Are you still getting out much?'"
+      ],
+      "pain_points": [
+        "Customers feel deceived by unclear billing communication at point of sale",
+        "Low perceived usage / value in first 30 days",
+        "No personal connection to the product content"
+      ],
+      "buying_triggers": [
+        "Specific feature they haven't tried yet",
+        "Pause option instead of cancel",
+        "Partial refund as goodwill gesture",
+        "Connecting product to their specific golf goal"
+      ],
+      "opportunities": [
+        "Implement a 'golf context first' protocol before any save pitch",
+        "Create a billing expectation reset script for reps",
+        "Explore pause/hold option to reduce hard cancellations",
+        "Work with fulfillment to improve Day 1 onboarding email clarity"
+      ],
+      "recommendations": [
+        "Add mandatory golf context question before any retention pitch",
+        "Script a billing reset empathy sequence for reps (not defensive, empathetic)",
+        "Propose a 'pause for 30 days' offer as a save tool",
+        "Flag billing surprise calls for upstream marketing/checkout team"
+      ],
+      "action_items": [
+        { "task": "Draft billing surprise empathy script for retention team", "owner": "Lee", "due": "2026-06-22", "status": "Completed" },
+        { "task": "Propose pause feature to Jeff/Denver", "owner": "Lee", "due": "2026-06-25", "status": "In Progress" },
+        { "task": "Audit Day 1 onboarding email for billing clarity", "owner": "Mimi", "due": "2026-06-28", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "Most common billing surprise opening",
+          "text": "Customer: 'I want to cancel. I didn't know I was going to be charged $29.' Rep: 'I understand. The charge is for your Scratch Club membership which you signed up for...' [Defensive framing — customer disengages]"
+        }
+      ],
+      "tags": ["billing-surprise", "save-rate", "retention", "scratch-club", "cancellation"]
+    },
+    {
+      "id": "insight-003",
+      "date": "2026-06-23",
+      "title": "Closer Team – Top 3 Objection Types and Call Position Timing",
+      "campaign": "PG1 VIP Coaching Upsell",
+      "offer": "PG1 VIP Coaching Program",
+      "product": "PG1 VIP Coaching",
+      "funnel": "Outbound / Closer",
+      "team_member": "Closer Team",
+      "call_type": "Sales Close",
+      "call_duration": "22–45 min avg",
+      "summary": "Closer call review for June identified the top three objection categories by frequency and call-position timing: cost/spend fatigue (appearing at 28+ minute mark), equipment resistance (mid-call, 15–20 min), and video/technology skepticism (early call, 8–12 min). Understanding timing allows reps to pre-empt rather than react.",
+      "main_findings": [
+        "Cost/spend fatigue is #1 objection — 67% of non-converted calls included it",
+        "Equipment resistance peaks at 15–20 minute mark — typically after program reveal",
+        "Video/tech skepticism surfaces early (8–12 min) and if unhandled, kills the call",
+        "Reps who pre-empted cost objection before it arose converted at 2.1x rate",
+        "Only 22% of reps used any pre-emption language in June"
+      ],
+      "positive_patterns": [
+        "Reps with strong rapport-building in first 10 minutes had 40% higher close rates",
+        "Story-based selling (member transformation stories) outperformed feature-listing",
+        "Reps who acknowledged skepticism and leaned in rather than defending closed better"
+      ],
+      "customer_objections": [
+        "I've already spent so much on golf stuff that didn't work",
+        "I'm not sure I need new equipment on top of this",
+        "I'm not great with video calls / technology",
+        "Can I think about it?",
+        "My wife/partner needs to know about this first"
+      ],
+      "winning_language": [
+        "'Before we get into the investment — a lot of our members told me the same thing. Let me show you why this is different.'",
+        "'The technology piece is honestly the easiest part — our team walks you through everything in the first session.'",
+        "'You don't need any new equipment. This works with exactly what you have in your bag right now.'"
+      ],
+      "pain_points": [
+        "Past purchase regret — golfers have wasted money on gear, lessons, apps before",
+        "Tech anxiety — older demographic uncomfortable with video coaching",
+        "Spouse approval required — purchase decisions not made independently"
+      ],
+      "buying_triggers": [
+        "Specific transformation story matching their handicap range",
+        "No-equipment-needed confirmation",
+        "Guarantee / risk reversal language",
+        "Coach expertise and credibility mention",
+        "Limited enrollment / cohort framing"
+      ],
+      "opportunities": [
+        "Build objection pre-emption scripts for each of the top 3 objections",
+        "Create a 'tech onboarding assurance' talking point for video-skeptical prospects",
+        "Develop spouse/partner inclusion script for end-of-call scenarios",
+        "Train reps to identify which objection type is dominant in first 10 minutes"
+      ],
+      "recommendations": [
+        "Add objection pre-emption module to closer onboarding and monthly training",
+        "Create a 'Top 3 Objections Cheat Sheet' with timing guidance for each",
+        "Score pre-emption language in QA rubric for closer calls",
+        "Analyze non-converted calls specifically for unhandled tech skepticism"
+      ],
+      "action_items": [
+        { "task": "Build Top 3 Objections pre-emption script card", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Add pre-emption scoring to closer QA rubric", "owner": "Lee", "due": "2026-06-28", "status": "Pending" },
+        { "task": "Present findings to closer team in weekly meeting", "owner": "Team Lead", "due": "2026-06-26", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "Cost objection handled with pre-emption (winning example)",
+          "text": "Rep: 'Before I walk you through what this looks like investment-wise — I want to acknowledge something. A lot of the guys I talk to have spent money on things that didn't deliver. So I want to be upfront about why this is structured differently.' [Prospect engagement increases — less defensive when cost revealed]"
+        }
+      ],
+      "tags": ["objection-handling", "cost-objection", "tech-skepticism", "equipment-resistance", "closer", "pre-emption"]
+    }
+  ]
+}

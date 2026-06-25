@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Call Insights Dashboard — Performance Golf Phone Team Analytics" />
+  <title>Call Insights | Performance Golf</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ══ SIDEBAR ══════════════════════════════════════════ -->
+  <aside id="sidebar">
+
+    <div class="sidebar-logo">
+      <span class="logo-mark">PGZ · Intel</span>
+      <span class="logo-name">Call Insights<br>Dashboard</span>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search all insights…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+    </div>
+
+    <nav class="nav-section">
+      <div class="nav-section-title">Navigate</div>
+      <button class="nav-item active" id="nav-home">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" id="nav-all">
+        <span class="nav-icon">◈</span>
+        <span>All Insights</span>
+      </button>
+    </nav>
+
+    <nav class="nav-section">
+      <div class="nav-section-title">Period</div>
+      <div id="nav-periods"></div>
+    </nav>
+
+    <div class="nav-section" style="padding:12px 0 8px">
+      <div class="nav-section-title" style="padding-bottom:4px">Filter By</div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="filter-campaign">Campaign</label>
+        <select id="filter-campaign" class="filter-select">
+          <option value="">All campaigns</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="filter-offer">Offer</label>
+        <select id="filter-offer" class="filter-select">
+          <option value="">All offers</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="filter-product">Product</label>
+        <select id="filter-product" class="filter-select">
+          <option value="">All products</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="filter-funnel">Funnel</label>
+        <select id="filter-funnel" class="filter-select">
+          <option value="">All funnels</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="filter-team-member">Team Member</label>
+        <select id="filter-team-member" class="filter-select">
+          <option value="">All team members</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="filter-call-type">Call Type</label>
+        <select id="filter-call-type" class="filter-select">
+          <option value="">All call types</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <button class="clear-filters-btn" id="clear-filters-btn">✕ Clear all filters</button>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="last-updated" id="last-updated">Updated: —</div>
+    </div>
+
+  </aside>
+
+  <!-- ══ MAIN ═════════════════════════════════════════════ -->
+  <div id="main">
+
+    <!-- Header -->
+    <header id="header">
+      <div class="header-breadcrumb">
+        <span>PGZ Insights</span>
+        <span class="bc-sep">›</span>
+        <span class="bc-current" id="breadcrumb-current">Home</span>
+      </div>
+      <div class="header-right">
+        <div class="pulse-indicator">
+          <div class="pulse-dot"></div>
+          <span>Live</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">☰</button>
+      </div>
+    </header>
+
+    <!-- Search results banner -->
+    <div id="search-results-banner" class="hidden" style="margin:16px 28px 0; display:none">
+      <span id="search-result-text"></span>
+      <span class="clear-search" id="clear-search-btn" title="Clear search">✕</span>
+    </div>
+
+    <!-- Page content -->
+    <main id="content">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <span>Loading insights…</span>
+      </div>
+    </main>
+
+  </div><!-- /#main -->
+
+</div><!-- /#app -->
+
+<!-- Mobile sidebar overlay -->
+<div id="sidebar-overlay"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
