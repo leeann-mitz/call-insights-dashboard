@@ -1,203 +1,459 @@
-# 📊 Call Insights Dashboard — Performance Golf
-
-A permanent, searchable knowledge base for phone team call analysis.
-Built with vanilla HTML/CSS/JS — no frameworks, no backend, fully compatible with GitHub Pages.
-
----
-
-## 🚀 One-Time Setup: Deploy to GitHub Pages
-
-### Step 1 — Create a GitHub Repository
-
-1. Go to [github.com](https://github.com) and sign in
-2. Click **"New repository"**
-3. Name it: `call-insights` (or any name you prefer)
-4. Set it to **Public**
-5. Click **"Create repository"**
-
-### Step 2 — Upload the Project Files
-
-Option A — GitHub Web UI (easiest):
-1. In your new repo, click **"uploading an existing file"**
-2. Drag and drop the entire project folder contents
-3. Make sure the structure is:
-   ```
-   index.html
-   css/style.css
-   js/app.js
-   data/insights.json
-   README.md
-   ```
-4. Click **"Commit changes"**
-
-Option B — Git CLI:
-```bash
-cd call-insights-dashboard
-git init
-git add .
-git commit -m "Initial deploy"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/call-insights.git
-git push -u origin main
-```
-
-### Step 3 — Enable GitHub Pages
-
-1. Go to your repository on GitHub
-2. Click **Settings** → **Pages** (left sidebar)
-3. Under "Source", select **Deploy from a branch**
-4. Branch: `main`, Folder: `/ (root)`
-5. Click **Save**
-
-Your permanent URL will be:
-```
-https://YOUR_USERNAME.github.io/call-insights/
-```
-
-**This URL never changes.** ✓
-
----
-
-## 🔄 Updating: Add a New Insight
-
-Every time you analyze new calls, follow this workflow:
-
-### What you paste into Claude:
-
-Give Claude the call analysis in any format. It will generate an updated `insights.json` with the new entry appended.
-
-### What Claude returns:
-
-A complete updated `data/insights.json` file.
-
-### How to deploy the update:
-
-**Option A — GitHub Web UI:**
-1. Go to your repo on GitHub
-2. Click on `data/insights.json`
-3. Click the **pencil icon** (Edit)
-4. Select all the text, paste the new JSON
-5. Click **"Commit changes"**
-
-Done — the website updates automatically within ~60 seconds.
-
-**Option B — Git CLI:**
-```bash
-# Replace data/insights.json with the new file
-git add data/insights.json
-git commit -m "Add insight: [brief title]"
-git push
-```
-
----
-
-## 📁 Project Structure
-
-```
-call-insights-dashboard/
-├── index.html              ← Single page app shell (never changes)
-├── css/
-│   └── style.css           ← All styling (never changes)
-├── js/
-│   └── app.js              ← All logic: routing, filtering, rendering (never changes)
-├── data/
-│   └── insights.json       ← ⭐ THE ONLY FILE YOU EVER UPDATE
-└── README.md
-```
-
----
-
-## 📋 insights.json Schema Reference
-
-When Claude appends a new insight, it follows this structure:
-
-```json
+[insights.json](https://github.com/user-attachments/files/29357704/insights.json)
 {
-  "id": "insight-XXX",                    // unique ID (auto-increment)
-  "date": "YYYY-MM-DD",                  // ISO date
-  "title": "...",                         // descriptive title
-  "campaign": "...",                      // campaign name
-  "offer": "...",                         // specific offer
-  "product": "...",                       // product name
-  "funnel": "...",                        // Inbound / Outbound / Retention
-  "team_member": "...",                   // team or rep name
-  "call_type": "...",                     // Appointment Setting / Sales Close / etc.
-  "call_duration": "...",                 // e.g. "8–14 min avg"
-  "summary": "...",                       // paragraph summary
-  "main_findings": ["..."],              // array of strings
-  "positive_patterns": ["..."],          // array of strings
-  "customer_objections": ["..."],        // array of strings
-  "winning_language": ["..."],           // array of strings (can include quotes)
-  "pain_points": ["..."],                // array of strings
-  "buying_triggers": ["..."],            // array of strings
-  "opportunities": ["..."],              // array of strings
-  "recommendations": ["..."],            // array of strings
-  "action_items": [                      // array of objects
+  "meta": {
+    "last_updated": "2026-06-25",
+    "total_calls": 4,
+    "version": "1.0"
+  },
+  "insights": [
     {
-      "task": "...",
-      "owner": "...",
-      "due": "YYYY-MM-DD",
-      "status": "Pending | In Progress | Completed"
-    }
-  ],
-  "transcript_excerpts": [               // optional array of objects
+      "id": "insight-001",
+      "date": "2026-06-20",
+      "lob": "ASR Team",
+      "title": "ASR Team \u2013 Phase 3 Time Close Skip Analysis",
+      "campaign": "PG1 Membership Drive",
+      "offer": "PG1 Scratch Membership",
+      "product": "PG1 Scratch",
+      "funnel": "Inbound",
+      "team_member": "ASR Team (All)",
+      "call_type": "Appointment Setting",
+      "call_duration": "8\u201314 min avg",
+      "summary": "Analyzed 47 ASR calls from the week of June 16\u201320. Found near-universal skip of the Phase 3 two-slot time close, with reps jumping from discovery directly to pitch close. This pattern correlated with significantly lower booking conversion.",
+      "main_findings": [
+        "96% of reps skipped the Phase 3 two-slot time close entirely",
+        "Reps who completed Phase 3 converted at 34% vs 18% for those who skipped",
+        "Average call time was 2.3 minutes shorter on skipped calls \u2014 reps are rushing",
+        "Most common skip point: after prospect confirms interest, rep immediately pitches the calendar link"
+      ],
+      "positive_patterns": [
+        "Discovery questions (Phase 1) executed well across 82% of calls",
+        "Tone was warm and conversational \u2014 no aggressive closers identified",
+        "Product knowledge was solid; reps answered product questions confidently"
+      ],
+      "customer_objections": [
+        "I need to check my schedule first",
+        "Can you just send me the info?",
+        "I'm not sure I have time right now",
+        "What exactly are we meeting about?"
+      ],
+      "winning_language": [
+        "'I want to make sure this is worth your time \u2014 I have two slots that work for most folks...'",
+        "'Before I pull up the calendar, which works better for you \u2014 mornings or afternoons?'",
+        "'Most of our members said the same thing before they saw the full picture \u2014 20 minutes is all it takes.'"
+      ],
+      "pain_points": [
+        "Golfers feel they've already tried 'everything' to improve",
+        "Time commitment concerns around training programs",
+        "Skepticism about online/digital coaching vs in-person"
+      ],
+      "buying_triggers": [
+        "Mention of specific handicap improvement numbers",
+        "Peer social proof ('other golfers just like you')",
+        "Money-back guarantee mention",
+        "Limited slot / urgency framing"
+      ],
+      "opportunities": [
+        "Implement mandatory Phase 3 checkpoint in QA rubric",
+        "Create a two-slot time close script card for ASR reps",
+        "Add Phase 3 as a scored item in AI QA rubric immediately"
+      ],
+      "recommendations": [
+        "Update QA rubric to score Phase 3 as a required checkpoint (not optional)",
+        "Run targeted Phase 3 role-play session in next team training",
+        "Add time-close language to the Master Script Hub sidebar",
+        "Flag any call under 9 minutes for supervisor review"
+      ],
+      "action_items": [
+        {
+          "task": "Update AI QA rubric to include Phase 3 scoring",
+          "owner": "Lee",
+          "due": "2026-06-23",
+          "status": "In Progress"
+        },
+        {
+          "task": "Create Phase 3 two-slot time close script card",
+          "owner": "Lee",
+          "due": "2026-06-25",
+          "status": "Pending"
+        },
+        {
+          "task": "Schedule team role-play session",
+          "owner": "Team Lead",
+          "due": "2026-06-27",
+          "status": "Pending"
+        }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "Example of skipped Phase 3 (common pattern)",
+          "text": "Rep: 'Great, so you're interested in improving your short game?' Prospect: 'Yeah, definitely.' Rep: 'Perfect, let me go ahead and send you a calendar link for the call!' [Phase 3 skipped entirely]"
+        },
+        {
+          "label": "Example of Phase 3 done correctly",
+          "text": "Rep: 'Perfect. Before I pull this up \u2014 do mornings or afternoons tend to work better for you?' Prospect: 'Afternoons are easier.' Rep: 'Great. I've got Tuesday at 2pm or Thursday at 3pm \u2014 which one works?' Prospect: 'Thursday works.' [Booked.]"
+        }
+      ],
+      "tags": [
+        "phase-3",
+        "time-close",
+        "booking-conversion",
+        "QA",
+        "ASR"
+      ]
+    },
     {
-      "label": "...",
-      "text": "..."
+      "id": "insight-002",
+      "date": "2026-06-18",
+      "lob": "Retention Team",
+      "title": "Retention Team \u2013 Billing Surprise as #1 Cancellation Driver",
+      "campaign": "Scratch Club Trial Retention",
+      "offer": "Scratch Club $29/month",
+      "product": "Scratch Club",
+      "funnel": "Retention",
+      "team_member": "Retention Team",
+      "call_type": "Cancellation Save",
+      "call_duration": "6\u201318 min avg",
+      "summary": "Retention call analysis across June 8\u201318 reveals that billing surprise around the $29/month Scratch Club subscription is the top stated reason for cancellation. Approximately 48% of callers expressed some form of 'I didn't know I was going to be charged.' Save rate currently running at 43% vs the 60% target.",
+      "main_findings": [
+        "48% of cancellation calls cited billing surprise as primary reason",
+        "Save rate at 43% MTD vs 60% target \u2014 17-point gap",
+        "Refund rate well above 12% goal",
+        "65% of retention calls had zero golf context established before pitching the save offer",
+        "Reps are leading with price defense rather than value re-anchoring"
+      ],
+      "positive_patterns": [
+        "Reps who led with empathy and golf context first had a 61% save rate",
+        "Scratch Club value proposition resonated when explained clearly with specifics",
+        "Tone was generally calm and non-confrontational"
+      ],
+      "customer_objections": [
+        "I didn't know I was being charged $29 a month",
+        "I thought this was a one-time thing",
+        "I haven't even used it",
+        "It's not worth it for me right now",
+        "I'm just not playing golf right now"
+      ],
+      "winning_language": [
+        "'I completely understand \u2014 let me take a look at your account and see what makes the most sense for you.'",
+        "'A lot of members feel that way before they actually log in \u2014 can I show you what's actually in there?'",
+        "'What's your game like right now? Are you still getting out much?'"
+      ],
+      "pain_points": [
+        "Customers feel deceived by unclear billing communication at point of sale",
+        "Low perceived usage / value in first 30 days",
+        "No personal connection to the product content"
+      ],
+      "buying_triggers": [
+        "Specific feature they haven't tried yet",
+        "Pause option instead of cancel",
+        "Partial refund as goodwill gesture",
+        "Connecting product to their specific golf goal"
+      ],
+      "opportunities": [
+        "Implement a 'golf context first' protocol before any save pitch",
+        "Create a billing expectation reset script for reps",
+        "Explore pause/hold option to reduce hard cancellations",
+        "Work with fulfillment to improve Day 1 onboarding email clarity"
+      ],
+      "recommendations": [
+        "Add mandatory golf context question before any retention pitch",
+        "Script a billing reset empathy sequence for reps (not defensive, empathetic)",
+        "Propose a 'pause for 30 days' offer as a save tool",
+        "Flag billing surprise calls for upstream marketing/checkout team"
+      ],
+      "action_items": [
+        {
+          "task": "Draft billing surprise empathy script for retention team",
+          "owner": "Lee",
+          "due": "2026-06-22",
+          "status": "Completed"
+        },
+        {
+          "task": "Propose pause feature to Jeff/Denver",
+          "owner": "Lee",
+          "due": "2026-06-25",
+          "status": "In Progress"
+        },
+        {
+          "task": "Audit Day 1 onboarding email for billing clarity",
+          "owner": "Mimi",
+          "due": "2026-06-28",
+          "status": "Pending"
+        }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "Most common billing surprise opening",
+          "text": "Customer: 'I want to cancel. I didn't know I was going to be charged $29.' Rep: 'I understand. The charge is for your Scratch Club membership which you signed up for...' [Defensive framing \u2014 customer disengages]"
+        }
+      ],
+      "tags": [
+        "billing-surprise",
+        "save-rate",
+        "retention",
+        "scratch-club",
+        "cancellation"
+      ]
+    },
+    {
+      "id": "insight-003",
+      "date": "2026-06-23",
+      "lob": "Closer Team",
+      "title": "Closer Team \u2013 Top 3 Objection Types and Call Position Timing",
+      "campaign": "PG1 VIP Coaching Upsell",
+      "offer": "PG1 VIP Coaching Program",
+      "product": "PG1 VIP Coaching",
+      "funnel": "Outbound / Closer",
+      "team_member": "Closer Team",
+      "call_type": "Sales Close",
+      "call_duration": "22\u201345 min avg",
+      "summary": "Closer call review for June identified the top three objection categories by frequency and call-position timing: cost/spend fatigue (appearing at 28+ minute mark), equipment resistance (mid-call, 15\u201320 min), and video/technology skepticism (early call, 8\u201312 min). Understanding timing allows reps to pre-empt rather than react.",
+      "main_findings": [
+        "Cost/spend fatigue is #1 objection \u2014 67% of non-converted calls included it",
+        "Equipment resistance peaks at 15\u201320 minute mark \u2014 typically after program reveal",
+        "Video/tech skepticism surfaces early (8\u201312 min) and if unhandled, kills the call",
+        "Reps who pre-empted cost objection before it arose converted at 2.1x rate",
+        "Only 22% of reps used any pre-emption language in June"
+      ],
+      "positive_patterns": [
+        "Reps with strong rapport-building in first 10 minutes had 40% higher close rates",
+        "Story-based selling (member transformation stories) outperformed feature-listing",
+        "Reps who acknowledged skepticism and leaned in rather than defending closed better"
+      ],
+      "customer_objections": [
+        "I've already spent so much on golf stuff that didn't work",
+        "I'm not sure I need new equipment on top of this",
+        "I'm not great with video calls / technology",
+        "Can I think about it?",
+        "My wife/partner needs to know about this first"
+      ],
+      "winning_language": [
+        "'Before we get into the investment \u2014 a lot of our members told me the same thing. Let me show you why this is different.'",
+        "'The technology piece is honestly the easiest part \u2014 our team walks you through everything in the first session.'",
+        "'You don't need any new equipment. This works with exactly what you have in your bag right now.'"
+      ],
+      "pain_points": [
+        "Past purchase regret \u2014 golfers have wasted money on gear, lessons, apps before",
+        "Tech anxiety \u2014 older demographic uncomfortable with video coaching",
+        "Spouse approval required \u2014 purchase decisions not made independently"
+      ],
+      "buying_triggers": [
+        "Specific transformation story matching their handicap range",
+        "No-equipment-needed confirmation",
+        "Guarantee / risk reversal language",
+        "Coach expertise and credibility mention",
+        "Limited enrollment / cohort framing"
+      ],
+      "opportunities": [
+        "Build objection pre-emption scripts for each of the top 3 objections",
+        "Create a 'tech onboarding assurance' talking point for video-skeptical prospects",
+        "Develop spouse/partner inclusion script for end-of-call scenarios",
+        "Train reps to identify which objection type is dominant in first 10 minutes"
+      ],
+      "recommendations": [
+        "Add objection pre-emption module to closer onboarding and monthly training",
+        "Create a 'Top 3 Objections Cheat Sheet' with timing guidance for each",
+        "Score pre-emption language in QA rubric for closer calls",
+        "Analyze non-converted calls specifically for unhandled tech skepticism"
+      ],
+      "action_items": [
+        {
+          "task": "Build Top 3 Objections pre-emption script card",
+          "owner": "Lee",
+          "due": "2026-06-27",
+          "status": "Pending"
+        },
+        {
+          "task": "Add pre-emption scoring to closer QA rubric",
+          "owner": "Lee",
+          "due": "2026-06-28",
+          "status": "Pending"
+        },
+        {
+          "task": "Present findings to closer team in weekly meeting",
+          "owner": "Team Lead",
+          "due": "2026-06-26",
+          "status": "Pending"
+        }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "Cost objection handled with pre-emption (winning example)",
+          "text": "Rep: 'Before I walk you through what this looks like investment-wise \u2014 I want to acknowledge something. A lot of the guys I talk to have spent money on things that didn't deliver. So I want to be upfront about why this is structured differently.' [Prospect engagement increases \u2014 less defensive when cost revealed]"
+        }
+      ],
+      "tags": [
+        "objection-handling",
+        "cost-objection",
+        "tech-skepticism",
+        "equipment-resistance",
+        "closer",
+        "pre-emption"
+      ]
+    },
+    {
+      "id": "insight-004",
+      "date": "2026-06-24",
+      "lob": "Internal Setter Team",
+      "title": "Internal Setter Team \u2013 June 24 Full-Day Transcript Analysis (907 Calls)",
+      "campaign": "TMA Outbound \u2013 Internal Setter Team",
+      "offer": "2-3 Day Golf Academy (TMA)",
+      "product": "Transformation Golf Academy (TMA)",
+      "funnel": "Outbound / Internal Setter",
+      "team_member": "Internal Setter Team (All Reps)",
+      "call_type": "Appointment Setting",
+      "call_duration": "Avg 10.9 min (booked) / 4.1 min (declined)",
+      "summary": "Full analysis of 907 outbound Internal Setter calls placed on June 24, 2026. Of 907 total calls, 796 (87.8%) were unreachable or voicemail. Of the 111 live contacts, 27 resulted in a booked appointment (24.3% live-contact conversion), 30 declined, and 10 had follow-up potential. The top 3 decline drivers were cost, time/schedule conflict, and location limitations. Price objections surfaced as early as the opening minute on several calls. Reps who completed full discovery before revealing price averaged 10.9-minute calls and converted; those who answered cost questions immediately averaged 4.1-minute calls and lost the lead. Five Scratch Club cancellation calls were handled with zero save attempts.",
+      "main_findings": [
+        "907 total calls; 796 (87.8%) unreachable or VM \u2014 only 111 live contacts made",
+        "27 booked out of 111 live contacts = 24.3% live-contact conversion rate",
+        "Booked calls averaged 10.9 minutes vs 4.1 minutes for declined \u2014 a 2.6x talk-time gap that directly tracks with conversion",
+        "Top 3 decline types: Declined-Cost (6 calls), Declined-Time (6 calls), Declined-Location (4 calls)",
+        "Price objections appeared in the first 60 seconds on 3 of 4 cost-decline calls \u2014 before any discovery was run",
+        "Location objections were hard-stop exits \u2014 zero reps successfully converted a location objection in this dataset",
+        "Julius Vizcayno led all reps in declines (7) with only 2 bookings; Heinrich Abarquez had 5 declines and 1 booking \u2014 both need objection coaching",
+        "Dan Emmanuel Nicolas led the team in bookings (7) with only 3 declines \u2014 the highest conversion efficiency on the team",
+        "5 Scratch Club cancellation calls processed \u2014 zero retention attempts made on any of them",
+        "Canadian and international leads received the same pitch as domestic leads despite location and currency barriers making them unlikely to convert"
+      ],
+      "positive_patterns": [
+        "Reps who deflected the price question and ran full discovery before revealing cost had significantly longer calls and higher conversions",
+        "Phoebe Collado's booked call (Jane Dunwoodie, TMA Booked) demonstrated the full script structure correctly: warm open, full discovery, root-flaw framing, time close to Saturday Zoom",
+        "Dan Emmanuel Nicolas showed consistent booking efficiency \u2014 the highest booked-to-declined ratio on the team (7 bookings / 3 declines)",
+        "Social proof framing with 9,000 golfers and top-10-coach credibility was deployed well on booked calls",
+        "Root-flaw language ('we find the root cause underneath it all') was the strongest differentiator when used \u2014 it visibly shifted prospect engagement"
+      ],
+      "customer_objections": [
+        "\"I was really just fishing to see what the price point is.\" \u2014 Richard Ian Alvarez call, stated in opening",
+        "\"I'd rather just cut to the chase \u2014 if it's a price point I can't afford, there's no sense going through my game.\" \u2014 Glenn Huth",
+        "\"Wow, okay, yeah.\" \u2014 after hearing $3,000\u2013$4,000, call declined within seconds",
+        "\"I'm not going to Florida or Texas or California to take a golf lesson. I want something right here in St. Louis, Missouri.\" \u2014 Cathy York",
+        "\"You're not answering the question. Where \u2014 what's closest to Pittsburgh, Pennsylvania?\" \u2014 Jim Steigerwaldt",
+        "\"I can't take 5 days and go to Florida to a golf academy. I'm not in a position to do that because of demands in my profession.\" \u2014 C. Randolph Keller",
+        "\"I have too many things going on in my life. My son's getting married, I've been going back and forth to Delaware, I've been working a lot of overtime.\" \u2014 Thomas McGowan",
+        "\"I don't play enough golf. I thought if it was a video or something I'd watch it, but I don't play enough.\" \u2014 Rod Lang",
+        "\"I didn't even know that I was a member. I'd like to cancel my membership. You guys keep taking money out of my account automatically.\" \u2014 Ho yean Song (Scratch Club)",
+        "\"I'm getting a bill every month, so I would like to cancel the one I'm getting charged for.\" \u2014 Louise Finch (Scratch Club)",
+        "\"It was like $30 a month, and I retired, so you know what I mean.\" \u2014 Bryan Kugler (Scratch Club)"
+      ],
+      "winning_language": [
+        "\"We've worked with over 9,000 golfers. One thing that separates us from local lessons or YouTube is we don't just fix the miss \u2014 we find the root cause, the one thing underneath it all that keeps pulling everything else out.\" (Phoebe Collado \u2014 TMA booked)",
+        "\"There's really two kinds of golfers: guys who enjoy the game, and guys who, if they're honest, know they're capable of playing better and are actually ready to do something about it. Which one are you?\" (Phoebe Collado \u2014 strong identity trigger)",
+        "\"Since everything is customized, same goes with the cost \u2014 cost varies from person to person. The reason I called is to make sure the program is a good fit for you first.\" (price deflection that enables discovery)",
+        "\"What's your goal from a score standpoint within a year?\" (score-goal anchor \u2014 used well on all booked calls)",
+        "\"Most members know what their miss is \u2014 they just don't know why it keeps coming back. That's what we solve.\" (root-flaw positioning)"
+      ],
+      "pain_points": [
+        "Chipping and short game \u2014 most cited pain point across both booked and declined calls: deceleration, inconsistency around the green, pulling chips left",
+        "Driver inconsistency \u2014 second most common: slice, push-fade, direction control",
+        "Time poverty \u2014 many leads have genuine interest but work schedules, family obligations, and caregiving are real blockers (not soft objections)",
+        "Location friction \u2014 U.S.-only academy footprint is a hard ceiling for Canadian prospects and golfers in states with no nearby location (Nebraska, Missouri, western Pennsylvania)",
+        "Price shock \u2014 the $3,000\u2013$4,000 price point landing cold, without value framing or discovery, triggers immediate exit",
+        "Low play frequency \u2014 several leads self-disqualified because they only play once or twice a month and feel the academy investment doesn't fit their commitment level",
+        "Scratch Club billing confusion \u2014 recurring subscription charges not remembered or understood by multiple customers; mirrors pattern identified in insight-002"
+      ],
+      "buying_triggers": [
+        "Root cause framing \u2014 'we find the root flaw, not just the miss' was the strongest engagement trigger on booked calls",
+        "Customization language \u2014 'everything is built around your specific game' reduced price resistance before the number was revealed",
+        "Coach credibility \u2014 'top 10, top 20 coaches in the US' created perceived value that justified the investment",
+        "Score goal anchoring \u2014 getting the prospect to name their 1-year goal made them emotionally invested before the pitch",
+        "Social proof at scale \u2014 '9,000 golfers' created safety and credibility",
+        "Identity question \u2014 'which one are you?' triggered self-selection as a serious golfer and created personal ownership of the next step",
+        "Florida location density \u2014 'we have 12\u201313 academies in Florida alone' reassured location-concerned prospects in the Southeast"
+      ],
+      "opportunities": [
+        "PRICE PRE-EMPTION SCRIPT: Build a confident redirect for when prospects ask about cost before discovery is complete \u2014 this is happening in the first 60 seconds on roughly 30% of connected calls and needs a scripted response, not ad-hoc handling",
+        "LOCATION QUALIFIER AT OPEN: Add a state/location screen to the first 2 minutes of the script \u2014 reps are running 4\u20136 minute full pitches only to hit a hard location DQ at the end",
+        "SCRATCH CLUB SAVE PROTOCOL: Zero retention attempts were made on any of the 5 cancellation calls processed by the setter team \u2014 this is a direct monthly revenue leak that needs an immediate fix",
+        "DOWNSELL OFFER FOR DQ'D LEADS: For prospects who self-DQ on price or play frequency, there is currently no fallback offer \u2014 a PG1 digital program or online coaching option would capture partial revenue from these exits",
+        "TARGETED COACHING \u2014 JULIUS AND HEINRICH: Combined 12 declines vs 3 bookings in this session; focused coaching on objection pre-emption and discovery sequencing would have a measurable impact on team conversion",
+        "CANADIAN/INTERNATIONAL LEAD FLOW: Canadian prospects are receiving the same full pitch as domestic leads before anyone confirms they can travel \u2014 a modified short flow with upfront logistics framing would reduce wasted call time"
+      ],
+      "recommendations": [
+        "Add a Price Pre-Emption Block to the setter script: when a prospect asks about cost before discovery, the scripted response should be 'Great question \u2014 and I want to make sure the number I give you is actually relevant to your specific game. Give me 3 minutes, and I'll be able to tell you exactly what this looks like for you.'",
+        "Add a location qualifier in the first 2 minutes: 'Just so I can point you to the closest location \u2014 what state are you in?' This one question prevents 4+ minute calls that end in a hard DQ",
+        "Implement a Scratch Club save script for setter reps handling inbound cancellations \u2014 at minimum: value re-anchor, usage question, and pause offer before processing the cancel",
+        "Introduce a downsell path (PG1 digital / online coaching) for leads who cite price or low play frequency \u2014 currently these calls end in zero revenue when they don't have to",
+        "Schedule individual coaching sessions for Julius Vizcayno and Heinrich Abarquez focused on discovery-first sequencing and objection pre-emption before cost reveal",
+        "Work with Lhen to flag Canadian and international CRM leads for a modified pitch flow that addresses USD pricing and travel requirements upfront"
+      ],
+      "action_items": [
+        {
+          "task": "Write Price Pre-Emption Block for setter script (cost question redirect)",
+          "owner": "Lee",
+          "due": "2026-06-27",
+          "status": "Pending"
+        },
+        {
+          "task": "Add state/location qualifier to setter script Phase 1 opening",
+          "owner": "Lee",
+          "due": "2026-06-27",
+          "status": "Pending"
+        },
+        {
+          "task": "Build Scratch Club save micro-script for setter cancellation calls",
+          "owner": "Lee",
+          "due": "2026-06-28",
+          "status": "Pending"
+        },
+        {
+          "task": "Design downsell flow (PG1 digital) for price/frequency DQ'd leads",
+          "owner": "Lee + Jeff",
+          "due": "2026-07-01",
+          "status": "Pending"
+        },
+        {
+          "task": "Schedule 1:1 coaching sessions with Julius Vizcayno and Heinrich Abarquez",
+          "owner": "Team Lead",
+          "due": "2026-06-26",
+          "status": "Pending"
+        },
+        {
+          "task": "Flag Canadian and international leads in CRM for modified pitch flow",
+          "owner": "Lhen",
+          "due": "2026-06-28",
+          "status": "Pending"
+        }
+      ],
+      "transcript_excerpts": [
+        {
+          "label": "OBJECTION #1 \u2014 Price before discovery, call lost immediately (Heinrich Abarquez / Glenn Huth)",
+          "text": "Contact: \"Yeah, honestly, I'd rather just cut to the chase because if it's a price point I can't afford, there's no sense going through my game and all that kind of thing.\"\n\nContact: \"$3,000 before I would do anything with food or travel or anything like that then is what you're saying, right? $4,000.\"\n\nContact: \"Wow, okay, yeah.\" [Call declined within seconds]"
+        },
+        {
+          "label": "OBJECTION #2 \u2014 Location hard-stop, no workaround (Heinrich Abarquez / Cathy York)",
+          "text": "Contact: \"Yeah, but I live in St. Louis, Missouri, and so if there isn't anything here, I'm not interested.\"\n\nAgent: \"Okay, sure, I understand that Missouri is your focus right now, but we have locations all ac\u2014\"\n\nContact: \"I'm not going to Florida or Texas or California to take a golf lesson. I want something right here in St. Louis, Missouri.\""
+        },
+        {
+          "label": "OBJECTION #3 \u2014 Time and life conflict blocking schedule commitment (Vian Perez / C. Randolph Keller)",
+          "text": "Contact: \"I can't take 5 days and go to Florida to a golf academy per se. I'm not in a position to do that just because of demands in my profession and work.\"\n\nContact: \"I'm very, very busy. And that's why I wanted to hear a little bit about what the game improvement options were.\""
+        },
+        {
+          "label": "WINNING PATTERN \u2014 Discovery-first pivot, full script, booked (Phoebe Collado / Jane Dunwoodie)",
+          "text": "Agent: \"Since everything is customized, same goes with the cost \u2014 cost varies from person to person. The reason I called is I want to make sure the program is a good fit for you first. Would you mind giving me a quick picture of your game?\"\n\n[Full discovery: chipping pain point identified, root-flaw framed, score goal anchored at 'below 50 for 9 holes', 'which one are you?' identity close used, Saturday 2 PM Zoom booked]\n\nOutcome: E. TMA Booked"
+        },
+        {
+          "label": "SCRATCH CLUB BILLING SURPRISE \u2014 No save attempted (Richard Ian Alvarez / Ho yean Song)",
+          "text": "Contact: \"The reason I'm calling you to cancel my membership \u2014 I didn't even know that I was a member, and I realized it a few days ago. I'd like to cancel my membership. Is it possible? Because you guys keep taking the money out of my account automatically.\"\n\nAgent: \"Yeah, no problem, sir. We can cancel this. I'll go ahead and do that for you.\"\n\n[Cancel processed immediately. No retention attempt. No value re-anchor. No pause offer. Zero revenue recovered.]"
+        }
+      ],
+      "tags": [
+        "internal-setter",
+        "TMA",
+        "price-objection",
+        "location-objection",
+        "time-objection",
+        "scratch-club",
+        "cancellation",
+        "objection-pre-emption",
+        "discovery",
+        "julius-vizcayno",
+        "heinrich-abarquez",
+        "dan-emmanuel-nicolas",
+        "phoebe-collado",
+        "downsell",
+        "live-contact-conversion"
+      ]
     }
-  ],
-  "tags": ["...", "..."]                 // searchable keyword tags
+  ]
 }
-```
-
----
-
-## 🔍 Features
-
-| Feature | Description |
-|---|---|
-| **Search** | Full-text search across all fields in every insight |
-| **Period filter** | Today / This Week / This Month / This Year / All Time |
-| **Campaign filter** | Auto-populated from your data |
-| **Offer filter** | Auto-populated from your data |
-| **Product filter** | Auto-populated from your data |
-| **Funnel filter** | Auto-populated from your data |
-| **Team Member filter** | Auto-populated from your data |
-| **Call Type filter** | Auto-populated from your data |
-| **Homepage stats** | Total calls, action items, objections, teams |
-| **Objection tracker** | Most common objections aggregated across all insights |
-| **Buying triggers** | Most common triggers aggregated across all insights |
-| **Topics cloud** | Clickable tag cloud — click to search |
-| **Detail pages** | Full structured view of every insight field |
-| **Action item table** | Tasks with owner, due date, status badge |
-| **Transcript excerpts** | Optional monospace transcript snippets |
-| **Responsive** | Works on desktop, tablet, and mobile |
-
----
-
-## 🛠 Tech Stack
-
-- **HTML5** — semantic shell, no templating engine
-- **CSS3** — custom properties, grid, flexbox, animations
-- **Vanilla JavaScript** — no frameworks, no dependencies
-- **JSON** — all data in one flat file
-- **GitHub Pages** — free, permanent hosting
-
-**Zero dependencies. Zero build steps. Zero backend.**
-
----
-
-## 💡 Prompt Template for Adding New Insights
-
-When pasting a new call analysis into Claude, use this prompt:
-
-```
-Here is a new call analysis to add to my Call Insights Dashboard.
-Please update my insights.json file by appending this new entry.
-Keep all existing entries exactly as they are.
-Return only the complete updated insights.json file.
-
-[PASTE YOUR CALL ANALYSIS HERE]
-```
-
-Claude will return the complete updated `data/insights.json` — just replace the file on GitHub.
