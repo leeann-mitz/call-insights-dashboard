@@ -83,7 +83,7 @@ function callTypeColor(type) {
 async function loadData() {
   try {
     // Cache bust with timestamp so GitHub Pages always serves fresh JSON
-    const res = await fetch(`data/insights.json?v=${Date.now()}`);
+    const res = await fetch(`insights.json?v=${Date.now()}`)
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     State.data = await res.json();
     init();
