@@ -73,10 +73,10 @@ function getStatusClass(status) {
 function callTypeColor(type) {
   if (!type) return 'tag-neutral';
   const t = type.toLowerCase();
-  if (t.includes('close') || t.includes('sales')) return 'tag-cyan';
+  if (t.includes('close') || t.includes('sales')) return 'tag-orange';
   if (t.includes('retention') || t.includes('cancel')) return 'tag-amber';
   if (t.includes('appointment') || t.includes('set')) return 'tag-green';
-  if (t.includes('inbound')) return 'tag-purple';
+  if (t.includes('inbound')) return 'tag-blue';
   return 'tag-neutral';
 }
 
@@ -458,7 +458,7 @@ function renderDetail(id) {
           ${ins.funnel ? `<div class="detail-meta-item"><span class="meta-icon">🔀</span><strong>${escapeHtml(ins.funnel)}</strong></div>` : ''}
         </div>
         <div class="detail-tags">
-          ${ins.product ? `<span class="tag tag-cyan">${escapeHtml(ins.product)}</span>` : ''}
+          ${ins.product ? `<span class="tag tag-orange">${escapeHtml(ins.product)}</span>` : ''}
           ${ins.offer ? `<span class="tag tag-amber">${escapeHtml(ins.offer)}</span>` : ''}
           ${(ins.tags || []).map(t => `<span class="tag tag-neutral">${escapeHtml(t)}</span>`).join('')}
         </div>
