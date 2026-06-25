@@ -13,6 +13,7 @@ const State = {
   search: '',           // global search query
   filters: {
     period: 'all',      // all | daily | weekly | monthly | yearly
+    lob: '',
     campaign: '',
     offer: '',
     product: '',
@@ -83,7 +84,7 @@ function callTypeColor(type) {
 async function loadData() {
   try {
     // Cache bust with timestamp so GitHub Pages always serves fresh JSON
-    const res = await fetch(`insights.json?v=${Date.now()}`)
+    const res = await fetch(`insights.json?v=${Date.now()}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     State.data = await res.json();
     init();
@@ -118,6 +119,7 @@ function getFilteredInsights() {
 
   // Field filters
   const fieldMap = {
+    lob: 'lob',
     campaign: 'campaign', offer: 'offer', product: 'product',
     funnel: 'funnel', team_member: 'team_member', call_type: 'call_type'
   };
@@ -164,12 +166,13 @@ function getUnique(field) {
 }
 
 function populateFilterDropdowns() {
-  const fields = ['campaign', 'offer', 'product', 'funnel', 'team_member', 'call_type'];
+  const fields = ['lob', 'campaign', 'offer', 'product', 'funnel', 'team_member', 'call_type'];
   fields.forEach(field => {
-    const sel = $(`filter-${field.replace('_', '-')}`);
+    const elId = `filter-${field.replace(/_/g, '-')}`;
+    const sel = $(elId);
     if (!sel) return;
     const vals = getUnique(field);
-    const label = field.replace(/_/g, ' ');
+    const label = field === 'lob' ? 'LOB' : field.replace(/_/g, ' ');
     sel.innerHTML = `<option value="">All ${label}s</option>` +
       vals.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('');
     sel.value = State.filters[field] || '';
@@ -629,7 +632,7 @@ function onFilterChange(field, value) {
 
 function clearAllFilters() {
   State.filters = {
-    period: 'all', campaign: '', offer: '', product: '',
+    period: 'all', lob: '', campaign: '', offer: '', product: '',
     funnel: '', team_member: '', call_type: ''
   };
   State.search = '';
@@ -673,6 +676,7 @@ function init() {
 
   // Bind filter dropdowns
   const filterFields = {
+    'filter-lob':         'lob',
     'filter-campaign':    'campaign',
     'filter-offer':       'offer',
     'filter-product':     'product',
