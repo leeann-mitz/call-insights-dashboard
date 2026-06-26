@@ -36,16 +36,16 @@
 /* Filter pills */
 .header-filters { display: flex; gap: 8px; flex: 1; }
 .hfilter {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 5px;
   background: #252220; border: 1px solid #3a3330;
-  border-radius: var(--radius-sm); padding: 5px 10px;
-  flex: 1; max-width: 180px;
+  border-radius: var(--radius-sm); padding: 4px 8px;
+  flex: 1; max-width: 160px;
 }
-.hfilter label { font-size: .62rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .06em; color: #5a5250; white-space: nowrap; }
+.hfilter label { font-size: .6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: #5a5250; white-space: nowrap; flex-shrink: 0; }
 .hfilter select {
   background: transparent; border: none; color: #c8c0b8;
-  font: .75rem var(--font); outline: none; cursor: pointer;
+  font: .72rem var(--font); outline: none; cursor: pointer;
   flex: 1; min-width: 0;
 }
 .hfilter select option { background: #1a1816; color: #c8c0b8; }
