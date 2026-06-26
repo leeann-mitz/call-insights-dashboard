@@ -27,7 +27,7 @@ const App = (() => {
     prev: [],
     period: 'all_time',
     filters: { lob:'', leader:'', agent:'' },
-    sort: { col:'avgQA', dir:'desc' },
+    sort: { col:'calls', dir:'desc' },
   };
 
   // ── Init ─────────────────────────────────────────────────
@@ -126,7 +126,7 @@ const App = (() => {
       { id:'kpi-total',    label:'Total Calls',     value:k.total,                  trend:k.totalTrend,   suffix:'',    mono:true },
       { id:'kpi-connected',label:'Connected',        value:k.connected,              trend:null,           suffix:'',    mono:true },
       { id:'kpi-conv',     label:'Conversion Rate',  value:`${k.convRate}%`,         trend:k.convTrend,    suffix:'',    mono:false },
-      { id:'kpi-qa',       label:'Avg QA Score',     value:`${k.avgQA}`,             trend:k.qaTrend,      suffix:'/100',mono:false },
+      { id:'kpi-qa',       label:'Avg QA Score',     value: k.avgQA > 0 ? `${k.avgQA}` : 'N/A', trend: k.avgQA > 0 ? k.qaTrend : null, suffix: k.avgQA > 0 ? '/100' : '', mono:false },
       { id:'kpi-dur',      label:'Avg Duration',     value:k.avgDur,                 trend:k.durTrend,     suffix:'',    mono:true  },
       { id:'kpi-sales',    label:'Sales',             value:k.sales,                  trend:k.salesTrend,   suffix:'',    mono:true  },
       { id:'kpi-appts',    label:'Appointments Set',  value:k.appts,                  trend:k.apptsTrend,   suffix:'',    mono:true  },
@@ -417,8 +417,8 @@ const App = (() => {
       const strengths = (c.strengths||[]).slice(0,2).map(s => `<span class="modal-strength-tag">${esc(s)}</span>`).join('');
       const qaStyle = c.qaScore>=80?'color:#22c55e':c.qaScore>=65?'color:#eab308':'color:#ef4444';
       const listenBtn = c.callLink
-        ? `<a href="${esc(c.callLink)}" target="_blank" rel="noopener" class="modal-listen-btn">▶ Listen</a>`
-        : `<span class="modal-listen-btn modal-listen-disabled" title="No recording link yet — add callLink to calls.json">▶ Listen</span>`;
+        ? `<a href="${esc(c.callLink)}" target="_blank" rel="noopener" class="modal-call-link">Open in Aloware →</a>`
+        : `<span class="modal-call-link modal-call-link-empty">No recording</span>`;
       return `<div class="modal-call">
         <div class="modal-call-top">
           <div>
