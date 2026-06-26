@@ -49,7 +49,7 @@
     <button class="snav-item" data-section="s6"><span class="snav-num">6</span> Leaderboard</button>
     <button class="snav-item" data-section="s7"><span class="snav-num">7</span> What's Happening</button>
     <button class="snav-item" data-section="s8"><span class="snav-num">8</span> Top Performers</button>
-    <button class="snav-item" data-section="s9"><span class="snav-num">9</span> What Reps Say</button>
+    <button class="snav-item" data-section="s9"><span class="snav-num">9</span> Top Performer Language</button>
     <button class="snav-item" data-section="s10"><span class="snav-num">10</span> WoW Trends</button>
     <button class="snav-item" data-section="s11"><span class="snav-num">11</span> Opportunities</button>
     <button class="snav-item" data-section="s12"><span class="snav-num">12</span> Actions</button>
@@ -244,14 +244,14 @@
       <div id="performers-list" class="coaching-list"></div>
     </section>
 
-    <!-- ── S9: What Reps Are Saying ────────────────────── -->
+    <!-- ── S9: What Top Performers Say ─────────────────── -->
     <section id="s9" class="section">
       <div class="section-head">
         <div class="section-title">
           <span class="section-num">09</span>
-          <h2 class="t-h1">What Reps Are Saying</h2>
+          <h2 class="t-h1">What Top Performers Say</h2>
         </div>
-        <span class="section-q">What language is being used — and what should change?</span>
+        <span class="section-q">Language patterns from high-QA reps — and what to replace</span>
       </div>
       <div class="card card-pad">
         <div id="phrases-wrap"></div>
@@ -296,6 +296,21 @@
 
   </main><!-- /main -->
 </div><!-- /app -->
+
+<!-- ── Rep Drill-Down Modal ──────────────────────────────── -->
+<div id="rep-modal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h3 id="modal-rep-name">Rep Name</h3>
+        <p class="t-label" id="modal-rep-meta" style="margin-top:3px"></p>
+      </div>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-stats" id="modal-stats"></div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
 
 <script src="scripts/analytics.js"></script>
 <script src="scripts/insights.js"></script>

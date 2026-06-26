@@ -12,7 +12,7 @@ const App = (() => {
   ];
 
   const OUTCOME_COLORS = {
-    'Sale':'#16a34a','Appointment Set':'#2563eb','Saved':'#7c3aed',
+    'Sale':'#22c55e','Appointment Set':'#3b82f6','Saved':'#a855f7',
     'No Interest':'#dc2626','Refund':'#ea580c','Voicemail':'#B3AAA3',
     'Callback':'#ca8a04','Transferred':'#0891b2','Disconnected':'#6b7280',
   };
@@ -231,7 +231,7 @@ const App = (() => {
       const tierCls = r.avgQA>=80?'rep-green':r.avgQA>=65?'rep-yellow':'rep-red';
       const dotCls  = r.avgQA>=80?'tier-green':r.avgQA>=65?'tier-yellow':'tier-red';
       const qaCls   = r.avgQA>=80?'qa-high':r.avgQA>=65?'qa-mid':'qa-low';
-      return `<tr class="${tierCls}">
+      return `<tr class="${tierCls}" data-agent="${esc(r.agent)}" title="Click to view ${esc(r.agent)}'s calls" style="cursor:pointer">
         <td class="td-rep"><span class="tier-dot ${dotCls}"></span>${esc(r.agent)}</td>
         <td class="td-lob">${esc(r.lob)}</td>
         <td class="td-mono">${r.calls}</td>
@@ -243,6 +243,10 @@ const App = (() => {
         <td><span class="${r.priorityCls}">${esc(r.priority)}</span></td>
       </tr>`;
     }).join('');
+    // Row click → drill-down
+    $('#rep-tbody')?.querySelectorAll('tr[data-agent]').forEach(row => {
+      row.addEventListener('click', () => openRepModal(row.dataset.agent));
+    });
     updateSortHeaders();
   }
 
@@ -382,11 +386,70 @@ const App = (() => {
     $$('.section[id]').forEach(s => observer.observe(s));
   }
 
+  // ── Rep Drill-Down Modal ─────────────────────────────────
+  function openRepModal(agentName) {
+    const calls  = state.filtered.filter(c => c.agent === agentName);
+    const stats  = Analytics.repStats(calls)[0];
+    if (!calls.length || !stats) return;
+
+    $('#modal-rep-name').textContent = agentName;
+    $('#modal-rep-meta').textContent = `${stats.lob} · ${stats.teamLeader}`;
+
+    const qaCls = stats.avgQA>=80?'qa-high':stats.avgQA>=65?'qa-mid':'qa-low';
+    $('#modal-stats').innerHTML = [
+      { label:'Calls',       val: stats.calls },
+      { label:'Avg QA',      val: `<span class="${qaCls}">${stats.avgQA}/100</span>` },
+      { label:'Conversion',  val: `${stats.conv}%` },
+      { label:'Sales',       val: stats.sales },
+      { label:'Appointments',val: stats.appts },
+      { label:'Avg Duration',val: stats.avgDur },
+      { label:'Script Adh.', val: stats.avgScript ? `${stats.avgScript}/100` : '—' },
+    ].map(s => `
+      <div class="modal-stat">
+        <div class="modal-stat-label">${s.label}</div>
+        <div class="modal-stat-value">${s.val}</div>
+      </div>`).join('');
+
+    const sorted = [...calls].sort((a,b) => new Date(b.callDate) - new Date(a.callDate));
+    $('#modal-body').innerHTML = sorted.map(c => {
+      const oc = OUTCOME_COLORS[c.outcome] || '#7A7068';
+      const gaps = (c.scriptGaps||[]).map(g => `<span class="modal-gap-tag">${esc(g)}</span>`).join('');
+      const strengths = (c.strengths||[]).slice(0,2).map(s => `<span class="modal-strength-tag">${esc(s)}</span>`).join('');
+      const qaStyle = c.qaScore>=80?'color:#22c55e':c.qaScore>=65?'color:#eab308':'color:#ef4444';
+      return `<div class="modal-call">
+        <div class="modal-call-top">
+          <div>
+            <div class="modal-call-member">${esc(c.member||'Unknown Member')}</div>
+            <div class="modal-call-lob">${esc(c.lob)} · ${esc(c.callDate)}</div>
+          </div>
+          <div style="font-family:var(--mono);font-size:.78rem;font-weight:700;${qaStyle}">${c.qaScore!=null?c.qaScore+'/100':'—'}</div>
+          <div style="font-family:var(--mono);font-size:.78rem;color:var(--text-3)">${esc(c.duration||'—')}</div>
+          <span class="badge" style="background:${oc}22;color:${oc};border:1px solid ${oc}44">${esc(c.outcome)}</span>
+        </div>
+        ${c.summary ? `<div class="modal-call-summary">${esc(c.summary)}</div>` : ''}
+        ${strengths||gaps ? `<div class="modal-call-gaps">${strengths}${gaps}</div>` : ''}
+      </div>`;
+    }).join('');
+
+    $('#rep-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeRepModal() {
+    $('#rep-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   // ── Events ───────────────────────────────────────────────
   function bindEvents() {
     $('#filter-lob')?.addEventListener('change', e=>{state.filters.lob=e.target.value;applyFilters();});
     $('#filter-leader')?.addEventListener('change',e=>{state.filters.leader=e.target.value;applyFilters();});
     $('#filter-agent')?.addEventListener('change', e=>{state.filters.agent=e.target.value;applyFilters();});
+
+    // Modal close
+    $('#modal-close-btn')?.addEventListener('click', closeRepModal);
+    $('#rep-modal')?.addEventListener('click', e => { if (e.target===e.currentTarget) closeRepModal(); });
+    document.addEventListener('keydown', e => { if (e.key==='Escape') closeRepModal(); });
 
     // Sortable table headers
     $$('.rep-th').forEach(th => {
