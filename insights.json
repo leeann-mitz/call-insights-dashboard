@@ -8,7 +8,7 @@
     {
       "id": "insight-001",
       "date": "2026-06-20",
-      "lob": "ASR Team",
+      "lob": "ASR",
       "title": "ASR Team – Phase 3 Time Close Skip Analysis",
       "campaign": "PG1 Membership Drive",
       "offer": "PG1 Scratch Membership",
@@ -76,7 +76,7 @@
     {
       "id": "insight-002",
       "date": "2026-06-18",
-      "lob": "Retention Team",
+      "lob": "Retention",
       "title": "Retention Team – Billing Surprise as #1 Cancellation Driver",
       "campaign": "Scratch Club Trial Retention",
       "offer": "Scratch Club $29/month",
@@ -146,7 +146,7 @@
     {
       "id": "insight-003",
       "date": "2026-06-23",
-      "lob": "Closer Team",
+      "lob": "PG1 Closer",
       "title": "Closer Team – Top 3 Objection Types and Call Position Timing",
       "campaign": "PG1 VIP Coaching Upsell",
       "offer": "PG1 VIP Coaching Program",
@@ -217,7 +217,7 @@
     {
       "id": "insight-004",
       "date": "2026-06-24",
-      "lob": "Internal Setter Team",
+      "lob": "Internal Setter",
       "title": "Internal Setter Team – June 24 Full-Day Transcript Analysis (907 Calls)",
       "campaign": "TMA Outbound – Internal Setter Team",
       "offer": "2-3 Day Golf Academy (TMA)",
