@@ -1,7 +1,7 @@
 {
   "meta": {
-    "last_updated": "2026-06-25",
-    "total_calls": 5,
+    "last_updated": "2026-06-26",
+    "total_calls": 11,
     "version": "1.0"
   },
   "insights": [
@@ -63,42 +63,15 @@
         "Flag any call under 9 minutes for supervisor review"
       ],
       "action_items": [
-        {
-          "task": "Update AI QA rubric to include Phase 3 scoring",
-          "owner": "Lee",
-          "due": "2026-06-23",
-          "status": "In Progress"
-        },
-        {
-          "task": "Create Phase 3 two-slot time close script card",
-          "owner": "Lee",
-          "due": "2026-06-25",
-          "status": "Pending"
-        },
-        {
-          "task": "Schedule team role-play session",
-          "owner": "Team Lead",
-          "due": "2026-06-27",
-          "status": "Pending"
-        }
+        { "task": "Update AI QA rubric to include Phase 3 scoring", "owner": "Lee", "due": "2026-06-23", "status": "In Progress" },
+        { "task": "Create Phase 3 two-slot time close script card", "owner": "Lee", "due": "2026-06-25", "status": "Pending" },
+        { "task": "Schedule team role-play session", "owner": "Team Lead", "due": "2026-06-27", "status": "Pending" }
       ],
       "transcript_excerpts": [
-        {
-          "label": "Example of skipped Phase 3 (common pattern)",
-          "text": "Rep: 'Great, so you're interested in improving your short game?' Prospect: 'Yeah, definitely.' Rep: 'Perfect, let me go ahead and send you a calendar link for the call!' [Phase 3 skipped entirely]"
-        },
-        {
-          "label": "Example of Phase 3 done correctly",
-          "text": "Rep: 'Perfect. Before I pull this up — do mornings or afternoons tend to work better for you?' Prospect: 'Afternoons are easier.' Rep: 'Great. I've got Tuesday at 2pm or Thursday at 3pm — which one works?' Prospect: 'Thursday works.' [Booked.]"
-        }
+        { "label": "Example of skipped Phase 3 (common pattern)", "text": "Rep: 'Great, so you're interested in improving your short game?' Prospect: 'Yeah, definitely.' Rep: 'Perfect, let me go ahead and send you a calendar link for the call!' [Phase 3 skipped entirely]" },
+        { "label": "Example of Phase 3 done correctly", "text": "Rep: 'Perfect. Before I pull this up — do mornings or afternoons tend to work better for you?' Prospect: 'Afternoons are easier.' Rep: 'Great. I've got Tuesday at 2pm or Thursday at 3pm — which one works?' Prospect: 'Thursday works.' [Booked.]" }
       ],
-      "tags": [
-        "phase-3",
-        "time-close",
-        "booking-conversion",
-        "QA",
-        "ASR"
-      ]
+      "tags": ["phase-3", "time-close", "booking-conversion", "QA", "ASR"]
     },
     {
       "id": "insight-002",
@@ -161,38 +134,14 @@
         "Flag billing surprise calls for upstream marketing/checkout team"
       ],
       "action_items": [
-        {
-          "task": "Draft billing surprise empathy script for retention team",
-          "owner": "Lee",
-          "due": "2026-06-22",
-          "status": "Completed"
-        },
-        {
-          "task": "Propose pause feature to Jeff/Denver",
-          "owner": "Lee",
-          "due": "2026-06-25",
-          "status": "In Progress"
-        },
-        {
-          "task": "Audit Day 1 onboarding email for billing clarity",
-          "owner": "Mimi",
-          "due": "2026-06-28",
-          "status": "Pending"
-        }
+        { "task": "Draft billing surprise empathy script for retention team", "owner": "Lee", "due": "2026-06-22", "status": "Completed" },
+        { "task": "Propose pause feature to Jeff/Denver", "owner": "Lee", "due": "2026-06-25", "status": "In Progress" },
+        { "task": "Audit Day 1 onboarding email for billing clarity", "owner": "Mimi", "due": "2026-06-28", "status": "Pending" }
       ],
       "transcript_excerpts": [
-        {
-          "label": "Most common billing surprise opening",
-          "text": "Customer: 'I want to cancel. I didn't know I was going to be charged $29.' Rep: 'I understand. The charge is for your Scratch Club membership which you signed up for...' [Defensive framing — customer disengages]"
-        }
+        { "label": "Most common billing surprise opening", "text": "Customer: 'I want to cancel. I didn't know I was going to be charged $29.' Rep: 'I understand. The charge is for your Scratch Club membership which you signed up for...' [Defensive framing — customer disengages]" }
       ],
-      "tags": [
-        "billing-surprise",
-        "save-rate",
-        "retention",
-        "scratch-club",
-        "cancellation"
-      ]
+      "tags": ["billing-surprise", "save-rate", "retention", "scratch-club", "cancellation"]
     },
     {
       "id": "insight-003",
@@ -256,39 +205,14 @@
         "Analyze non-converted calls specifically for unhandled tech skepticism"
       ],
       "action_items": [
-        {
-          "task": "Build Top 3 Objections pre-emption script card",
-          "owner": "Lee",
-          "due": "2026-06-27",
-          "status": "Pending"
-        },
-        {
-          "task": "Add pre-emption scoring to closer QA rubric",
-          "owner": "Lee",
-          "due": "2026-06-28",
-          "status": "Pending"
-        },
-        {
-          "task": "Present findings to closer team in weekly meeting",
-          "owner": "Team Lead",
-          "due": "2026-06-26",
-          "status": "Pending"
-        }
+        { "task": "Build Top 3 Objections pre-emption script card", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Add pre-emption scoring to closer QA rubric", "owner": "Lee", "due": "2026-06-28", "status": "Pending" },
+        { "task": "Present findings to closer team in weekly meeting", "owner": "Team Lead", "due": "2026-06-26", "status": "Pending" }
       ],
       "transcript_excerpts": [
-        {
-          "label": "Cost objection handled with pre-emption (winning example)",
-          "text": "Rep: 'Before I walk you through what this looks like investment-wise — I want to acknowledge something. A lot of the guys I talk to have spent money on things that didn't deliver. So I want to be upfront about why this is structured differently.' [Prospect engagement increases — less defensive when cost revealed]"
-        }
+        { "label": "Cost objection handled with pre-emption (winning example)", "text": "Rep: 'Before I walk you through what this looks like investment-wise — I want to acknowledge something. A lot of the guys I talk to have spent money on things that didn't deliver. So I want to be upfront about why this is structured differently.' [Prospect engagement increases — less defensive when cost revealed]" }
       ],
-      "tags": [
-        "objection-handling",
-        "cost-objection",
-        "tech-skepticism",
-        "equipment-resistance",
-        "closer",
-        "pre-emption"
-      ]
+      "tags": ["objection-handling", "cost-objection", "tech-skepticism", "equipment-resistance", "closer", "pre-emption"]
     },
     {
       "id": "insight-004",
@@ -327,132 +251,57 @@
         "\"I'd rather just cut to the chase — if it's a price point I can't afford, there's no sense going through my game.\" — Glenn Huth",
         "\"Wow, okay, yeah.\" — after hearing $3,000–$4,000, call declined within seconds",
         "\"I'm not going to Florida or Texas or California to take a golf lesson. I want something right here in St. Louis, Missouri.\" — Cathy York",
-        "\"You're not answering the question. Where — what's closest to Pittsburgh, Pennsylvania?\" — Jim Steigerwaldt",
         "\"I can't take 5 days and go to Florida to a golf academy. I'm not in a position to do that because of demands in my profession.\" — C. Randolph Keller",
-        "\"I have too many things going on in my life. My son's getting married, I've been going back and forth to Delaware, I've been working a lot of overtime.\" — Thomas McGowan",
-        "\"I don't play enough golf. I thought if it was a video or something I'd watch it, but I don't play enough.\" — Rod Lang",
         "\"I didn't even know that I was a member. I'd like to cancel my membership. You guys keep taking money out of my account automatically.\" — Ho yean Song (Scratch Club)",
-        "\"I'm getting a bill every month, so I would like to cancel the one I'm getting charged for.\" — Louise Finch (Scratch Club)",
-        "\"It was like $30 a month, and I retired, so you know what I mean.\" — Bryan Kugler (Scratch Club)"
+        "\"I'm getting a bill every month, so I would like to cancel the one I'm getting charged for.\" — Louise Finch (Scratch Club)"
       ],
       "winning_language": [
         "\"We've worked with over 9,000 golfers. One thing that separates us from local lessons or YouTube is we don't just fix the miss — we find the root cause, the one thing underneath it all that keeps pulling everything else out.\" (Phoebe Collado — TMA booked)",
         "\"There's really two kinds of golfers: guys who enjoy the game, and guys who, if they're honest, know they're capable of playing better and are actually ready to do something about it. Which one are you?\" (Phoebe Collado — strong identity trigger)",
         "\"Since everything is customized, same goes with the cost — cost varies from person to person. The reason I called is to make sure the program is a good fit for you first.\" (price deflection that enables discovery)",
-        "\"What's your goal from a score standpoint within a year?\" (score-goal anchor — used well on all booked calls)",
-        "\"Most members know what their miss is — they just don't know why it keeps coming back. That's what we solve.\" (root-flaw positioning)"
+        "\"What's your goal from a score standpoint within a year?\" (score-goal anchor — used well on all booked calls)"
       ],
       "pain_points": [
-        "Chipping and short game — most cited pain point across both booked and declined calls: deceleration, inconsistency around the green, pulling chips left",
+        "Chipping and short game — most cited pain point across both booked and declined calls",
         "Driver inconsistency — second most common: slice, push-fade, direction control",
-        "Time poverty — many leads have genuine interest but work schedules, family obligations, and caregiving are real blockers (not soft objections)",
-        "Location friction — U.S.-only academy footprint is a hard ceiling for Canadian prospects and golfers in states with no nearby location (Nebraska, Missouri, western Pennsylvania)",
+        "Time poverty — many leads have genuine interest but work schedules, family obligations, and caregiving are real blockers",
+        "Location friction — U.S.-only academy footprint is a hard ceiling for Canadian prospects and golfers in underserved states",
         "Price shock — the $3,000–$4,000 price point landing cold, without value framing or discovery, triggers immediate exit",
-        "Low play frequency — several leads self-disqualified because they only play once or twice a month and feel the academy investment doesn't fit their commitment level",
-        "Scratch Club billing confusion — recurring subscription charges not remembered or understood by multiple customers; mirrors pattern identified in insight-002"
+        "Scratch Club billing confusion — recurring subscription charges not remembered or understood by multiple customers"
       ],
       "buying_triggers": [
         "Root cause framing — 'we find the root flaw, not just the miss' was the strongest engagement trigger on booked calls",
         "Customization language — 'everything is built around your specific game' reduced price resistance before the number was revealed",
         "Coach credibility — 'top 10, top 20 coaches in the US' created perceived value that justified the investment",
         "Score goal anchoring — getting the prospect to name their 1-year goal made them emotionally invested before the pitch",
-        "Social proof at scale — '9,000 golfers' created safety and credibility",
-        "Identity question — 'which one are you?' triggered self-selection as a serious golfer and created personal ownership of the next step",
-        "Florida location density — 'we have 12–13 academies in Florida alone' reassured location-concerned prospects in the Southeast"
+        "Social proof at scale — '9,000 golfers' created safety and credibility"
       ],
       "opportunities": [
-        "PRICE PRE-EMPTION SCRIPT: Build a confident redirect for when prospects ask about cost before discovery is complete — this is happening in the first 60 seconds on roughly 30% of connected calls and needs a scripted response, not ad-hoc handling",
-        "LOCATION QUALIFIER AT OPEN: Add a state/location screen to the first 2 minutes of the script — reps are running 4–6 minute full pitches only to hit a hard location DQ at the end",
-        "SCRATCH CLUB SAVE PROTOCOL: Zero retention attempts were made on any of the 5 cancellation calls processed by the setter team — this is a direct monthly revenue leak that needs an immediate fix",
-        "DOWNSELL OFFER FOR DQ'D LEADS: For prospects who self-DQ on price or play frequency, there is currently no fallback offer — a PG1 digital program or online coaching option would capture partial revenue from these exits",
-        "TARGETED COACHING — JULIUS AND HEINRICH: Combined 12 declines vs 3 bookings in this session; focused coaching on objection pre-emption and discovery sequencing would have a measurable impact on team conversion",
-        "CANADIAN/INTERNATIONAL LEAD FLOW: Canadian prospects are receiving the same full pitch as domestic leads before anyone confirms they can travel — a modified short flow with upfront logistics framing would reduce wasted call time"
+        "PRICE PRE-EMPTION SCRIPT: Build a confident redirect for when prospects ask about cost before discovery is complete",
+        "LOCATION QUALIFIER AT OPEN: Add a state/location screen to the first 2 minutes of the script",
+        "SCRATCH CLUB SAVE PROTOCOL: Zero retention attempts were made on any of the 5 cancellation calls processed by the setter team",
+        "DOWNSELL OFFER FOR DQ'D LEADS: For prospects who self-DQ on price or play frequency, there is currently no fallback offer",
+        "TARGETED COACHING — JULIUS AND HEINRICH: Combined 12 declines vs 3 bookings in this session"
       ],
       "recommendations": [
-        "Add a Price Pre-Emption Block to the setter script: when a prospect asks about cost before discovery, the scripted response should be 'Great question — and I want to make sure the number I give you is actually relevant to your specific game. Give me 3 minutes, and I'll be able to tell you exactly what this looks like for you.'",
-        "Add a location qualifier in the first 2 minutes: 'Just so I can point you to the closest location — what state are you in?' This one question prevents 4+ minute calls that end in a hard DQ",
-        "Implement a Scratch Club save script for setter reps handling inbound cancellations — at minimum: value re-anchor, usage question, and pause offer before processing the cancel",
-        "Introduce a downsell path (PG1 digital / online coaching) for leads who cite price or low play frequency — currently these calls end in zero revenue when they don't have to",
-        "Schedule individual coaching sessions for Julius Vizcayno and Heinrich Abarquez focused on discovery-first sequencing and objection pre-emption before cost reveal",
-        "Work with Lhen to flag Canadian and international CRM leads for a modified pitch flow that addresses USD pricing and travel requirements upfront"
+        "Add a Price Pre-Emption Block to the setter script: 'Great question — and I want to make sure the number I give you is actually relevant to your specific game. Give me 3 minutes.'",
+        "Add a location qualifier in the first 2 minutes: 'Just so I can point you to the closest location — what state are you in?'",
+        "Implement a Scratch Club save script for setter reps handling inbound cancellations",
+        "Introduce a downsell path (PG1 digital / online coaching) for leads who cite price or low play frequency",
+        "Schedule individual coaching sessions for Julius Vizcayno and Heinrich Abarquez"
       ],
       "action_items": [
-        {
-          "task": "Write Price Pre-Emption Block for setter script (cost question redirect)",
-          "owner": "Lee",
-          "due": "2026-06-27",
-          "status": "Pending"
-        },
-        {
-          "task": "Add state/location qualifier to setter script Phase 1 opening",
-          "owner": "Lee",
-          "due": "2026-06-27",
-          "status": "Pending"
-        },
-        {
-          "task": "Build Scratch Club save micro-script for setter cancellation calls",
-          "owner": "Lee",
-          "due": "2026-06-28",
-          "status": "Pending"
-        },
-        {
-          "task": "Design downsell flow (PG1 digital) for price/frequency DQ'd leads",
-          "owner": "Lee + Jeff",
-          "due": "2026-07-01",
-          "status": "Pending"
-        },
-        {
-          "task": "Schedule 1:1 coaching sessions with Julius Vizcayno and Heinrich Abarquez",
-          "owner": "Team Lead",
-          "due": "2026-06-26",
-          "status": "Pending"
-        },
-        {
-          "task": "Flag Canadian and international leads in CRM for modified pitch flow",
-          "owner": "Lhen",
-          "due": "2026-06-28",
-          "status": "Pending"
-        }
+        { "task": "Write Price Pre-Emption Block for setter script", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Add state/location qualifier to setter script Phase 1 opening", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Build Scratch Club save micro-script for setter cancellation calls", "owner": "Lee", "due": "2026-06-28", "status": "Pending" },
+        { "task": "Design downsell flow (PG1 digital) for price/frequency DQ'd leads", "owner": "Lee + Jeff", "due": "2026-07-01", "status": "Pending" },
+        { "task": "Schedule 1:1 coaching sessions with Julius Vizcayno and Heinrich Abarquez", "owner": "Team Lead", "due": "2026-06-26", "status": "Pending" }
       ],
       "transcript_excerpts": [
-        {
-          "label": "OBJECTION #1 — Price before discovery, call lost immediately (Heinrich Abarquez / Glenn Huth)",
-          "text": "Contact: \"Yeah, honestly, I'd rather just cut to the chase because if it's a price point I can't afford, there's no sense going through my game and all that kind of thing.\"\n\nContact: \"$3,000 before I would do anything with food or travel or anything like that then is what you're saying, right? $4,000.\"\n\nContact: \"Wow, okay, yeah.\" [Call declined within seconds]"
-        },
-        {
-          "label": "OBJECTION #2 — Location hard-stop, no workaround (Heinrich Abarquez / Cathy York)",
-          "text": "Contact: \"Yeah, but I live in St. Louis, Missouri, and so if there isn't anything here, I'm not interested.\"\n\nAgent: \"Okay, sure, I understand that Missouri is your focus right now, but we have locations all ac—\"\n\nContact: \"I'm not going to Florida or Texas or California to take a golf lesson. I want something right here in St. Louis, Missouri.\""
-        },
-        {
-          "label": "OBJECTION #3 — Time and life conflict blocking schedule commitment (Vian Perez / C. Randolph Keller)",
-          "text": "Contact: \"I can't take 5 days and go to Florida to a golf academy per se. I'm not in a position to do that just because of demands in my profession and work.\"\n\nContact: \"I'm very, very busy. And that's why I wanted to hear a little bit about what the game improvement options were.\""
-        },
-        {
-          "label": "WINNING PATTERN — Discovery-first pivot, full script, booked (Phoebe Collado / Jane Dunwoodie)",
-          "text": "Agent: \"Since everything is customized, same goes with the cost — cost varies from person to person. The reason I called is I want to make sure the program is a good fit for you first. Would you mind giving me a quick picture of your game?\"\n\n[Full discovery: chipping pain point identified, root-flaw framed, score goal anchored at 'below 50 for 9 holes', 'which one are you?' identity close used, Saturday 2 PM Zoom booked]\n\nOutcome: E. TMA Booked"
-        },
-        {
-          "label": "SCRATCH CLUB BILLING SURPRISE — No save attempted (Richard Ian Alvarez / Ho yean Song)",
-          "text": "Contact: \"The reason I'm calling you to cancel my membership — I didn't even know that I was a member, and I realized it a few days ago. I'd like to cancel my membership. Is it possible? Because you guys keep taking the money out of my account automatically.\"\n\nAgent: \"Yeah, no problem, sir. We can cancel this. I'll go ahead and do that for you.\"\n\n[Cancel processed immediately. No retention attempt. No value re-anchor. No pause offer. Zero revenue recovered.]"
-        }
+        { "label": "WINNING PATTERN — Discovery-first pivot, full script, booked (Phoebe Collado / Jane Dunwoodie)", "text": "Agent: 'Since everything is customized, same goes with the cost — cost varies from person to person. The reason I called is I want to make sure the program is a good fit for you first.' [Full discovery run, TMA booked]" },
+        { "label": "SCRATCH CLUB BILLING SURPRISE — No save attempted", "text": "Contact: 'I didn't even know that I was a member. I'd like to cancel my membership.' Agent: 'Yeah, no problem, sir. We can cancel this.' [Cancel processed immediately. No retention attempt. Zero revenue recovered.]" }
       ],
-      "tags": [
-        "internal-setter",
-        "TMA",
-        "price-objection",
-        "location-objection",
-        "time-objection",
-        "scratch-club",
-        "cancellation",
-        "objection-pre-emption",
-        "discovery",
-        "julius-vizcayno",
-        "heinrich-abarquez",
-        "dan-emmanuel-nicolas",
-        "phoebe-collado",
-        "downsell",
-        "live-contact-conversion"
-      ]
+      "tags": ["internal-setter", "TMA", "price-objection", "location-objection", "scratch-club", "objection-pre-emption", "julius-vizcayno", "heinrich-abarquez", "dan-emmanuel-nicolas", "phoebe-collado", "live-contact-conversion"]
     },
     {
       "id": "insight-005",
@@ -466,138 +315,499 @@
       "team_member": "Marwin Ray Reyes, Emmanuella Frago, Gabriella Abem, Carlo Palma, Kim Paolo Planas",
       "call_type": "Appointment Setting – Post-Purchase Onboarding",
       "call_duration": "Avg 2–6 min per call",
-      "summary": "Full analysis of ASR Team Lee outbound post-purchase follow-up calls placed on June 24, 2026. All live contacts resulted in a booked PG-One advisor appointment — a 100% live-contact booking rate. Calls covered five reps, multiple products (SF-One Driver, RS-ONE Putter, 357 Fairway Wood Hybrid, Simple Strike Sequence Pro, One-Shot Slice Fix, PG-One Premium), and both outbound and one inbound callback. The universal pattern across every call: zero discovery questions asked, no VIP coaching offers made, and transactional (rather than consultative) delivery. Average QA scores ranged from 6/10 (Carlo Palma — service calls) to 8.5/10 (Gabriella Abem). The team excels at scheduling efficiency but leaves significant value on the table by skipping discovery and enthusiasm-building on every call.",
+      "summary": "Full analysis of ASR Team Lee outbound post-purchase follow-up calls placed on June 24, 2026. All live contacts resulted in a booked PG-One advisor appointment — a 100% live-contact booking rate. The universal pattern across every call: zero discovery questions asked, no VIP coaching offers made, and transactional (rather than consultative) delivery. Average QA scores ranged from 6/10 (Carlo Palma) to 8.5/10 (Gabriella Abem). The team excels at scheduling efficiency but leaves significant value on the table by skipping discovery and enthusiasm-building on every call.",
       "main_findings": [
         "100% live-contact booking rate — every connected call resulted in a confirmed PG-One advisor appointment",
-        "Zero discovery questions asked across all calls — the 4-question framework (game, shots, short game, score goal) was skipped universally",
+        "Zero discovery questions asked across all calls — the 4-question framework was skipped universally",
         "No VIP coaching offers made on any call — a missed upsell opportunity on every interaction",
-        "Gabriella Abem scored highest (8.5/10) — cleanest execution, best scheduling efficiency, strongest appointment detail confirmation",
+        "Gabriella Abem scored highest (8.5/10) — cleanest execution and strongest appointment detail confirmation",
         "Carlo Palma scored lowest (6–6.5/10) across multiple calls — needs tonality, enthusiasm, and discovery coaching",
-        "Emmanuella Frago scored consistently in the 7–7.5/10 range — strong persistence on scheduling objections but weak on discovery and golf knowledge",
-        "Marwin Ray Reyes scored 8/10 — best rapport and humor of the team; strongest call personality",
-        "One inbound callback (Brett Maida / Emmanuella) was handled correctly with a clean 'is this required?' objection reframe",
-        "Two calls (Carlo Palma / Bruce Larson and Gabriella Abem / Curt Bousum) successfully resolved account issues (wrong email/address, checkout billing confusion) while still booking the appointment",
-        "Login/access issues were identified on at least 2 calls — a signal that onboarding email clarity or app UX may need attention"
+        "Emmanuella Frago scored consistently in the 7–7.5/10 range — strong on scheduling objections but weak on discovery",
+        "Marwin Ray Reyes scored 8/10 — best rapport and humor of the team",
+        "Login/access issues identified on 2+ calls — signal that onboarding email clarity needs attention"
       ],
       "positive_patterns": [
-        "Marwin Ray Reyes — Best rapport of the team: warm humor ('feels like Monday'), natural conversational cadence, precise appointment details (advisor name, Fort Lauderdale, time zone). Score: 8/10",
-        "Gabriella Abem (Tracy Clites call) — Highest-scoring call (8.5/10): efficient, professional, no objections, all scheduling details confirmed cleanly including time zone and advisor name",
-        "Gabriella Abem (Curt Bousum call) — Excellent real-time order verification: immediately confirmed only SF-One was charged, addressed billing concern without defensiveness, committed to shipping follow-up",
-        "Emmanuella Frago (Brett Maida inbound) — Smooth handling of 'is this required?' objection: reframed onboarding as value-add rather than obligation, confirmed Eastern time zone proactively",
-        "Carlo Palma — Professional and courteous throughout all calls; non-pushy positioning of advisor call as optional support rather than sales pressure preserved customer goodwill",
-        "Universal strength: appointment detail precision — all reps consistently confirmed date, time, time zone, advisor name, and Fort Lauderdale origin across every booking"
+        "Marwin Ray Reyes — Best rapport of the team: warm humor, natural conversational cadence, precise appointment details",
+        "Gabriella Abem (Tracy Clites) — Highest-scoring call (8.5/10): efficient, professional, all scheduling details confirmed cleanly",
+        "Gabriella Abem (Curt Bousum) — Excellent real-time order verification: confirmed billing concern, committed to shipping follow-up",
+        "Universal strength: appointment detail precision — all reps consistently confirmed date, time, time zone, advisor name, and Fort Lauderdale origin"
       ],
       "customer_objections": [
-        "\"I'm at work right now... we're booked up and busy... I've been up since midnight.\" — Charles Walker (scheduling constraint — resolved with 5:20 PM ET next day)",
+        "\"I'm at work right now... we're booked up and busy... I've been up since midnight.\" — Charles Walker (scheduling constraint)",
         "\"Is this like a requirement for purchasing the club?\" — Brett Maida (obligation concern — reframed as value-add)",
-        "\"I'm not interested in that [357 EZ Fairway promotion at $249], so I didn't complete it. I just wanted to make sure you didn't have that on my order.\" — Curt Bousum (checkout billing concern — resolved in real-time)",
-        "\"I did purchase it, but I couldn't get my login.\" — Christina Haven (technical access issue — advisor callback scheduled for Friday)",
-        "\"I haven't downloaded it [the app] yet.\" — Harold Reece, Don Doroha (inaction — handled by scheduling advisor check-in without pressure)",
-        "\"Tomorrow isn't a good time [due to golf tournaments].\" — (scheduling conflict — pivoted to Friday without resistance)"
+        "\"I just wanted to make sure you didn't have the 357 on my order.\" — Curt Bousum (checkout billing concern)",
+        "\"I did purchase it, but I couldn't get my login.\" — Christina Haven (technical access issue)"
       ],
       "winning_language": [
-        "\"Included with your [product], you also have access to our PG-One system — it's a personalized game improvement system that's going to have you working on the right things in the right order instead of guessing, so you start seeing results faster.\" (universal PG-One value intro — used consistently across all reps)",
-        "\"She's one of our best. She's an expert. So I suggest you ask a lot of things about the app, a lot of tips, suggestions, whatnot.\" (Marwin Ray Reyes — advisor credibility language that builds anticipation)",
-        "\"Our really main goal here is for you to fully understand how your PG-One works and how it could really help you out with your golf game.\" (Emmanuella Frago — customer-centric reframe that diffused resistance)",
-        "\"I can ask one of our PG-One advisors to give you a call back and help you log in, make sure the system is customized for you.\" (Marwin Ray Reyes / Christina Haven — service-first language that converts login frustration into a booked appointment)",
-        "\"Just in case your availability changes, you already have my number — just send me a text, call me back, or voicemail. Either way, we can reschedule it for you.\" (rescheduling safety net — used universally, reduces no-show risk)"
+        "\"Included with your [product], you also have access to our PG-One system — it's a personalized game improvement system that's going to have you working on the right things in the right order.\" (universal PG-One value intro)",
+        "\"She's one of our best. She's an expert. So I suggest you ask a lot of things about the app.\" (Marwin Ray Reyes — advisor credibility language)",
+        "\"Just in case your availability changes, you already have my number — just send me a text, call me back, or voicemail.\" (rescheduling safety net — used universally)"
       ],
       "pain_points": [
-        "Login/access barriers — at least 2 customers had not downloaded the app or had login difficulties; onboarding email may not be driving activation effectively",
-        "Busy schedules — most common scheduling objection across all calls; customers citing work demands, church, golf tournaments, and variable shift times as barriers",
-        "Checkout confusion — at least 1 customer (Curt Bousum) was confused by a promotional upsell appearing during checkout and concerned about being double-charged",
-        "Generic pitch — customers hear the PG-One value proposition with no connection to their specific game, reducing perceived relevance",
-        "Low app engagement — several customers had not watched training videos or explored the app before the call; no pre-call activation strategy in place"
+        "Login/access barriers — at least 2 customers had not downloaded the app or had login difficulties",
+        "Busy schedules — most common scheduling objection across all calls",
+        "Checkout confusion — promotional upsell during checkout confused at least 1 customer about charges",
+        "Low app engagement — several customers had not watched training videos before the call"
       ],
       "buying_triggers": [
-        "Advisor credibility framing — naming the advisor ('she's one of our best'), mentioning Fort Lauderdale origin, and describing the call as a personalized walkthrough increased appointment commitment",
-        "Flexibility in scheduling — offering morning/afternoon/evening and multi-day options was the key unlock for scheduling-objection customers",
-        "Service framing — positioning the advisor call as 'help' rather than a sales call reduced resistance on every call",
-        "Rescheduling safety net — 'if anything changes, just text me' consistently landed well and closed commitments that might otherwise stay soft"
+        "Advisor credibility framing — naming the advisor, mentioning Fort Lauderdale origin, describing the call as personalized increased commitment",
+        "Flexibility in scheduling — offering morning/afternoon/evening and multi-day options was the key unlock for scheduling objections",
+        "Service framing — positioning the advisor call as 'help' rather than a sales call reduced resistance on every call"
       ],
       "opportunities": [
-        "DISCOVERY BEFORE SCHEDULING: The 4-question discovery framework (game, shots, short game, score goal) was skipped on every single call — adding even 1–2 questions before scheduling would personalize the advisor call and increase show-up rates",
-        "VIP COACHING OFFER: No rep offered VIP coaching on any call — post-purchase follow-up calls are warm, low-resistance moments that are ideal for introducing premium coaching options",
-        "GOLF KNOWLEDGE & CREDIBILITY: Reps are using generic language ('right things in the right order') but cannot demonstrate product-specific golf knowledge — connecting RS-ONE Putter to putting consistency or SF-One Driver to distance/forgiveness would build credibility",
-        "ENTHUSIASM & TONALITY: Multiple calls were described as 'transactional,' 'flat,' or 'monotone' — energy and excitement in the close would increase appointment show-up rates",
-        "APP ACTIVATION LANGUAGE: No rep encouraged customers to watch a specific training video or explore one feature before the advisor call — a pre-call activation prompt would increase engagement and show-up rates",
-        "ONBOARDING EMAIL REVIEW: Login issues on 2+ calls suggest the onboarding email may not be effectively driving app activation — worth auditing delivery, clarity, and CTA"
+        "DISCOVERY BEFORE SCHEDULING: Add 1–2 discovery questions before scheduling to personalize the advisor call and increase show-up rates",
+        "VIP COACHING OFFER: No rep offered VIP coaching on any call — post-purchase calls are ideal for introducing premium coaching",
+        "GOLF KNOWLEDGE & CREDIBILITY: Connect each product to a specific golf improvement outcome to build credibility",
+        "ENTHUSIASM & TONALITY: Multiple calls described as 'transactional' or 'flat' — energy in the close would increase show-up rates",
+        "ONBOARDING EMAIL REVIEW: Login issues on 2+ calls suggest the onboarding email may not be driving app activation"
       ],
       "recommendations": [
-        "Add 1–2 lightweight discovery questions before scheduling: 'Before I book you with our advisor — what's the biggest challenge you're working on in your game right now?' This personalizes the advisor call and increases perceived value",
-        "Add a VIP coaching touchpoint to the post-purchase script: after booking the advisor appointment, introduce the VIP coaching option as a natural next step — 'Beyond the PG-One walkthrough, we also have VIP one-on-one coaching — want me to have someone share more info?'",
-        "Create product-specific credibility language for each club/product: one sentence per product that connects it to a real golf improvement outcome (e.g., 'The RS-ONE Putter is engineered for green consistency — that's where most golfers drop strokes')",
-        "Add a pre-call activation prompt at close: 'Before your call Friday, try logging into the app and watching the first training video — that way [Advisor Name] can pick up right where you are.' This increases engagement and show-up rate",
-        "Schedule Carlo Palma for targeted tonality and discovery coaching — his calls averaged 6–6.5/10 with consistent feedback on flat delivery, missing enthusiasm, and no discovery questions",
-        "Audit the post-purchase onboarding email for login clarity and activation CTA — login issues on multiple calls suggest it is not driving sufficient app engagement before the advisor call"
+        "Add 1–2 discovery questions before scheduling: 'Before I book you — what's the biggest challenge you're working on in your game right now?'",
+        "Add a VIP coaching touchpoint to the post-purchase script after booking the advisor appointment",
+        "Create product-specific credibility language (one sentence per product connecting it to a real golf outcome)",
+        "Add a pre-call activation prompt at close: 'Before your call Friday, try logging in and watching the first training video'",
+        "Schedule Carlo Palma for targeted tonality and discovery coaching",
+        "Audit the post-purchase onboarding email for login clarity and activation CTA"
       ],
       "action_items": [
-        {
-          "task": "Add 1–2 discovery questions to ASR post-purchase onboarding script",
-          "owner": "Lee",
-          "due": "2026-06-27",
-          "status": "Pending"
-        },
-        {
-          "task": "Add VIP coaching touchpoint to post-purchase script close",
-          "owner": "Lee",
-          "due": "2026-06-27",
-          "status": "Pending"
-        },
-        {
-          "task": "Create product-specific credibility language (one line per product)",
-          "owner": "Lee",
-          "due": "2026-06-28",
-          "status": "Pending"
-        },
-        {
-          "task": "Schedule targeted coaching session with Carlo Palma (tonality + discovery)",
-          "owner": "Team Lead",
-          "due": "2026-06-27",
-          "status": "Pending"
-        },
-        {
-          "task": "Audit post-purchase onboarding email for login clarity and app activation CTA",
-          "owner": "Lee",
-          "due": "2026-06-30",
-          "status": "Pending"
-        }
+        { "task": "Add 1–2 discovery questions to ASR post-purchase onboarding script", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Add VIP coaching touchpoint to post-purchase script close", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Create product-specific credibility language (one line per product)", "owner": "Lee", "due": "2026-06-28", "status": "Pending" },
+        { "task": "Schedule targeted coaching session with Carlo Palma (tonality + discovery)", "owner": "Team Lead", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Audit post-purchase onboarding email for login clarity and app activation CTA", "owner": "Lee", "due": "2026-06-30", "status": "Pending" }
       ],
       "transcript_excerpts": [
-        {
-          "label": "BEST CALL — Warm rapport, precise close (Marwin Ray Reyes / Steve Cedoz)",
-          "text": "Agent: 'Alright, so we will have your PG-One onboarding. That's going to be tomorrow at noon, 12 PM Eastern. Her name is [Advisor], by the way — she's one of our best. She's an expert. So I suggest you ask a lot of things about the app, tips, suggestions, whatnot.'\n\nContact: 'Okay, sounds great. I appreciate the call.'\n\n[Appointment booked, advisor named and credentialed, rescheduling safety net provided. Rubric: Met. Score: 8/10]"
-        },
-        {
-          "label": "SCHEDULING OBJECTION HANDLED — Persistence without pressure (Emmanuella Frago / Charles Walker)",
-          "text": "Contact: 'I can't schedule anything like that — we could be here till 12, 1 o'clock, or 4 or 5 this evening. We just never know.'\n\nAgent: 'I hear you, sir. I do have schedules for even after 5 PM if you're already home by then.'\n\nContact: 'Well, I don't know — if I get home by 5 I'll be getting ready for church.'\n\nAgent: 'Do you think you can carve out 15 minutes with our advisor?'\n\nContact: 'If they want to try tomorrow, that'd be fine — after 5.'\n\n[Appointment booked: 5:20 PM ET next day. Score: 7/10 — persistence noted, but discovery questions skipped and same scheduling offers repeated rather than reframing value]"
-        },
-        {
-          "label": "BILLING CONCERN RESOLVED IN REAL-TIME (Gabriella Abem / Curt Bousum)",
-          "text": "Contact: 'I wasn't sure — I wanted to double-check that you didn't have the 357 on my order. I'm not interested in that.'\n\nAgent: 'I got you. I'm looking at your profile right now, and I do see that it was only the SF-One that was purchased.'\n\n[Real-time order verification. Address confirmed. Shipping follow-up committed. Appointment booked: 9:40 AM CT. Score: 7.5/10 — excellent objection handling, but no discovery or golf knowledge deployed]"
-        },
-        {
-          "label": "FLAT DELIVERY, NO DISCOVERY (Carlo Palma / Harold Reece — lowest scoring call)",
-          "text": "Agent: 'We just want to let you know that you now have access to our PG-One, which is our game improvement system. We just wanted to check back whether you have been able to download the app and log into it and watch the free training videos.'\n\nContact: 'No, I haven't downloaded it.'\n\nAgent: 'Oh, okay, got it. Well, we just want to let you know we sent the login credentials to your email. If you have difficulties, I can let our PG-One advisor double-check on you probably on Friday.'\n\n[Appointment booked: Friday 4 PM. Score: 6/10 — professional but transactional. Zero discovery, zero enthusiasm, zero VIP offer. Coaching needed on tonality and discovery sequencing]"
-        }
+        { "label": "BEST CALL — Warm rapport, precise close (Marwin Ray Reyes / Steve Cedoz)", "text": "Agent: 'Her name is [Advisor]. She's one of our best. She's an expert. So I suggest you ask a lot of things about the app, tips, suggestions, whatnot.' Contact: 'Okay, sounds great.' [Appointment booked. Score: 8/10]" },
+        { "label": "FLAT DELIVERY, NO DISCOVERY (Carlo Palma — lowest scoring call pattern)", "text": "Agent: 'We just want to let you know you now have access to our PG-One. We just wanted to check back whether you have been able to download the app.' [Zero discovery, zero enthusiasm, zero VIP offer. Score: 6/10]" }
       ],
-      "tags": [
-        "ASR",
-        "team-lee",
-        "post-purchase",
-        "onboarding",
-        "appointment-setting",
-        "pg-one",
-        "discovery-gap",
-        "vip-coaching-gap",
-        "carlo-palma",
-        "emmanuella-frago",
-        "gabriella-abem",
-        "marwin-ray-reyes",
-        "kim-paolo-planas",
-        "100-percent-conversion",
-        "tonality"
-      ]
+      "tags": ["ASR", "team-lee", "post-purchase", "onboarding", "appointment-setting", "pg-one", "discovery-gap", "vip-coaching-gap", "carlo-palma", "gabriella-abem", "marwin-ray-reyes", "100-percent-conversion"]
+    },
+    {
+      "id": "insight-006",
+      "date": "2026-06-25",
+      "lob": "PG1 Closer",
+      "title": "PG1 Closer – Emmanuel Sandoval Deep-Discovery Close (Curt Bousum / SF-One Driver)",
+      "campaign": "PG1 All Access Upsell – Post-Purchase Closer",
+      "offer": "PG-One All Access $29/month",
+      "product": "PG-One All Access / SF-One Driver",
+      "funnel": "Outbound / PG1 Closer",
+      "team_member": "Emmanuel Sandoval",
+      "call_type": "Sales Close – Post-Purchase Upsell",
+      "call_duration": "37:45",
+      "summary": "Emmanuel Sandoval completed a 37-minute outbound closer call with Curt Bousum (Iowa, age 70s), who had purchased the SF-One driver 2 days prior. Emmanuel answered a shipping inquiry first, then ran full discovery revealing a compelling profile: post-surgery swing issues, 15–20 yard distance loss across all irons, outside-in path causing a chronic slice, 5-wood as primary scoring club, and a goal of shooting his age. The call closed on PG-One All Access at $29/month with verbal authorization collected. Notably, Curt Bousum was booked by ASR Team Lee (Gabriella Abem) on June 24 — this call is the downstream result of that booking pipeline.",
+      "main_findings": [
+        "38-minute call: deep rapport and discovery drove a successful PG-One All Access close at $29/month",
+        "Curt Bousum: 70s, post-cardiac surgery, 15–20 yard distance loss across all irons, chronic outside-in slice, 5-wood is primary scoring club",
+        "Discovery revealed score goal: 'shoot my age someday' — a powerful emotional anchor used effectively",
+        "Rep answered the shipping question immediately (correctly) before pivoting to discovery — builds trust before the pitch",
+        "Minor compliance concern: card number was taken verbally on the call after secure link process was bypassed due to system error",
+        "Rep mentioned SwingScan AI and dedicated coach as value-adds — strong product knowledge demonstrated",
+        "Customer expressed willingness to stay if the program can help eliminate slice and improve distance"
+      ],
+      "positive_patterns": [
+        "Immediate trust-builder: answered the shipping question first before any pitch — customer relaxed and opened up",
+        "Deep discovery: let the customer tell his full story (surgery recovery, distance loss, intentional slice on doglegs, winter practice at Gulf Shores) before any pitch",
+        "Score goal anchor used: 'shoot my age' — emotionally resonant and made the investment feel worthwhile",
+        "Strong product knowledge: connected PG-One to eliminating slice and recovering distance, not just generic improvement language",
+        "Patient pacing: 38-minute call shows rep did not rush — let the conversation breathe"
+      ],
+      "customer_objections": [
+        "\"I'm just kidding [about staying forever]. That's my biggest goal — probably unattainable.\" (aspirational deflection — handled by reinforcing small wins first)",
+        "\"I've never taken a golf lesson in my life.\" (self-doubt — reframed as an opportunity rather than a barrier)",
+        "\"I'm hesitant to make a big purchase at my age.\" (implicit cost concern — handled by positioning $29/month as baby steps)"
+      ],
+      "winning_language": [
+        "\"We're gonna start by eliminating those slice curves — that's the start. And once we do that, I'm telling you, that will definitely follow.\" (slice-first, momentum framing)",
+        "\"As advertised, you can definitely increase your distance 20 to 30 yards aside from eliminating the slice.\" (specific outcome promise tied to product)",
+        "\"You make me a par golfer and I'll probably stay on your program forever.\" — Customer's own words showing emotional buy-in before the close",
+        "\"I'm going to go ahead and start you with the PG-One App All Access for just one month right now for just $29.\" (trial framing — low risk entry)"
+      ],
+      "pain_points": [
+        "Post-surgery distance loss — 15–20 yards lost across all irons since cardiac recovery; 5-iron can't reach 150 yards",
+        "Chronic outside-in slice — 30+ years of baseball grip contributing to swing path issue",
+        "Equipment hesitation — 20–25 year old Tour's Edge set; doesn't want to invest in full set at his age",
+        "Self-taught limitations — no formal lessons ever; has tried to self-diagnose but inconsistent results",
+        "Transition anxiety — worried that a straighter-hitting driver will confuse his intentional slice on dogleg holes"
+      ],
+      "buying_triggers": [
+        "'Shoot my age' dream goal — made the investment feel meaningful even at $29/month",
+        "Slice elimination promise — the #1 stated reason for buying the SF-One, so connecting PG-One to this directly was the key close",
+        "Distance recovery language — 20–30 yards more distance resonated deeply given his documented distance loss",
+        "SwingScan AI + dedicated coach — tangible, high-value features that justified the monthly charge",
+        "Trial framing — $29 for one month felt low-risk compared to the stated value"
+      ],
+      "opportunities": [
+        "COMPLIANCE NOTE: Card number was collected verbally mid-call after the secure link process failed. This is a process gap that should trigger a review of when verbal card collection is authorized and documented",
+        "UPSELL POTENTIAL: Customer mentioned playing at Kiva Dunes (Alabama) every winter with 25–35 friends — a potential group referral or social proof opportunity that was not explored",
+        "RETENTION HOOK: Customer said he'd stay if he can hit his 5-wood 15 yards farther and eliminate the slice — document this as his retention benchmark so the advisor call can reference it"
+      ],
+      "recommendations": [
+        "Flag and review the verbal card collection process used on this call — the secure link failure created a compliance gap",
+        "Pass the 'shoot my age' goal and Kiva Dunes winter group to the PG-One advisor as context for the coaching session",
+        "Document customer's specific metrics as retention benchmark: 5-wood distance improvement and slice reduction",
+        "Use this call as a training example for the closer team: discovery depth, rapport building, and aspirational goal anchoring"
+      ],
+      "action_items": [
+        { "task": "Review verbal card collection process — flag compliance gap from this call", "owner": "Lee", "due": "2026-06-28", "status": "Pending" },
+        { "task": "Brief PG-One advisor with Curt Bousum's full profile before coaching session", "owner": "Emmanuel Sandoval", "due": "2026-06-26", "status": "Pending" },
+        { "task": "Add this call as a positive training example in closer training library", "owner": "Team Lead", "due": "2026-06-30", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        { "label": "DISCOVERY DEPTH — Customer opens up after shipping question answered (Emmanuel Sandoval / Curt Bousum)", "text": "Contact: 'My 7-iron used to go right at 150, 155 yards. Now I can't hit my 5-iron 150 yards. I've probably lost 15 or 20 yards on all of my irons.' Agent: 'If we can get rid of those slices, fix your distance — how many shots in a round would that save you?' Contact: 'Probably at least 5 or 6, maybe on a good day maybe 8 or 10.' [Discovery revealed. Score goal: 'shoot my age someday.']" },
+        { "label": "CLOSE — Trial framing lands after deep rapport (Emmanuel Sandoval)", "text": "Agent: 'I'm going to go ahead and start you with the PG-One App All Access for just one month right now for just $29. Would you like to use the same card you used online?' Contact: 'Yeah, that's what I was going to ask you, if you just use that card.' [Authorization collected. $29/month close confirmed.]" }
+      ],
+      "tags": ["pg1-closer", "emmanuel-sandoval", "deep-discovery", "slice", "distance-loss", "post-surgery", "shoot-my-age", "verbal-card-collection", "close-won", "SF-one-driver"]
+    },
+    {
+      "id": "insight-007",
+      "date": "2026-06-25",
+      "lob": "Internal Setter",
+      "title": "Internal Setter – Julius Vizcayno Rebounds with TMA Booking (Mark Roberts / NY)",
+      "campaign": "TMA Outbound – Internal Setter Team Philip",
+      "offer": "TMA Transformation Golf Academy – Zoom Consultation",
+      "product": "Transformation Golf Academy (TMA)",
+      "funnel": "Outbound / Internal Setter",
+      "team_member": "Julius Vizcayno",
+      "call_type": "Appointment Setting – TMA Zoom Booking",
+      "call_duration": "13:27",
+      "summary": "Julius Vizcayno — flagged in the June 24 analysis as the team's weakest performer (7 declines / 2 bookings) — executed a strong TMA booking call on June 25 with Mark Roberts, a 65-year-old NY golfer shooting 90s. Julius ran full discovery, used root-flaw language, deployed the 'which one are you?' identity close, and booked a 5PM ET Friday Zoom with the advisor. The call was completed despite the prospect noting a 9AM appointment constraint at the 10-minute mark. This is a measurable improvement from June 24 patterns and demonstrates the impact of coaching.",
+      "main_findings": [
+        "Julius Vizcayno booked a TMA Zoom consultation — a direct improvement from his June 24 performance (7 declines / 2 bookings)",
+        "Full discovery executed: slice + outside-in, chipping inconsistency (chunking), distance decline with age, 15 handicap goal",
+        "Root-flaw language deployed: 'we don't just fix the miss — we find the root cause underneath it all that keeps pulling everything else'",
+        "'Which one are you?' identity close used — prospect self-identified as closer to the 'serious golfer' category",
+        "Booking completed under time pressure: Mark Roberts noted a 9AM appointment but Julius secured the Zoom slot at 5PM Friday before ending the call",
+        "Social proof used: '9,000 golfers,' top 10/20 coaches, 30+ locations nationwide",
+        "Prospect profile: 65 years old, plays weekly, NY (4 courses within 5 minutes), takes senior discount Mondays, played in rain-out conditions"
+      ],
+      "positive_patterns": [
+        "Discovery-first sequencing: Julius ran full game assessment before revealing any program details or investment — a direct correction from June 24 patterns",
+        "Root-flaw framing connected to prospect's stated frustrations: 'throwing darts at it' language validated and reframed",
+        "Time pressure handled: prospect flagged 9AM appointment at ~10 min mark; Julius pivoted efficiently to booking close and Zoom invite confirmation",
+        "Warm rapport: weather chat, local course conversation, and genuine curiosity about Mark's game extended the call naturally",
+        "Zoom link sent in real-time during call and confirmed with prospect"
+      ],
+      "customer_objections": [
+        "\"I've got an appointment at 9, by the way. I've only got maybe 5 or 10 minutes at the most here.\" (time constraint at 10-minute mark — Julius compressed close efficiently)",
+        "\"I don't know how big a part of my life I want golf to be.\" (commitment uncertainty — addressed with 'which one are you?' identity close)",
+        "\"Things haven't fully clicked yet.\" (implied frustration with prior improvement attempts — validated and reframed as the reason for the program)"
+      ],
+      "winning_language": [
+        "\"We've worked with over 9,000 golfers. One thing that separates us from local lessons or YouTube is we don't just fix the miss — we find the root cause, the one thing underneath it all that keeps pulling everything else off.\" (root-flaw hook)",
+        "\"There's really two kinds of golfers. There's golfers that go out there, socialize, have some beers. And there's guys who, if they're honest, know they're capable of playing better and are actually ready to do something about it. Which one are you?\" (identity close)",
+        "\"Just so we're on the same page — this isn't like a one-off clinic. It's a structured program with elite instruction and coaching support built in over time.\" (program framing vs. one-time lesson)",
+        "\"Come ready and be straight with [advisor]. He's really sharp — the more honest you are about your game, the better he can put something together for you that's actually going to move the needle.\" (advisor credentialing + authenticity prompt)"
+      ],
+      "pain_points": [
+        "Slice + direction inconsistency — either slices or hits straight-left; outside-in path issue never diagnosed",
+        "Chipping inconsistency — chunks, can't consistently hit ball before ground, shows up especially on 50–60 yard shots",
+        "Age-related distance decline — 'seeing it most in the drives' and doesn't know if it's fixable",
+        "Video overload — 'I've watched too much of that. I'm just throwing darts at it' — needs structure, not more content",
+        "Practice deficit — knows he should go to the range more but doesn't; watching videos isn't translating to course improvement"
+      ],
+      "buying_triggers": [
+        "Root-flaw diagnosis — the idea that one root cause explains all misses resonated strongly with his 'throwing darts' frustration",
+        "Structured program framing vs. YouTube/lessons — the idea that he'd stop guessing and get a game plan was the key unlock",
+        "Local proximity — '30+ locations' with 'most are just a quick drive' reduced location objection risk",
+        "Identity close — self-identifying as a 'serious golfer' created personal ownership of the next step"
+      ],
+      "opportunities": [
+        "JULIUS AS A TRAINING CASE STUDY: This call is an ideal positive example to share with the team — same rep, measurable improvement in script adherence in 24 hours",
+        "FOLLOW-UP COACHING NEEDED: Julius still needs to develop the price pre-emption block and objection reframing — this call succeeded partly because no hard objections arose",
+        "PROSPECT CONTEXT FOR ADVISOR: Mark Roberts is time-constrained (9AM appointment culture), plays Monday senior discounts, has 4 courses within 5 minutes — advisor should frame TMA as efficient, not time-consuming"
+      ],
+      "recommendations": [
+        "Use this Julius Vizcayno call as a positive training example in team debrief — contrast with June 24 performance to show measurable improvement",
+        "Continue 1:1 coaching with Julius on price pre-emption and objection reframing — this booking relied on a cooperative prospect; harder objections will test the new patterns",
+        "Brief the Zoom advisor with Mark Roberts' full profile: age 65, NY, plays weekly, Monday senior discount, slice + chipping issues, 'throwing darts at it' frustration, 15 handicap goal"
+      ],
+      "action_items": [
+        { "task": "Share Julius June 25 call as positive training example in team debrief", "owner": "Team Lead", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Continue Julius coaching: price pre-emption and harder objection scenarios", "owner": "Team Lead", "due": "2026-06-30", "status": "Pending" },
+        { "task": "Brief TMA advisor with Mark Roberts full discovery profile before Friday 5PM Zoom", "owner": "Julius Vizcayno", "due": "2026-06-26", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        { "label": "ROOT-FLAW HOOK DEPLOYED — Validates 'throwing darts' frustration (Julius Vizcayno / Mark Roberts)", "text": "Contact: 'I kind of feel like I've watched too much of that. I'm just throwing darts at it.'\n\nAgent: 'We've worked with over 9,000 golfers. One thing that separates us — we don't just fix the miss. We find that root cause, the one thing underneath it all that keeps pulling everything else off. Has anyone ever diagnosed that for you?'\n\nContact: 'No, 5 or 6 years ago I took a series of lessons. He's since passed away. I'm at a point where I need to decide how serious I want to be.' [Identity close opportunity opened]" },
+        { "label": "IDENTITY CLOSE + TIME CLOSE UNDER PRESSURE (Julius Vizcayno)", "text": "Agent: 'There's really two kinds of golfers... Which one are you right now?'\n\nContact: 'I'm closer to the second one, but I don't know how big a part of my life I want golf to be.'\n\nAgent: 'The program is exactly who we built this for — golfers in your exact situation. Would you be open to speaking with my advisor? Just a 30-45 minute Zoom call.'\n\nContact: 'Yeah, that'd be fine.' [5PM Friday booked despite 9AM appointment constraint]" }
+      ],
+      "tags": ["internal-setter", "TMA", "julius-vizcayno", "team-philip", "root-flaw", "identity-close", "booking-won", "slice", "chipping", "improvement-from-june-24"]
+    },
+    {
+      "id": "insight-008",
+      "date": "2026-06-25",
+      "lob": "ASR",
+      "title": "ASR Team Lee – June 25 Post-Purchase Onboarding (Continued Pattern Analysis)",
+      "campaign": "ASR Post-Purchase Onboarding – Team Lee",
+      "offer": "PG-One Advisor Consultation (Included with Purchase)",
+      "product": "PG-One System / SF-One Driver",
+      "funnel": "Outbound / Post-Purchase",
+      "team_member": "Gabriella Abem",
+      "call_type": "Appointment Setting – Post-Purchase Onboarding",
+      "call_duration": "2:34 avg",
+      "summary": "ASR Team Lee continued June 25 post-purchase follow-up calls. Gabriella Abem scored 8/10 on a clean outbound call with Keith Meiler (PA, SF-One Driver), booking a 4:00 PM ET evening slot. The June 24 patterns persist: zero discovery questions, no VIP coaching offer, and scheduling-only execution. However, Gabriella continues to perform as the team's top scorer with clean execution, time zone confirmation, and multiple slot options offered. The discovery gap and VIP coaching gap remain the primary improvement areas across the team.",
+      "main_findings": [
+        "Gabriella Abem scored 8/10 — consistent with her June 24 performance; strongest rep on the team",
+        "Zero discovery questions asked — the 4-question framework gap continues from June 24 with no change",
+        "No VIP coaching offer — missed upsell opportunity persists across all June 25 ASR calls",
+        "Call completed efficiently in 2:34 — professional, clear scheduling execution",
+        "Keith Meiler asked a clarifying question ('What's the chat about?') — handled well with a benefit-focused response",
+        "Multiple time slots offered (4:00 PM, 6:20 PM, 6:40 PM, 7:00 PM ET) — good scheduling flexibility demonstrated",
+        "June 24 recommendation (add discovery + VIP offer to script) not yet implemented — pattern unchanged day-over-day"
+      ],
+      "positive_patterns": [
+        "Clean, professional execution: recording consent, purchase confirmation, PG-One explanation, time zone check, slot options, advisor credentialing — all completed",
+        "Handled the 'what's the chat about?' clarifying question with a benefit-focused, non-defensive answer",
+        "Multiple evening slots offered — customer-centric scheduling approach",
+        "Fort Lauderdale origin and advisor name confirmed — full appointment detail precision"
+      ],
+      "customer_objections": [
+        "\"What's the chat about?\" — Keith Meiler (curiosity, not resistance — handled with clear value explanation)"
+      ],
+      "winning_language": [
+        "\"It's our step-by-step game improvement system that looks at your specific game and builds your club practice plan. It's designed to help you improve with the club you just bought.\" (Gabriella Abem — clear, benefit-anchored response to 'what's the chat about?')"
+      ],
+      "pain_points": [
+        "Discovery gap means Keith Meiler's actual golf challenges are unknown — the advisor call will start blind without any context"
+      ],
+      "buying_triggers": [
+        "Benefit-focused response to curiosity question reduced friction and secured commitment without pressure"
+      ],
+      "opportunities": [
+        "SCRIPT UPDATE URGENCY: The discovery question gap and VIP coaching gap identified on June 24 are unchanged on June 25 — script update is needed to prevent a third day of missed opportunities",
+        "PRE-ADVISOR BRIEFING: Without discovery, advisors are receiving cold handoffs — a 1–2 question pre-booking intake would dramatically improve advisor call quality"
+      ],
+      "recommendations": [
+        "Escalate the script update request — the June 24 recommendations (discovery questions + VIP coaching touchpoint) have not been implemented and should be treated as urgent",
+        "Add a mandatory 'what are you hoping to improve in your game?' question before confirming the appointment slot — takes 15 seconds and gives the advisor context"
+      ],
+      "action_items": [
+        { "task": "Escalate ASR script update — discovery questions + VIP offer (overdue from June 24 recommendation)", "owner": "Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Create pre-advisor intake question — minimum 1 golf context question before booking slot confirmed", "owner": "Lee", "due": "2026-06-27", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        { "label": "CLEAN EXECUTION — Clarifying question handled well (Gabriella Abem / Keith Meiler)", "text": "Contact: 'What's the chat about?'\n\nAgent: 'Yeah, it's about the onboarding for the PG-One, which was included when you bought the club. It's our step-by-step game improvement system that looks at your specific game and builds your club practice plan. It's designed to help you improve with the club you just bought, and our advisor will be calling to set the whole thing up for you in about 15 minutes.'\n\nContact: 'Okay, uh, probably tomorrow sometime would be fine.' [Booked: 4:00 PM ET. Score: 8/10]" }
+      ],
+      "tags": ["ASR", "team-lee", "post-purchase", "onboarding", "gabriella-abem", "discovery-gap", "vip-coaching-gap", "script-update-needed", "june-25"]
+    },
+    {
+      "id": "insight-009",
+      "date": "2026-06-25",
+      "lob": "Customer Care",
+      "title": "Customer Care – Payment Portal Friction & PG-One Billing Transparency on New Orders",
+      "campaign": "Inbound New Order / Product Purchase",
+      "offer": "357 Right-Hand Ladies Flex + PG-One 30-Day Trial Bundle",
+      "product": "357 Fairway Wood Hybrid (Ladies Flex) / PG-One",
+      "funnel": "Inbound / New Order",
+      "team_member": "Lucky Sardia",
+      "call_type": "Inbound Order Placement + Upsell",
+      "call_duration": "29:50",
+      "summary": "Lucky Sardia handled a 30-minute inbound call from Roy Pearman (MI), a customer buying a 357 ladies flex hybrid as a gift for his wife. The call surfaced two systemic issues: (1) the payment portal experienced multiple card entry failures, requiring repeated re-entry attempts and eventual switch to a secondary card (AmEx), extending the call by ~15 minutes; (2) the customer proactively planned to 'take the discount and cancel the PG-One trial before being charged' — a pre-meditated trial exploit that the website's unclear billing disclosure is enabling. The order was completed at $186.75 + tax. Lucky handled the payment friction with patience but the extended call length is a customer experience and efficiency problem.",
+      "main_findings": [
+        "Payment portal failures extended a 10-minute order call to 30 minutes — multiple card re-entry attempts, two links sent, customer eventually switched to AmEx",
+        "Customer explicitly pre-planned to cancel PG-One trial before charge: 'Take the discount and then cancel is a better deal, right?' — agent agreed, framing this as 'the better option'",
+        "Website checkout does not clearly disclose the $29/month recurring charge after the 30-day PG-One trial — customer was surprised to learn of ongoing charges",
+        "Agent handled PG-One billing explanation well: 30-day trial, $29/month after, cancel via email or phone — clear disclosure on the call even if not on the website",
+        "Order completed successfully: 357 right-hand ladies flex at $186.75 + tax (Father's Day bundled price) with free shipping",
+        "Customer expressed intention to cancel marketing communications and PG-One trial after receiving the club"
+      ],
+      "positive_patterns": [
+        "Lucky Sardia demonstrated exceptional patience throughout extended payment portal troubleshooting — 30 minutes without frustration or pressure",
+        "Billing transparency: clearly explained the 30-day trial structure and $29/month post-trial charge when customer asked — no ambiguity on the call",
+        "Product availability confirmed quickly: 357 right-hand ladies flex verified as in stock",
+        "Order ultimately completed successfully despite significant technical friction"
+      ],
+      "customer_objections": [
+        "\"A lot of times you do this stuff and you forget about it, then you automatically get billed.\" (auto-billing concern — agent validated and offered plan-to-cancel strategy)",
+        "\"I don't want to get texts and emails from Performance Golf.\" (marketing opt-out — customer unchecked marketing boxes on the payment form)",
+        "\"The website showed $249 with free stuff but didn't indicate there would be ongoing charges after the promotional period.\" (checkout transparency gap)"
+      ],
+      "winning_language": [
+        "\"That's actually the better option. Once you receive the club, if you think she's not using the program, you can call or email us so that we can take care of it for you.\" (Lucky Sardia — honest, customer-first response to pre-meditated cancel plan)",
+        "\"For you to qualify for a discount of $62.25 from a regular rate of $249, it will just be bundled to the PG-One program — free for 30 days, then $29/month after the trial.\" (clear billing disclosure on call)"
+      ],
+      "pain_points": [
+        "Payment portal card entry failures — expiration date field not accepting valid input; multiple re-entry attempts required",
+        "Website checkout clarity gap — PG-One recurring charge ($29/month after trial) not prominently disclosed at point of sale",
+        "Customer buying a gift (wife) who is unlikely to use the digital program — pre-meditated cancel is a predictable outcome of the bundle strategy for gift purchases"
+      ],
+      "buying_triggers": [
+        "Father's Day discount pricing ($186.75 vs $249) was the primary purchase driver",
+        "Free shipping confirmed — reduced friction for gift purchase",
+        "Agent's honesty about the cancel option increased trust and secured the order"
+      ],
+      "opportunities": [
+        "PAYMENT PORTAL BUG: The card expiration date field is failing for valid dates — this needs an immediate tech ticket. A 30-minute order call is a serious customer experience failure and likely costs additional orders that abandon before success",
+        "CHECKOUT BILLING DISCLOSURE: The website does not clearly communicate that the PG-One 'free stuff' converts to $29/month after 30 days. This is creating billing surprises and pre-meditated trial exploits — a checkout disclosure update is needed",
+        "GIFT PURCHASE FLOW: Customers buying for a spouse/family member are unlikely to use the digital program — a gift-purchase PG-One opt-out at checkout would prevent trial exploits and billing complaints downstream"
+      ],
+      "recommendations": [
+        "File an urgent tech ticket for the payment portal card expiration date field — this bug is directly causing order abandonment risk and extended call times",
+        "Update the checkout page to prominently display: 'PG-One trial is free for 30 days, then $29/month. Cancel anytime via email or phone.' This will reduce downstream billing surprises and retention calls",
+        "Explore a gift-purchase checkout option that allows buyers to opt out of the PG-One trial bundle — reduces intentional trial exploits and prevents billing disputes from gift recipients"
+      ],
+      "action_items": [
+        { "task": "File tech ticket for payment portal expiration date field bug", "owner": "Lee / Tech Team", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Update checkout page to disclose PG-One $29/month charge after trial", "owner": "Lee / Marketing", "due": "2026-06-30", "status": "Pending" },
+        { "task": "Explore gift-purchase PG-One opt-out option at checkout", "owner": "Lee + Jeff", "due": "2026-07-05", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        { "label": "PRE-MEDITATED TRIAL EXPLOIT — Customer plans cancel before charge (Roy Pearman / Lucky Sardia)", "text": "Contact: 'What you could suggest is probably take it, take the discount, and then cancel is a better deal, right? All right, let's do that.'\n\nAgent: 'That's actually the better option. Once you receive the club, if you think she's not using the program, you can call or email us so that we can take care of it for you.'\n\n[Billing disclosure gap creates intentional trial exploit. Customer saves $62.25; company loses $29/month subscriber before they start.]" },
+        { "label": "PAYMENT PORTAL FAILURE — Extended troubleshooting (Roy Pearman)", "text": "Contact: 'It's telling me the card expiration date is a required field, but I do have that in. I've got the month of March, I've got the year 2029, the card number is correct, the CVV is correct — but it's not taking it.'\n\nAgent: 'Oh, that's kind of weird. Would there be — can you remove all the card info first and let's try to retype again?'\n\n[Process repeated 3 times across 2 links, ~15 additional minutes. Eventually completed with AmEx on second link.]" }
+      ],
+      "tags": ["customer-care", "lucky-sardia", "payment-portal-bug", "billing-transparency", "pg-one-trial", "trial-exploit", "gift-purchase", "checkout-gap", "357-fairway", "father-day-promo"]
+    },
+    {
+      "id": "insight-010",
+      "date": "2026-06-25",
+      "lob": "Retention",
+      "title": "Retention Team – June 25 Full-Day Analysis: Refunded, Saved & Declined Calls",
+      "campaign": "Retention Outbound + Inbound – Team Mimi",
+      "offer": "VIP Coaching ($99/month) / PG-One Annual ($300) / PG-One Trial",
+      "product": "VIP Coaching / PG-One Membership / PG-One Annual",
+      "funnel": "Retention / Inbound + Outbound",
+      "team_member": "Nonie Militar, Omar Abdallah Mahmoud, Homaboroma OrluOrlu",
+      "call_type": "Retention – Save / Refund / Decline",
+      "call_duration": "1 min – 14 min range",
+      "summary": "Full analysis of June 25 Retention Team Mimi calls across three disposition types: Refunded (2 calls), Saved (1 call), and Declined (2 calls). Key findings: billing surprise and unauthorized-charge perception are the dominant drivers of all contact. One customer (John Bautista) was charged $99/month for 5 months without awareness — a $495 dispute resolved with a full refund commitment. Another (Jeff Souza) had login issues from day one and never used the product. One customer (Mary Brooks) was saved simply by stopping future charges and explaining what she'd already paid for. Two declined calls were unworkable — one a DNC demand from repeated contact, one a product return. The team shows strong empathy but systemic issues (call frequency mismanagement, login barriers, unclear billing) are upstream of every call.",
+      "main_findings": [
+        "REFUNDED: John Bautista — $495 dispute ($99/month × 5 months, Feb–Jun). Claims he never agreed to VIP coaching enrollment. Full refund committed. Customer open to re-engaging after refund. (Nonie Militar, 14:25 call, score 7.5/10)",
+        "REFUNDED: Jeff Souza — PG-One Annual cancellation ($300/year). Login issues from day one. Only reached driving range once. Plays 2–3 times/year. Declined $50 and $100 discount offers. Refunded. (Nonie Militar, 6:13 call, score 7.5/10)",
+        "SAVED: Mary Brooks — Inbound, billing alert for $322. Proactively cancelled future charges. Clarified she retains full year of training platform + GPS already paid. Customer satisfied. (Omar Abdallah Mahmoud, 2:46 call, score 7/10)",
+        "DECLINED: James Keyton — Outbound. Customer stated he had already spoken to 2 people about this and was being called 'every day.' Firm DNC demand. Score: 1/10. (Homaboroma OrluOrlu)",
+        "DECLINED: Kyle Maday — Outbound. Club didn't work, being returned. Not interested in any program. No further engagement. Professional handling. (Nonie Militar, ~1 min)",
+        "Call frequency management is a critical failure — James Keyton's call should never have been made given prior contact history in the CRM",
+        "Login barriers appear on 2 of 5 calls — Jeff Souza had login issues 'from day one'; John Bautista's wife referenced trial access she couldn't fully navigate"
+      ],
+      "positive_patterns": [
+        "Nonie Militar — John Bautista call: exceptional de-escalation on a complex $495 billing dispute. Empathy, account review, value re-anchor, and respect for customer's 'refund first' boundary. Customer left the call expressing willingness to re-engage.",
+        "Omar Abdallah Mahmoud — Mary Brooks call: efficient, non-defensive resolution. Stopped charges immediately, clarified what was already paid for, sent confirmation. Customer satisfied in under 3 minutes.",
+        "Nonie Militar — Kyle Maday decline: clean, professional close on an unwinnable call. No pressure, acknowledged the return, wished the customer well.",
+        "All agents maintained professional, calm tone even under frustration from customers"
+      ],
+      "customer_objections": [
+        "\"I never verbally or through an email or app or any kind of correspondence signed up for anything.\" — John Bautista ($495 VIP coaching dispute)",
+        "\"The approach — to find out without me actually giving my agreement or consignment and then I was charged — that's what I don't think was fair.\" — John Bautista",
+        "\"I've never been able to really log into the account anyways. From day one I had issues.\" — Jeff Souza (login barrier + low usage)",
+        "\"I maybe play golf 2 to 3 times a year. The membership isn't really for me.\" — Jeff Souza (play frequency mismatch)",
+        "\"I do not want that, and I don't want to be charged that. I've already paid a bunch of money, and I'm not gonna pay anymore.\" — Mary Brooks ($322 billing alert)",
+        "\"Sir, I've had this conversation with two people. Please, please stop calling me every day. Please.\" — James Keyton (call fatigue — DNC demand)",
+        "\"The only reason I got it was to try the club, and the club just didn't work for me, so I'm sending it back.\" — Kyle Maday (product return, not program issue)"
+      ],
+      "winning_language": [
+        "\"My goal isn't to talk you into keeping something that you don't want. I just want to make sure you have all the information about the membership, the coaching, and your options so you can make the best decision for your game.\" (Nonie Militar — trust-building frame that de-escalated John Bautista)",
+        "\"I completely respect that decision. My responsibility was simply to make sure that you understood what was included and had the opportunity to see the value before making a final choice.\" (Nonie Militar — graceful close on unwinnable calls)",
+        "\"I will cancel all future subscriptions and send you a confirmation on your email.\" (Omar Abdallah Mahmoud — Mary Brooks — clear, immediate resolution that satisfied the customer)"
+      ],
+      "pain_points": [
+        "VIP coaching enrollment without explicit consent — John Bautista's case represents a systematic enrollment-without-agreement risk that could recur at scale",
+        "Login access failures from day one — Jeff Souza had login issues throughout his membership; never used the product he was being charged for",
+        "Recurring charge confusion — all 5 calls involved some form of 'I didn't know I was being charged' or 'I didn't agree to this'",
+        "Play frequency mismatch — Jeff Souza plays 2–3 times/year; Mary Brooks is in her 70s and found the platform not relevant to her — both are product-market mismatch cases",
+        "Call frequency mismanagement — James Keyton had been contacted by multiple reps, yet another call was placed without CRM review"
+      ],
+      "buying_triggers": [
+        "John Bautista: expressed willingness to re-engage after refund — the relationship was not destroyed, only the billing dispute needed resolution",
+        "Mary Brooks: retaining her existing 1-year access was a 'save' — she was satisfied once the future charge threat was removed",
+        "Empathy before pitch — in both saved/partial-save cases, leading with 'my goal isn't to talk you into anything' reduced defensiveness and opened dialogue"
+      ],
+      "opportunities": [
+        "CRM CALL FREQUENCY CONTROL: James Keyton's call is a direct result of inadequate CRM flagging — any customer with 2+ recent contacts should be flagged as DNC or require manager approval before the next call",
+        "ENROLLMENT AUDIT: John Bautista's case raises the question: how many other customers were enrolled in VIP coaching without explicit consent? An enrollment audit of the December 4th email-conversion pipeline is recommended",
+        "LOGIN SUPPORT PROTOCOL: Jeff Souza and others with login issues from day one represent a failure of the onboarding flow — a proactive login troubleshooting step should be added to the first 48 hours of membership",
+        "PLAY FREQUENCY QUALIFIER: Customers who play 2–3 times per year or fewer are not good candidates for annual memberships — a play frequency question at checkout or trial enrollment could route these customers to a different product tier",
+        "PAUSE OPTION: Jeff Souza declined two discount offers but might have accepted a pause — the absence of a pause/freeze option continues to result in full cancellations that a pause would have retained"
+      ],
+      "recommendations": [
+        "Implement CRM call frequency rules: flag any contact with 2+ outbound touches in 7 days as requiring manager review before next call",
+        "Conduct an enrollment audit of the December 4th VIP coaching email-conversion pipeline to identify other potential 'enrolled without consent' cases",
+        "Add a proactive login troubleshooting step to the post-purchase onboarding flow (Days 1–3) — failed logins are silent churn drivers",
+        "Add a play frequency question to the trial enrollment flow: 'How often do you play or practice golf?' — flag low-frequency golfers for a different product recommendation",
+        "Introduce a 'pause for 60 days' option as a save tool between discount offers and full cancellation"
+      ],
+      "action_items": [
+        { "task": "Implement CRM call frequency rules — flag 2+ contacts in 7 days for manager review", "owner": "Mimi / Ops", "due": "2026-06-28", "status": "Pending" },
+        { "task": "Conduct enrollment audit of December VIP coaching email-conversion pipeline", "owner": "Lee + Mimi", "due": "2026-07-03", "status": "Pending" },
+        { "task": "Add login troubleshooting step to post-purchase onboarding flow (Days 1–3)", "owner": "Lee / Tech", "due": "2026-07-01", "status": "Pending" },
+        { "task": "Add play frequency qualifier to trial enrollment flow", "owner": "Lee + Jeff", "due": "2026-07-05", "status": "Pending" },
+        { "task": "Build pause/freeze option as retention save tool between discount and full cancel", "owner": "Lee + Jeff", "due": "2026-07-01", "status": "In Progress" }
+      ],
+      "transcript_excerpts": [
+        { "label": "BILLING DISPUTE — Customer demands 'refund first, reset, then re-engage' (Nonie Militar / John Bautista)", "text": "Contact: 'I want all 5 months credited first, and then I'll call you back when I want that free trial to start. I don't want to mix the two. The 5 months that I was charged without knowing, I want that squared away first.'\n\nAgent: 'I completely respect that decision. My responsibility was simply to make sure that you understood what was included.'\n\nContact: 'I appreciate you accommodating. I do believe in what you guys are doing. Once this gets credited, I would love to reconsider.' [Full $495 refund committed. Customer retained relationship despite billing dispute.]" },
+        { "label": "CALL FATIGUE — DNC demand from over-contacted customer (Homaboroma OrluOrlu / James Keyton)", "text": "Agent: 'I was just going over your account — I can see that your PG-One and VIP coaching trials were already cancelled, but I just wanted to quickly follow up before everything fully expires.'\n\nContact: 'Sir, sir, I've had this conversation with two people. Please, please stop calling me every day. Please, please. Okay.'\n\n[Score: 1/10. No recovery attempted. CRM call frequency controls needed immediately.]" },
+        { "label": "DISCOUNT MISDIAGNOSIS — Price cut offered for behavioral objection (Nonie Militar / Jeff Souza)", "text": "Contact: 'I maybe play golf 2 to 3 times a year. I can't see spending $300, never use it.'\n\nAgent: 'How about I offer you $50 off — goes down to $249. Less than a dollar a day.'\n\nContact: 'I'm still all set. I'm just going to cancel it.'\n\nAgent: 'How about $100 off — leaves you $199?'\n\nContact: 'No, I just know I'm not going to use it to the full potential.' [Pause option would have been correct; discounting a behavioral objection failed predictably.]" }
+      ],
+      "tags": ["retention", "team-mimi", "nonie-militar", "omar-abdallah", "billing-dispute", "refund", "vip-coaching", "call-fatigue", "DNC", "login-barrier", "pause-option", "play-frequency", "enrollment-audit", "june-25"]
+    },
+    {
+      "id": "insight-011",
+      "date": "2026-06-25",
+      "lob": "FP-PG1",
+      "title": "FP-PG1 Team Remen – Product Design Feedback + 30-Day Masterclass Trial Close (John Caravolas / RS-ONE Putter)",
+      "campaign": "FP-PG1 Outbound – Post-Purchase Support & Upsell",
+      "offer": "30-Day Masterclass Trial → $299 Annually",
+      "product": "RS-ONE Putter / PG-One Masterclass / Clickstick Putter App",
+      "funnel": "Outbound / Post-Purchase",
+      "team_member": "Daniel Aliyu",
+      "call_type": "Outbound Support + Upsell",
+      "call_duration": "8:01",
+      "summary": "Daniel Aliyu (Team Remen) completed an 8-minute outbound post-purchase call with John Caravolas (MA), a customer in his 70s with serious arthritis who shoots low 80s and purchased the RS-ONE Putter. The call surfaced a genuine product design complaint: the putter's flange design prevents ball pickup after missed putts, posing a safety risk. The customer loved the putter's alignment, weighting, and grip design but had self-modified it to fix the pickup issue. Daniel acknowledged the feedback, offered to document it (photo request sent via email), successfully offered a 30-day masterclass trial (extended from the standard 7 days as a goodwill gesture), and closed at $299 annually. Score: 7.5/10.",
+      "main_findings": [
+        "Product design complaint: RS-ONE Putter flange prevents ball pickup after missed putts — customer had to self-modify the club; flagged as a safety concern",
+        "Customer is a satisfied putter user despite the design issue — 'perfect putter except you can't pick the damn thing up'; alignment, weighting, and grip design all praised",
+        "Masterclass trial closed: 30 days (extended from standard 7 days as goodwill gesture), $299 annually after trial",
+        "Wedge pitch declined: customer has a full set (64° to 48°) he loves and refused to change mid-season",
+        "Customer has an existing local pro relationship — explicitly stated he won't switch coaching providers; rep correctly did not push VIP coaching",
+        "Discovery executed: shoots low 80s, focuses on short game (wedges + putting) due to arthritis in hands, off-tee game fixed",
+        "Customer offered to send photo of his self-modification — valuable product engineering feedback",
+        "Score: 7.5/10. Goal: 8.5/10. Primary gaps: didn't explore wedge pitch more creatively, didn't close on a specific annual plan confirmation"
+      ],
+      "positive_patterns": [
+        "Handled product complaint professionally: listened without defensiveness, acknowledged the design issue, took ownership of relaying feedback, requested documentation (photo)",
+        "Extended the trial from 7 to 30 days as a goodwill gesture — customer responded positively ('that's really nice')",
+        "Discovery executed naturally: game level, medical context, product preferences all surfaced without friction",
+        "Correctly read the room on VIP coaching: customer has a pro he works with, so rep didn't push — avoids a wasted pitch",
+        "Photo documentation request for the product modification is a smart product feedback loop — should be escalated to engineering"
+      ],
+      "customer_objections": [
+        "\"I can't pick the ball up with this putter — it's too dangerous if you propel the ball. You could hit somebody.\" (design complaint — handled with empathy and documentation)",
+        "\"I love my wedges and I gotta stick with them. There's no freaking way I'm changing.\" (wedge pitch declined — rep accepted without pressure)",
+        "\"I'm very happy with the pro I'm working with up here. I don't need additional coaching.\" (VIP coaching declined — rep correctly pivoted away)"
+      ],
+      "winning_language": [
+        "\"I'm going to do that for 30 days — normally members would have that for 7 days, but in your case, you've been a great member with us, so I'm going to do that for 30 days.\" (Daniel Aliyu — loyalty-based extension that landed as a genuine reward)",
+        "\"I'll take note of that for sure. I appreciate the feedback.\" (product complaint acknowledgment — calm, professional, non-defensive)",
+        "\"Try it out. Access all the videos whenever you get a chance. And yeah, of course, if you want to keep it active after the trial period, it's just going to be $299 annually.\" (clear trial-to-annual framing)"
+      ],
+      "pain_points": [
+        "RS-ONE Putter flange design prevents ball pickup after missed putts — affects senior golfers who can't or won't stoop repeatedly; safety concern if propelling the ball",
+        "Arthritis limiting hand usage — customer's entire game is built around minimizing hand/wrist involvement; this is why the RS-ONE grip design resonated so strongly",
+        "Too busy to watch app content — has the Clickstick Putter app but hasn't used it; time barrier to digital engagement"
+      ],
+      "buying_triggers": [
+        "Loyalty reward framing — '30 days because you've been a great member' felt like a personal gesture rather than a sales offer",
+        "Product-to-game fit: masterclass covers short game and putting, which is exactly what John focuses on",
+        "$299 annually positioned as comprehensive access — customer responded positively to the broad scope"
+      ],
+      "opportunities": [
+        "PRODUCT ENGINEERING FEEDBACK: The RS-ONE Putter ball-pickup issue is a real design flaw affecting a meaningful segment of senior golfers who can't stoop. The customer's self-modification is documented and the photo should be escalated to the product team immediately",
+        "CUSTOMER AS ADVOCATE: John Caravolas is highly articulate about the product, positive about the brand, and even got his son to keep the prior putter. He is a strong candidate for a testimonial or referral ask",
+        "PUTTER MODIFICATION PHOTO: The customer offered to send a photo of his fix — this could be valuable user-generated content and engineering input; ensure the follow-up email captures this"
+      ],
+      "recommendations": [
+        "Escalate the RS-ONE Putter ball-pickup design complaint to the product/engineering team — the customer's self-modification photo should be documented and reviewed",
+        "Flag John Caravolas as a potential brand advocate — he is vocal, positive, and already influenced his son to keep a Performance Golf putter",
+        "Add a senior-golfer accessibility screen to the RS-ONE product page noting the pickup design and who it's best suited for"
+      ],
+      "action_items": [
+        { "task": "Escalate RS-ONE Putter ball-pickup design complaint to product/engineering team", "owner": "Daniel Aliyu / Lee", "due": "2026-06-27", "status": "Pending" },
+        { "task": "Follow up with John Caravolas via email to collect self-modification photo", "owner": "Daniel Aliyu", "due": "2026-06-26", "status": "Pending" },
+        { "task": "Flag John Caravolas as a potential brand advocate / testimonial candidate", "owner": "Lee / Marketing", "due": "2026-06-30", "status": "Pending" }
+      ],
+      "transcript_excerpts": [
+        { "label": "PRODUCT DESIGN COMPLAINT — Ball pickup issue (Daniel Aliyu / John Caravolas)", "text": "Contact: 'There is definitely a design flaw in that putter, and the flaw is you can't pick the ball up. You can't pick it up after you've — you miss a putt, you're 3 inches away or whatever. It's too dangerous if you go to pick it up quickly and you propel the ball. You could hit somebody.'\n\nAgent: 'Gotcha. I totally appreciate the feedback.'\n\nContact: 'It's a perfect putter except you can't pick the damn thing up. But I did modify it so I can pick it up, because I was not gonna send it back because I like the putter so much.'\n\n[Customer offered to send photo of self-modification. Product engineering feedback loop opportunity.]" },
+        { "label": "GOODWILL TRIAL EXTENSION CLOSE (Daniel Aliyu)", "text": "Agent: 'Normally members would have that for 7 days, but in your case, you've been a great member with us, so I'm going to do that for 30 days. Try it out. Access all the videos whenever you get a chance. And after 30 days, it's just going to be $299 annually to keep that access.'\n\nContact: 'Well, thank you. That's really nice. Okay.'\n\n[Trial accepted. $299 annual positioned. Score: 7.5/10]" }
+      ],
+      "tags": ["FP-PG1", "team-remen", "daniel-aliyu", "rs-one-putter", "product-design-complaint", "ball-pickup", "masterclass-trial", "senior-golfer", "arthritis", "brand-advocate", "product-feedback", "close-won"]
     }
   ]
 }
