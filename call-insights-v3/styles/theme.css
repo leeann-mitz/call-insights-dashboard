@@ -1,0 +1,113 @@
+:root {
+  /* Brand */
+  --orange:   #FD3300;
+  --orange-d: #DB2C00;
+  --black:    #1D1A1A;
+  --gray:     #7B726C;
+  --stone:    #B3AAA3;
+  --pebble:   #DFD9D5;
+  --sand:     #ECE9E4;
+  --fog:      #F4F2F0;
+  --mist:     #FCFAFA;
+
+  /* Semantic */
+  --bg:          var(--mist);
+  --surface:     #FFFFFF;
+  --border:      var(--sand);
+  --border-soft: #F0EDE9;
+  --text:        var(--black);
+  --text-2:      var(--gray);
+  --text-3:      var(--stone);
+  --accent:      var(--orange);
+
+  /* Status */
+  --green:       #16a34a;
+  --green-bg:    #f0fdf4;
+  --yellow:      #ca8a04;
+  --yellow-bg:   #fefce8;
+  --red:         #dc2626;
+  --red-bg:      #fef2f2;
+  --blue:        #2563eb;
+  --blue-bg:     #eff6ff;
+  --purple:      #7c3aed;
+  --purple-bg:   #f5f3ff;
+
+  /* Outcome colors */
+  --c-sale:       var(--green);
+  --c-appt:       var(--blue);
+  --c-saved:      var(--purple);
+  --c-no-int:     var(--red);
+  --c-refund:     #ea580c;
+  --c-voicemail:  var(--stone);
+  --c-callback:   var(--yellow);
+
+  /* Layout */
+  --header-h:   56px;
+  --nav-h:      44px;
+  --sidebar-w:  220px;
+  --radius:     10px;
+  --radius-sm:  6px;
+  --radius-lg:  14px;
+  --shadow-sm:  0 1px 2px rgba(0,0,0,.05);
+  --shadow:     0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.06);
+
+  /* Fonts */
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --t: 140ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 13px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.5; }
+
+/* Typography */
+.t-title  { font-size: 1.4rem; font-weight: 800; letter-spacing: -.03em; }
+.t-h1     { font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; }
+.t-h2     { font-size: 0.95rem; font-weight: 700; letter-spacing: -.01em; }
+.t-h3     { font-size: 0.8rem;  font-weight: 600; }
+.t-label  { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
+.t-body   { font-size: 0.8rem;  color: var(--text-2); line-height: 1.55; }
+.t-mono   { font-family: var(--mono); }
+.t-num    { font-size: 2rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+.t-num-lg { font-size: 2.6rem; font-weight: 900; letter-spacing: -.05em; line-height: 1; }
+
+/* Badges */
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: .65rem; font-weight: 700; font-family: var(--mono);
+  padding: 2px 7px; border-radius: 99px;
+  text-transform: uppercase; letter-spacing: .04em;
+  white-space: nowrap;
+}
+.badge-sale     { background: var(--green-bg);  color: var(--green);  }
+.badge-appt     { background: var(--blue-bg);   color: var(--blue);   }
+.badge-saved    { background: var(--purple-bg); color: var(--purple); }
+.badge-no-int   { background: var(--red-bg);    color: var(--red);    }
+.badge-refund   { background: #fff7ed;          color: #ea580c;       }
+.badge-voicemail{ background: var(--fog);       color: var(--stone);  }
+.badge-callback { background: var(--yellow-bg); color: var(--yellow); }
+
+/* Trend chips */
+.trend { display: inline-flex; align-items: center; gap: 2px; font-size: .72rem; font-weight: 700; }
+.trend-up   { color: var(--green); }
+.trend-down { color: var(--red);   }
+.trend-flat { color: var(--stone); }
+
+/* Priority */
+.priority-high   { color: var(--red);    font-weight: 700; font-size: .7rem; }
+.priority-med    { color: var(--yellow); font-weight: 700; font-size: .7rem; }
+.priority-low    { color: var(--green);  font-weight: 700; font-size: .7rem; }
+.priority-leader { color: var(--blue);   font-weight: 700; font-size: .7rem; }
+
+/* Rep performance row tiers */
+.rep-green { background: #f0fdf4; }
+.rep-yellow{ background: #fefce8; }
+.rep-red   { background: #fef2f2; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--pebble); border-radius: 99px; }

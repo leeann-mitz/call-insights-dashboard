@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG Call Insights — Executive Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/layout.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Header ─────────────────────────────────────────── -->
+  <header id="header">
+    <div class="header-brand">
+      <div class="header-logo">PG</div>
+      <span class="header-brand-text">Call Insights</span>
+    </div>
+
+    <!-- Period tabs -->
+    <div id="period-tabs" class="period-tabs"></div>
+
+    <!-- Filters -->
+    <div class="header-filters">
+      <div class="hfilter">
+        <label>LOB</label>
+        <select id="filter-lob"></select>
+      </div>
+      <div class="hfilter">
+        <label>Team</label>
+        <select id="filter-leader"></select>
+      </div>
+      <div class="hfilter">
+        <label>Rep</label>
+        <select id="filter-agent"></select>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Section Nav ─────────────────────────────────────── -->
+  <nav id="section-nav" aria-label="Dashboard sections">
+    <button class="snav-item" data-section="s1"><span class="snav-num">1</span> Snapshot</button>
+    <button class="snav-item" data-section="s2"><span class="snav-num">2</span> Outcomes</button>
+    <button class="snav-item" data-section="s3"><span class="snav-num">3</span> AI Summary</button>
+    <button class="snav-item" data-section="s4"><span class="snav-num">4</span> Decline Reasons</button>
+    <button class="snav-item" data-section="s5"><span class="snav-num">5</span> Objections</button>
+    <button class="snav-item" data-section="s6"><span class="snav-num">6</span> Leaderboard</button>
+    <button class="snav-item" data-section="s7"><span class="snav-num">7</span> What's Happening</button>
+    <button class="snav-item" data-section="s8"><span class="snav-num">8</span> Top Performers</button>
+    <button class="snav-item" data-section="s9"><span class="snav-num">9</span> What Reps Say</button>
+    <button class="snav-item" data-section="s10"><span class="snav-num">10</span> WoW Trends</button>
+    <button class="snav-item" data-section="s11"><span class="snav-num">11</span> Opportunities</button>
+    <button class="snav-item" data-section="s12"><span class="snav-num">12</span> Actions</button>
+  </nav>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main id="main">
+
+    <!-- ── S1: Executive Snapshot ──────────────────────── -->
+    <section id="s1" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">01</span>
+          <h2 class="t-h1">Executive Snapshot</h2>
+        </div>
+        <span class="section-q">What happened this period?</span>
+      </div>
+      <div class="kpi-grid">
+        <!-- KPI cards — content injected by app.js -->
+        <div id="kpi-total" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span><span class="kpi-badge"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-connected" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-conv" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-sales" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-appts" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-qa" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-dur" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div id="kpi-decline" class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label"></span></div>
+          <div class="kpi-value"></div>
+          <div class="kpi-sub"><span class="kpi-trend"></span><span class="kpi-compare"></span></div>
+          <div class="kpi-spark"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── S2: Call Outcomes ────────────────────────────── -->
+    <section id="s2" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">02</span>
+          <h2 class="t-h1">Call Outcomes</h2>
+        </div>
+        <span class="section-q">How did calls end?</span>
+      </div>
+      <div class="card card-pad" style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start">
+        <div>
+          <p class="t-label" style="margin-bottom:14px">Outcome breakdown</p>
+          <div id="outcomes-list"></div>
+        </div>
+        <div style="text-align:center;padding:20px 0">
+          <div id="outcomes-conv"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── S3: Call Snapshot (AI Summary) ──────────────── -->
+    <section id="s3" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">03</span>
+          <h2 class="t-h1">Call Snapshot</h2>
+        </div>
+        <span class="section-q">What's the executive summary of this period's calls?</span>
+      </div>
+      <div id="snapshot-body" class="narrative"></div>
+    </section>
+
+    <!-- ── S4: Top Decline Reasons ──────────────────────── -->
+    <section id="s4" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">04</span>
+          <h2 class="t-h1">Top Decline Reasons</h2>
+        </div>
+        <span class="section-q">Why are prospects saying no?</span>
+      </div>
+      <div class="card card-pad">
+        <div style="display:grid;grid-template-columns:1fr 52px 52px 80px;gap:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+          <span class="t-label">Reason</span>
+          <span class="t-label" style="text-align:right">Count</span>
+          <span class="t-label" style="text-align:right">% of Declines</span>
+          <span class="t-label">Trend</span>
+        </div>
+        <div id="decline-list"></div>
+      </div>
+    </section>
+
+    <!-- ── S5: Top Objections ───────────────────────────── -->
+    <section id="s5" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">05</span>
+          <h2 class="t-h1">Top Objections</h2>
+        </div>
+        <span class="section-q">What's blocking the sale — and how do we respond?</span>
+      </div>
+      <div id="objections-grid" class="objection-grid"></div>
+    </section>
+
+    <!-- ── S6: Rep Performance Leaderboard ─────────────── -->
+    <section id="s6" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">06</span>
+          <h2 class="t-h1">Rep Performance Leaderboard</h2>
+        </div>
+        <span class="section-q">Who's winning? Who needs coaching?</span>
+      </div>
+      <div class="rep-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="rep-th" data-col="agent" data-label="Rep"><span class="th-label">Rep</span></th>
+              <th class="rep-th" data-col="lob" data-label="LOB"><span class="th-label">LOB</span></th>
+              <th class="rep-th sorted" data-col="calls" data-label="Calls"><span class="th-label">Calls ↓</span></th>
+              <th class="rep-th" data-col="conv" data-label="Conv %"><span class="th-label">Conv %</span></th>
+              <th class="rep-th" data-col="avgQA" data-label="QA Avg"><span class="th-label">QA Avg</span></th>
+              <th class="rep-th" data-col="sales" data-label="Sales"><span class="th-label">Sales</span></th>
+              <th class="rep-th" data-col="appts" data-label="Appts"><span class="th-label">Appts</span></th>
+              <th class="rep-th" data-col="avgDurS" data-label="Avg Duration"><span class="th-label">Avg Duration</span></th>
+              <th class="rep-th" data-col="priority" data-label="Priority"><span class="th-label">Priority</span></th>
+            </tr>
+          </thead>
+          <tbody id="rep-tbody">
+            <tr><td colspan="9"><div class="empty">Loading…</div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="t-body" style="margin-top:8px">
+        <span class="tier-dot tier-green"></span> QA ≥ 80 — Leader &nbsp;
+        <span class="tier-dot tier-yellow" style="margin-left:8px"></span> QA 65–79 — On Track / Monitor &nbsp;
+        <span class="tier-dot tier-red" style="margin-left:8px"></span> QA &lt; 65 — Coach Now
+      </p>
+    </section>
+
+    <!-- ── S7: What's Happening on Calls ───────────────── -->
+    <section id="s7" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">07</span>
+          <h2 class="t-h1">What's Happening on Calls</h2>
+        </div>
+        <span class="section-q">What patterns are emerging across the team?</span>
+      </div>
+      <div id="happening-list" class="coaching-list"></div>
+    </section>
+
+    <!-- ── S8: What Top Performers Do ──────────────────── -->
+    <section id="s8" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">08</span>
+          <h2 class="t-h1">What Top Performers Do Differently</h2>
+        </div>
+        <span class="section-q">What separates the closers from the rest?</span>
+      </div>
+      <div id="performers-list" class="coaching-list"></div>
+    </section>
+
+    <!-- ── S9: What Reps Are Saying ────────────────────── -->
+    <section id="s9" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">09</span>
+          <h2 class="t-h1">What Reps Are Saying</h2>
+        </div>
+        <span class="section-q">What language is being used — and what should change?</span>
+      </div>
+      <div class="card card-pad">
+        <div id="phrases-wrap"></div>
+      </div>
+    </section>
+
+    <!-- ── S10: Week-over-Week Trends ──────────────────── -->
+    <section id="s10" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">10</span>
+          <h2 class="t-h1">Period-over-Period Trends</h2>
+        </div>
+        <span class="section-q">Are we improving or declining vs. the prior period?</span>
+      </div>
+      <div id="wow-grid" class="wow-grid"></div>
+    </section>
+
+    <!-- ── S11: Top Opportunities ──────────────────────── -->
+    <section id="s11" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">11</span>
+          <h2 class="t-h1">Top Opportunities</h2>
+        </div>
+        <span class="section-q">Where is the biggest untapped performance gain?</span>
+      </div>
+      <div id="opp-list" class="opp-list"></div>
+    </section>
+
+    <!-- ── S12: Priority Actions ────────────────────────── -->
+    <section id="s12" class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">12</span>
+          <h2 class="t-h1">Priority Actions</h2>
+        </div>
+        <span class="section-q">What should we do right now?</span>
+      </div>
+      <div id="actions-wrap" class="action-section"></div>
+    </section>
+
+  </main><!-- /main -->
+</div><!-- /app -->
+
+<script src="scripts/analytics.js"></script>
+<script src="scripts/insights.js"></script>
+<script src="scripts/app.js"></script>
+</body>
+</html>
