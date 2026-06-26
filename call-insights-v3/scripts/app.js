@@ -416,6 +416,9 @@ const App = (() => {
       const gaps = (c.scriptGaps||[]).map(g => `<span class="modal-gap-tag">${esc(g)}</span>`).join('');
       const strengths = (c.strengths||[]).slice(0,2).map(s => `<span class="modal-strength-tag">${esc(s)}</span>`).join('');
       const qaStyle = c.qaScore>=80?'color:#22c55e':c.qaScore>=65?'color:#eab308':'color:#ef4444';
+      const listenBtn = c.callLink
+        ? `<a href="${esc(c.callLink)}" target="_blank" rel="noopener" class="modal-listen-btn">▶ Listen</a>`
+        : `<span class="modal-listen-btn modal-listen-disabled" title="No recording link yet — add callLink to calls.json">▶ Listen</span>`;
       return `<div class="modal-call">
         <div class="modal-call-top">
           <div>
@@ -425,6 +428,7 @@ const App = (() => {
           <div style="font-family:var(--mono);font-size:.78rem;font-weight:700;${qaStyle}">${c.qaScore!=null?c.qaScore+'/100':'—'}</div>
           <div style="font-family:var(--mono);font-size:.78rem;color:var(--text-3)">${esc(c.duration||'—')}</div>
           <span class="badge" style="background:${oc}22;color:${oc};border:1px solid ${oc}44">${esc(c.outcome)}</span>
+          ${listenBtn}
         </div>
         ${c.summary ? `<div class="modal-call-summary">${esc(c.summary)}</div>` : ''}
         ${strengths||gaps ? `<div class="modal-call-gaps">${strengths}${gaps}</div>` : ''}
