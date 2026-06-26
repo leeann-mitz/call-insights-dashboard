@@ -1,0 +1,103 @@
+:root {
+  /* Brand Colors */
+  --pg-orange:     #FD3300;
+  --pg-orange-dark:#DB2C00;
+  --pg-black:      #1D1A1A;
+  --pg-gray:       #7B726C;
+  --pg-stone:      #B3AAA3;
+  --pg-pebble:     #DFD9D5;
+  --pg-sand:       #ECE9E4;
+  --pg-fog:        #F4F2F0;
+  --pg-mist:       #FCFAFA;
+
+  /* Semantic */
+  --bg:            var(--pg-mist);
+  --bg-surface:    #FFFFFF;
+  --bg-sidebar:    var(--pg-black);
+  --text-primary:  var(--pg-black);
+  --text-secondary:var(--pg-gray);
+  --text-muted:    var(--pg-stone);
+  --text-sidebar:  #E8E4E1;
+  --border:        var(--pg-pebble);
+  --border-light:  var(--pg-sand);
+  --accent:        var(--pg-orange);
+
+  /* Outcomes */
+  --outcome-sale:     #16a34a;
+  --outcome-booked:   #2563eb;
+  --outcome-saved:    #7c3aed;
+  --outcome-declined: #dc2626;
+  --outcome-refunded: #ea580c;
+  --outcome-contact:  #6b7280;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Sizing */
+  --sidebar-w:   240px;
+  --radius:      12px;
+  --radius-sm:   8px;
+  --shadow:      0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:   0 4px 6px rgba(0,0,0,.05), 0 2px 4px rgba(0,0,0,.06);
+  --transition:  150ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 14px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Typography scale */
+h1 { font-size: 1.5rem;  font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+h3 { font-size: 0.875rem;font-weight: 600; }
+p  { color: var(--text-secondary); font-size: 0.875rem; }
+
+/* Utility */
+.mono { font-family: var(--font-mono); }
+.text-muted { color: var(--text-muted); }
+.text-sm { font-size: 0.8rem; }
+.text-xs { font-size: 0.72rem; }
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.badge-sale     { background: #dcfce7; color: var(--outcome-sale);     }
+.badge-booked   { background: #dbeafe; color: var(--outcome-booked);   }
+.badge-saved    { background: #ede9fe; color: var(--outcome-saved);    }
+.badge-declined { background: #fee2e2; color: var(--outcome-declined); }
+.badge-refunded { background: #ffedd5; color: var(--outcome-refunded); }
+.badge-no-contact { background: #f3f4f6; color: var(--outcome-contact); }
+
+/* QA Score colors */
+.qa-high   { color: var(--outcome-sale);     font-weight: 600; }
+.qa-mid    { color: #ca8a04;                 font-weight: 600; }
+.qa-low    { color: var(--outcome-declined); font-weight: 600; }
+
+/* Trend indicator */
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.trend-up   { color: var(--outcome-sale);     }
+.trend-down { color: var(--outcome-declined); }
+.trend-flat { color: var(--text-muted);       }
