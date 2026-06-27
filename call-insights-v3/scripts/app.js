@@ -495,6 +495,20 @@ const App = (() => {
 
   // ── Events ───────────────────────────────────────────────
   function bindEvents() {
+    // Logo/brand = home button
+    $('.header-brand')?.addEventListener('click', () => {
+      state.period = 'all_time';
+      state.filters = { lob:'', leader:'', agent:'', direction:'' };
+      // Reset all dropdowns
+      ['filter-lob','filter-leader','filter-agent','filter-direction'].forEach(id => {
+        const el = $(`#${id}`); if (el) el.value = '';
+      });
+      // Reset direction dropdown (static options)
+      const dir = $('#filter-direction'); if (dir) dir.value = '';
+      applyFilters();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     $('#filter-lob')?.addEventListener('change',       e=>{state.filters.lob=e.target.value;applyFilters();});
     $('#filter-leader')?.addEventListener('change',    e=>{state.filters.leader=e.target.value;applyFilters();});
     $('#filter-agent')?.addEventListener('change',     e=>{state.filters.agent=e.target.value;applyFilters();});
