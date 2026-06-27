@@ -180,13 +180,23 @@ const Analytics = (() => {
   ];
 
   function objections(calls, prev) {
-    const allObjs = calls.flatMap(c=>c.objections||[]);
-    const pAllObjs = (prev||[]).flatMap(c=>c.objections||[]);
-    return OBJ_GROUPS.map(g => {
-      const count  = allObjs.filter(o=>g.keys.some(k=>o.toLowerCase().includes(k))).length;
-      const pCount = pAllObjs.filter(o=>g.keys.some(k=>o.toLowerCase().includes(k))).length;
-      return {...g, count, pCount, trend: trend(count,pCount)};
-    }).filter(g=>g.count>0).sort((a,b)=>b.count-a.count);
+    // Derive objections from declineReason + summary keywords (no c.objections array in CSV data)
+    function matchGroups(calls) {
+      const counts = {};
+      calls.forEach(c => {
+        const text = ((c.declineReason||'') + ' ' + (c.summary||'')).toLowerCase();
+        OBJ_GROUPS.forEach(g => {
+          if (g.keys.some(k => text.includes(k))) counts[g.theme] = (counts[g.theme]||0) + 1;
+        });
+      });
+      return counts;
+    }
+    const cur  = matchGroups(calls);
+    const prv  = matchGroups(prev||[]);
+    return OBJ_GROUPS
+      .map(g => ({ ...g, count: cur[g.theme]||0, pCount: prv[g.theme]||0, trend: trend(cur[g.theme]||0, prv[g.theme]||0) }))
+      .filter(g => g.count > 0)
+      .sort((a,b) => b.count - a.count);
   }
 
   // ── Agent/Rep stats ──────────────────────────────────────

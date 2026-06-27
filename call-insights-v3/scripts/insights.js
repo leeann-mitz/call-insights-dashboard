@@ -8,67 +8,41 @@ const Insights = (() => {
     const pk = prev?.length ? Analytics.kpis(prev, []) : null;
     const reps = Analytics.repStats(current);
     const topRep = reps[0];
-    const objs = Analytics.objections(current, prev);
-    const topObj = objs[0];
     const decReasons = Analytics.declineReasons(current, prev);
     const topDecline = decReasons[0];
 
-    const convDir = !pk ? null : k.convRate > pk.convRate ? 'up' : k.convRate < pk.convRate ? 'down' : 'flat';
-    const qaDir   = !pk ? null : k.avgQA    > pk.avgQA    ? 'up' : k.avgQA    < pk.avgQA    ? 'down' : 'flat';
-    const volumeDir= !pk? null : k.total    > pk.total    ? 'up' : k.total    < pk.total    ? 'down' : 'flat';
+    const convDir  = !pk ? null : k.convRate > pk.convRate ? 'up' : k.convRate < pk.convRate ? 'down' : 'flat';
+    const volumeDir= !pk ? null : k.total    > pk.total    ? 'up' : k.total    < pk.total    ? 'down' : 'flat';
 
     let html = `<p>The team handled <strong>${k.total.toLocaleString()} call${k.total!==1?'s':''}</strong> `;
     if (pk) {
-      if (volumeDir==='up')   html += `— <span class="n-positive">up ${Math.abs(k.total-pk.total)} from the prior period</span>. `;
+      if (volumeDir==='up')        html += `— <span class="n-positive">up ${Math.abs(k.total-pk.total)} from the prior period</span>. `;
       else if (volumeDir==='down') html += `— <span class="n-negative">down ${Math.abs(k.total-pk.total)} from the prior period</span>. `;
-      else html += `— volume held steady from the prior period. `;
+      else                         html += `— volume held steady from the prior period. `;
     } else { html += `. `; }
 
     if (k.convRate > 0) {
       html += `Overall conversion rate stands at <strong>${k.convRate}%</strong>`;
       if (pk && convDir) {
-        if (convDir==='up')   html += ` (<span class="n-positive">↑${Math.abs(k.convRate-pk.convRate)} pts vs. prior period</span>)`;
-        else if (convDir==='down') html += ` (<span class="n-negative">↓${Math.abs(k.convRate-pk.convRate)} pts vs. prior period</span>)`;
+        if (convDir==='up')        html += ` (<span class="n-positive">↑${Math.abs(k.convRate-(pk?.convRate??0))} pts vs. prior period</span>)`;
+        else if (convDir==='down') html += ` (<span class="n-negative">↓${Math.abs(k.convRate-(pk?.convRate??0))} pts vs. prior period</span>)`;
       }
       html += `. `;
     }
 
-    html += `Average QA score is <strong>${k.avgQA}/100</strong>`;
-    if (pk && qaDir==='up')   html += ` <span class="n-positive">(↑ improving)</span>`;
-    else if (pk && qaDir==='down') html += ` <span class="n-negative">(↓ declining — coaching review recommended)</span>`;
-    html += `.</p>`;
+    if (k.sales > 0 || k.appts > 0) {
+      html += `<strong>${k.sales}</strong> sale${k.sales!==1?'s':''} and <strong>${k.appts}</strong> appointment${k.appts!==1?'s':''} were secured this period.</p>`;
+    } else { html += `</p>`; }
 
     if (topRep) {
-      html += `<p>`;
-      if (topRep.avgQA >= 80) {
-        html += `<strong>${topRep.agent}</strong> continues to lead the team with an average QA of <strong>${topRep.avgQA}/100</strong>. `;
-      } else {
-        html += `QA performance varies across the team — the highest scorer this period reached <strong>${topRep.avgQA}/100</strong>. `;
-      }
-      if (topObj) {
-        html += `<strong>${topObj.theme}</strong> remains the most frequent objection`;
-        if (topObj.trend > 10)  html += ` and <span class="n-negative">is trending upward</span>`;
-        else if (topObj.trend < -10) html += ` and <span class="n-positive">is trending down</span>`;
-        html += `. `;
-      }
-      html += `</p>`;
-    }
+      html += `<p><strong>${topRep.agent}</strong> leads the team with <strong>${topRep.conv}% conversion</strong> on ${topRep.calls} calls`;
+      if (topRep.sales > 0) html += ` (${topRep.sales} sale${topRep.sales!==1?'s':''})`;
+      html += `. `;
 
-    const scriptGapCalls = current.filter(c=>(c.scriptGaps||[]).length>0);
-    const avgAdherence = current.filter(c=>c.scriptAdherence!=null).length ?
-      Math.round(current.filter(c=>c.scriptAdherence!=null).map(c=>c.scriptAdherence).reduce((a,b)=>a+b,0)/current.filter(c=>c.scriptAdherence!=null).length) : null;
-
-    if (avgAdherence !== null) {
-      html += `<p>Average script adherence across all calls is <strong>${avgAdherence}/100</strong>. `;
-      if (scriptGapCalls.length) {
-        const allGaps = scriptGapCalls.flatMap(c=>c.scriptGaps||[]);
-        const gapCounts = {};
-        allGaps.forEach(g=>{ gapCounts[g]=(gapCounts[g]||0)+1; });
-        const topGap = Object.entries(gapCounts).sort((a,b)=>b[1]-a[1])[0];
-        if (topGap) html += `The most common script gap is <em>"${topGap[0]}"</em>, appearing on ${topGap[1]} call${topGap[1]!==1?'s':''}. `;
+      const refundRate = Analytics.pct(current.filter(c=>c.outcome==='Refund').length, current.length);
+      if (refundRate > 10) {
+        html += `<span class="n-negative">Refund/cancellation rate is at ${refundRate}% — retention focus recommended.</span> `;
       }
-      if (avgAdherence < 60) html += `<span class="n-negative">Script adherence is below target — structured coaching intervention recommended this week.</span>`;
-      else if (avgAdherence >= 80) html += `<span class="n-positive">Script adherence is strong overall.</span>`;
       html += `</p>`;
     }
 
@@ -86,59 +60,75 @@ const Insights = (() => {
     const items = [];
     if (!calls.length) return items;
 
-    const avgAdh = calls.filter(c=>c.scriptAdherence!=null).length ?
-      Math.round(calls.filter(c=>c.scriptAdherence!=null).map(c=>c.scriptAdherence).reduce((a,b)=>a+b,0)/calls.filter(c=>c.scriptAdherence!=null).length) : null;
-    if (avgAdh !== null && avgAdh < 65) {
-      items.push({ icon:'📋', title:'Script adherence is inconsistent',
-        text:`Average script adherence is ${avgAdh}/100. Reps are skipping key phases — particularly discovery and objection pre-emption blocks. Structured script reinforcement sessions are needed before the next call cycle.` });
+    // Conversion rate insight
+    const k = Analytics.kpis(calls, null);
+    const reps = Analytics.repStats(calls);
+    const topConv  = reps.filter(r=>r.conv>=30);
+    const lowConv  = reps.filter(r=>r.conv<15 && r.calls>=10);
+
+    if (topConv.length && lowConv.length) {
+      items.push({ icon:'📊', title:'Large conversion gap between top and bottom performers',
+        text:`${topConv.length} rep${topConv.length!==1?'s':''} are converting at 30%+ while ${lowConv.length} rep${lowConv.length!==1?'s':''} with 10+ calls are below 15%. The gap suggests a skill or approach difference, not a market difference — coaching from top performers to bottom is the fastest fix.` });
     }
 
-    const discoveryGaps = calls.filter(c=>(c.scriptGaps||[]).some(g=>g.toLowerCase().includes('discovery')));
-    if (discoveryGaps.length >= 2) {
-      items.push({ icon:'🔍', title:'Discovery questions are being skipped',
-        text:`${discoveryGaps.length} of ${calls.length} calls had little or no discovery. Reps are moving to product recommendations before establishing the golfer's pain, goals, or current situation. This is the most common pattern reducing conversion rates.` });
-    }
-
-    const priceGaps = calls.filter(c=>(c.scriptGaps||[]).some(g=>g.toLowerCase().includes('price')||g.toLowerCase().includes('cost')));
-    if (priceGaps.length >= 1) {
-      items.push({ icon:'💰', title:'Price is being revealed before value is established',
-        text:`On at least ${priceGaps.length} call${priceGaps.length!==1?'s':''}, the investment was discussed before the prospect's pain was fully acknowledged and product value was established. This triggers early price shock and premature call endings.` });
-    }
-
-    const vipGaps = calls.filter(c=>(c.scriptGaps||[]).some(g=>g.toLowerCase().includes('vip')||g.toLowerCase().includes('upsell')));
-    if (vipGaps.length >= 2) {
-      items.push({ icon:'⬆️', title:'VIP coaching offers are consistently missed',
-        text:`${vipGaps.length} calls where a VIP coaching offer was appropriate — zero attempts made. This represents missed upsell revenue on every post-purchase and booking call.` });
-    }
-
-    const callFatigue = calls.filter(c=>(c.declineReason||'').toLowerCase().includes('fatigue')||
-      (c.declineReason||'').toLowerCase().includes('over-contact'));
-    if (callFatigue.length) {
-      items.push({ icon:'📞', title:'Call fatigue is damaging member relationships',
-        text:`${callFatigue.length} call${callFatigue.length!==1?'s':''} resulted in DNC requests due to over-contacting. CRM call frequency controls are absent — accounts with 2+ recent outbound touches are being dialed without manager review.` });
-    }
-
-    const billingCalls = calls.filter(c=>(c.declineReason||'').toLowerCase().includes('billing')||
-      (c.objections||[]).some(o=>o.toLowerCase().includes('charge')||o.toLowerCase().includes('billing')));
-    if (billingCalls.length >= 2) {
-      items.push({ icon:'💳', title:'Billing surprise is a recurring cancellation driver',
-        text:`${billingCalls.length} calls this period involved customers who were surprised by charges they did not expect. Checkout and onboarding email clarity must be reviewed — explicit billing disclosure at point of sale is missing.` });
-    }
-
+    // Longer calls = more sales
     const saleDurs = calls.filter(c=>c.outcome==='Sale'&&c.durationSeconds).map(c=>c.durationSeconds);
     const allDurs  = calls.filter(c=>c.durationSeconds).map(c=>c.durationSeconds);
     if (saleDurs.length >= 2 && allDurs.length >= 2) {
       const sa = Math.round(saleDurs.reduce((a,b)=>a+b,0)/saleDurs.length);
       const aa = Math.round(allDurs.reduce((a,b)=>a+b,0)/allDurs.length);
-      if (sa > aa + 120) {
+      if (sa > aa + 90) {
         items.push({ icon:'⏱️', title:'Longer conversations consistently lead to sales',
-          text:`Calls that resulted in a sale averaged ${Analytics.dur(sa)} vs. ${Analytics.dur(aa)} across all calls — a ${Analytics.dur(sa-aa)} difference. Reps who pace the conversation and invest time in discovery are closing significantly more.` });
+          text:`Calls that resulted in a sale averaged ${Analytics.dur(sa)} vs. ${Analytics.dur(aa)} across all calls — a ${Analytics.dur(sa-aa)} difference. Reps who invest time in discovery and objection handling are closing significantly more.` });
       }
+    }
+
+    // Refund/cancellation spike
+    const refunds = calls.filter(c=>c.outcome==='Refund');
+    if (refunds.length > 0) {
+      const rate = Analytics.pct(refunds.length, calls.length);
+      if (rate > 8) {
+        const topRefundReason = (() => {
+          const m = {}; refunds.forEach(c=>{ if(c.declineReason) m[c.declineReason]=(m[c.declineReason]||0)+1; });
+          return Object.entries(m).sort((a,b)=>b[1]-a[1])[0]?.[0];
+        })();
+        items.push({ icon:'⚠️', title:`Refund/cancellation rate is elevated at ${rate}%`,
+          text:`${refunds.length} calls this period ended in refund or cancellation${topRefundReason?` — most commonly "${topRefundReason}"`:''}. This warrants a retention intervention: review recent cancel calls, identify the trigger point, and equip reps with a save offer before processing.` });
+      }
+    }
+
+    // No contact / short calls
+    const noContact = calls.filter(c=>c.outcome==='No Contact');
+    if (noContact.length > 0) {
+      const ncRate = Analytics.pct(noContact.length, calls.length);
+      if (ncRate > 20) {
+        items.push({ icon:'📞', title:`${ncRate}% of calls are not connecting`,
+          text:`${noContact.length} calls ended without meaningful contact. High no-contact rates suggest list quality issues, incorrect call times, or members not answering repeated outreach. Review dial strategy and contact time windows.` });
+      }
+    }
+
+    // Decline reason pattern
+    const declines = calls.filter(c=>c.declineReason);
+    if (declines.length >= 5) {
+      const topMap = {};
+      declines.forEach(c=>{ topMap[c.declineReason]=(topMap[c.declineReason]||0)+1; });
+      const top = Object.entries(topMap).sort((a,b)=>b[1]-a[1])[0];
+      if (top && top[1] >= 3) {
+        items.push({ icon:'🚫', title:`"${top[0]}" is the most common objection pattern`,
+          text:`${top[1]} call${top[1]!==1?'s':''} this period declined for the same reason. This indicates a systemic gap — either in prospect qualification, script positioning, or how reps handle this specific objection. A targeted role-play on this single objection can move the needle immediately.` });
+      }
+    }
+
+    // Callback accumulation
+    const callbacks = calls.filter(c=>c.outcome==='Callback');
+    if (callbacks.length > 0 && Analytics.pct(callbacks.length, calls.length) > 25) {
+      items.push({ icon:'🔁', title:'High callback rate — conversations are not closing on first contact',
+        text:`${callbacks.length} calls (${Analytics.pct(callbacks.length, calls.length)}%) ended with a callback rather than a decision. Each unresolved call has a high drop-off rate. Reps should be trained to resolve on the first call by uncovering and handling the real objection before scheduling a follow-up.` });
     }
 
     if (!items.length) {
       items.push({ icon:'✅', title:'No major patterns flagged this period',
-        text:'Calls this period do not surface significant systemic coaching concerns. Continue monitoring QA scores and script adherence for emerging patterns.' });
+        text:'Calls this period do not surface significant systemic coaching concerns. Continue monitoring conversion rates and decline reasons for emerging patterns.' });
     }
     return items;
   }
@@ -147,45 +137,64 @@ const Insights = (() => {
   function topPerformerBehaviors(calls) {
     const reps = Analytics.repStats(calls);
     if (reps.length < 2) return [];
-    const top    = reps.filter(r=>r.avgQA>=80);
-    const bottom = reps.filter(r=>r.avgQA<65);
-    const items  = [];
 
-    if (top.length) {
+    // Use conversion rate to define top vs bottom (no QA available)
+    const sorted  = [...reps].sort((a,b)=>b.conv-a.conv);
+    const topN    = Math.max(1, Math.floor(sorted.length * 0.25));
+    const top     = sorted.slice(0, topN).filter(r=>r.calls>=5);
+    const bottom  = sorted.slice(-topN).filter(r=>r.calls>=5);
+    const items   = [];
+
+    if (top.length && bottom.length) {
       const topAvgDur = top.reduce((s,r)=>s+r.avgDurS,0)/top.length;
-      const botAvgDur = bottom.length ? bottom.reduce((s,r)=>s+r.avgDurS,0)/bottom.length : null;
-      if (botAvgDur && topAvgDur > botAvgDur + 90) {
-        items.push({ icon:'🏆', title:'Top performers invest more time in the conversation',
-          text:`High-QA reps (${top.map(r=>r.agent.split(' ')[0]).join(', ')}) average ${Analytics.dur(Math.round(topAvgDur))} per call vs. ${Analytics.dur(Math.round(botAvgDur))} for lower-performing reps. Time on call correlates directly with QA score and conversion.` });
+      const botAvgDur = bottom.reduce((s,r)=>s+r.avgDurS,0)/bottom.length;
+      if (topAvgDur > botAvgDur + 90) {
+        items.push({ icon:'⏱️', title:'Top performers invest more time per call',
+          text:`Top converters (${top.map(r=>r.agent.split(' ')[0]).join(', ')}) average ${Analytics.dur(Math.round(topAvgDur))} per call vs. ${Analytics.dur(Math.round(botAvgDur))} for lower-converting reps. Time on call signals deeper engagement — discovery, objection handling, and confident close sequencing.` });
       }
-
-      const topScript = top.filter(r=>r.avgScript).length ?
-        Math.round(top.filter(r=>r.avgScript).map(r=>r.avgScript).reduce((a,b)=>a+b,0)/top.filter(r=>r.avgScript).length) : null;
-      const botScript = bottom.filter(r=>r.avgScript).length ?
-        Math.round(bottom.filter(r=>r.avgScript).map(r=>r.avgScript).reduce((a,b)=>a+b,0)/bottom.filter(r=>r.avgScript).length) : null;
-      if (topScript && botScript && topScript > botScript + 15) {
-        items.push({ icon:'📋', title:'Top performers follow the script more closely',
-          text:`Top-QA reps average ${topScript}/100 script adherence vs. ${botScript}/100 for reps scoring below 65 QA. Script adherence is not optional — it is predictive of outcome. Reps who skip phases are consistently underperforming.` });
-      }
-    }
-
-    const phoebe = calls.filter(c=>c.agent==='Phoebe Collado'&&c.qaScore>=80);
-    const dan    = calls.filter(c=>c.agent==='Dan Emmanuel Nicolas'&&c.qaScore>=80);
-    const topCalls = [...phoebe, ...dan];
-    if (topCalls.length) {
-      items.push({ icon:'🔍', title:'Discovery-first sequencing is the top differentiator',
-        text:`The highest-performing reps consistently run full discovery before revealing any program or investment details. They ask about the golfer's current game, biggest challenge, how long they've struggled, and their score goal — before introducing the solution.` });
     }
 
     if (top.length) {
-      items.push({ icon:'🎯', title:'Top performers use root-flaw framing',
-        text:`High-QA reps position the program around finding the "root cause" rather than fixing symptoms. This reframes the conversation from product features to personal transformation — the golfer's emotional investment increases before any price is mentioned.` });
+      const topAvgConv = Math.round(top.reduce((s,r)=>s+r.conv,0)/top.length);
+      items.push({ icon:'🏆', title:'Top performers consistently run full discovery before pitching',
+        text:`The highest-converting reps (avg ${topAvgConv}% conversion) consistently spend the first 3–4 minutes in discovery before introducing the program. They sell what the member told them they needed — not what's on the feature sheet.` });
     }
+
+    items.push({ icon:'🎯', title:'Closers handle objections differently — they ask questions, not arguments',
+      text:`Top performers treat every objection as a missing piece of information. When a prospect says "I need to think about it," they ask "What specifically would help you feel confident today?" — then address that directly. Lower performers tend to repeat benefits instead.` });
+
+    items.push({ icon:'📞', title:'Top performers always define the next step before hanging up',
+      text:`High converters never end a call with "think about it and call us back." Every call ends with a specific next step — a booked follow-up, a confirmed decision date, or a sale. Open-ended call endings are the #1 predictor of lost deals.` });
 
     items.push({ icon:'💬', title:'Confident trial closes separate closers from informers',
-      text:`Top performers ask for the sale or appointment more directly and earlier. They treat the close as a natural next step, not an awkward ask. Lower-performing reps tend to present information and wait for the prospect to initiate — the prospect rarely does.` });
+      text:`Top performers ask for the sale or appointment more directly and earlier. They treat the close as a natural next step, not an awkward ask. Lower-performing reps tend to present information and wait — the prospect rarely initiates.` });
 
     return items;
+  }
+
+  // ── Call Flow Analysis (Section for card) ───────────────
+  function callFlowData(calls) {
+    if (!calls.length) return [];
+    const total = calls.length;
+
+    // Estimate phase completion from duration + outcome
+    const phases = [
+      { label:'Opening / Connected',    min:0,   pct: null },
+      { label:'Discovery / Engagement', min:120, pct: null },
+      { label:'Presentation / Offer',   min:240, pct: null },
+      { label:'Objection Handling',     min:360, pct: null },
+      { label:'Close Attempted',        min:480, pct: null },
+      { label:'Converted (Sale/Appt)',  min:0,   pct: null, outcomeOnly: true },
+    ];
+
+    phases[0].count = total;
+    phases[1].count = calls.filter(c=>c.durationSeconds>=120).length;
+    phases[2].count = calls.filter(c=>c.durationSeconds>=240).length;
+    phases[3].count = calls.filter(c=>c.durationSeconds>=360).length;
+    phases[4].count = calls.filter(c=>c.durationSeconds>=480).length;
+    phases[5].count = calls.filter(c=>c.outcome==='Sale'||c.outcome==='Appointment Set').length;
+
+    return phases.map(p => ({ ...p, pct: Math.round(p.count/total*100) }));
   }
 
   // ── Top Opportunities (Section 11) ──────────────────────
@@ -194,49 +203,65 @@ const Insights = (() => {
     const reps = Analytics.repStats(calls);
     const k  = Analytics.kpis(calls, prev);
     const pk = prev?.length ? Analytics.kpis(prev,[]) : null;
-    const discoveryGaps = calls.filter(c=>(c.scriptGaps||[]).some(g=>g.toLowerCase().includes('discovery')));
-    const vipGaps = calls.filter(c=>(c.scriptGaps||[]).some(g=>g.toLowerCase().includes('vip')));
-    const priceGaps = calls.filter(c=>(c.scriptGaps||[]).some(g=>g.toLowerCase().includes('price')));
-    const coachingNeeded = reps.filter(r=>r.avgQA<70&&r.calls>=2);
 
-    if (discoveryGaps.length >= 2) {
-      opps.push({ rank:1, title:'Implement discovery-first protocol across all LOBs',
-        why:`${discoveryGaps.length} of ${calls.length} calls had insufficient discovery. Reps recommending solutions before understanding the golfer's situation is the #1 conversion killer.`,
-        impact:'High — discovery consistency is directly correlated with QA score and close rate.',
-        activity:'Run a 30-minute role-play session: "Ask 4 before you pitch." Score discovery completeness on every QA review this week.' });
+    // Low converters with volume
+    const lowConv = reps.filter(r=>r.conv<15&&r.calls>=10);
+    if (lowConv.length) {
+      opps.push({ rank:1,
+        title:`Coach ${lowConv.slice(0,5).map(r=>r.agent.split(' ')[0]).join(', ')}${lowConv.length>5?` + ${lowConv.length-5} more`:''} on conversion`,
+        why:`${lowConv.length} rep${lowConv.length!==1?'s':''} with 10+ calls are converting below 15%. The gap to team average represents recoverable sales this period.`,
+        impact:'High — closing the gap to team average conversion would add significant revenue.',
+        activity:'Listen to 2 calls per rep. Identify where in the conversation momentum breaks. Run a targeted role-play on the single most common breakdown point.' });
     }
 
-    if (priceGaps.length >= 1) {
-      opps.push({ rank:2, title:'Delay price reveal until value is established',
-        why:`Price is being introduced before the golfer's pain is fully acknowledged. Cold price reveals cause immediate objections that are difficult to recover from.`,
-        impact:'High — eliminating early price shock can add 15–20% to conversion rates.',
-        activity:'Add a price pre-emption script block to all LOBs. Practice the deflection: "Cost varies based on your specific game — let me understand your situation first."' });
+    // High callback rate
+    const cbRate = Analytics.pct(calls.filter(c=>c.outcome==='Callback').length, calls.length);
+    if (cbRate > 25) {
+      opps.push({ rank:2,
+        title:'Reduce callback rate — resolve on first contact',
+        why:`${cbRate}% of calls end in a callback rather than a decision. Callback drop-off rates mean a large portion of these deals are being lost.`,
+        impact:'High — each percentage point reduction in callbacks converts to measurable additional sales.',
+        activity:'Train reps on uncovering the real objection before scheduling a follow-up. The close should happen on the first call, not the second.' });
     }
 
-    if (vipGaps.length >= 2) {
-      opps.push({ rank:3, title:'Add VIP coaching touchpoint to every post-purchase call',
-        why:`${vipGaps.length} calls where a VIP coaching offer was appropriate — zero attempts made. Post-purchase calls are the highest-intent moment in the customer journey.`,
-        impact:'Medium-High — each missed offer is a direct revenue loss.',
-        activity:'Update the ASR and Internal Setter scripts with a VIP coaching offer after the appointment is confirmed.' });
+    // Refund/cancellation rate
+    const refundRate = Analytics.pct(calls.filter(c=>c.outcome==='Refund').length, calls.length);
+    if (refundRate > 8) {
+      opps.push({ rank:3,
+        title:'Implement save scripts to reduce refund/cancellation rate',
+        why:`${refundRate}% of calls result in refund or cancellation. Even saving 20% of these calls has a meaningful impact on MRR.`,
+        impact:'High — retention is more cost-effective than new acquisition.',
+        activity:'Equip all reps with a 3-step save script: empathize → diagnose root cause → offer pause or partial resolution before processing cancellation.' });
     }
 
-    if (coachingNeeded.length) {
-      opps.push({ rank:4, title:`Coach ${coachingNeeded.map(r=>r.agent.split(' ')[0]).join(', ')} on script adherence`,
-        why:`${coachingNeeded.length} rep${coachingNeeded.length!==1?'s':''} scoring below 70 QA on ${coachingNeeded.reduce((s,r)=>s+r.calls,0)} calls. Targeted coaching on the 2–3 most common gaps per rep is the highest-leverage activity.`,
-        impact:'Medium — improving underperforming reps by 10 QA points has an outsized impact on team average.',
-        activity:'Schedule individual 15-minute coaching calls. Focus on the top gap per rep, not general feedback.' });
+    // Top decline reason
+    const declines = calls.filter(c=>c.declineReason);
+    if (declines.length >= 5) {
+      const topMap = {};
+      declines.forEach(c=>{ topMap[c.declineReason]=(topMap[c.declineReason]||0)+1; });
+      const top = Object.entries(topMap).sort((a,b)=>b[1]-a[1])[0];
+      if (top) {
+        opps.push({ rank:4,
+          title:`Address "${top[0]}" — the #1 decline reason`,
+          why:`${top[1]} calls declined for this reason (${Math.round(top[1]/declines.length*100)}% of all declines). A targeted script response to this specific objection would recover a portion of these.`,
+          impact:'Medium-High — the highest-volume objection is always the highest-leverage coaching target.',
+          activity:'Write a specific 2-step response to this objection. Practice in team role-play. Add it to the script reference sheet.' });
+      }
     }
 
-    const billingCalls = calls.filter(c=>(c.declineReason||'').toLowerCase().includes('billing'));
-    if (billingCalls.length) {
-      opps.push({ rank:5, title:'Fix billing transparency gaps at checkout and enrollment',
-        why:`${billingCalls.length} refund/cancel call${billingCalls.length!==1?'s':''} this period were driven by customers who did not know they were being charged. This is an upstream product issue, not a rep issue.`,
-        impact:'High — billing surprise is the #1 cancellation driver and a retention cost.',
-        activity:'Audit checkout page and onboarding email for explicit subscription disclosure. Add double-opt-in to all recurring subscription enrollments.' });
+    // Short calls with bad outcomes
+    const shortDeclines = calls.filter(c=>c.durationSeconds<120&&(c.outcome==='No Interest'||c.outcome==='No Contact'));
+    if (shortDeclines.length > 10) {
+      opps.push({ rank:5,
+        title:'Improve early-call engagement to reduce premature drop-offs',
+        why:`${shortDeclines.length} calls ended in under 2 minutes with a negative outcome. These represent failed openings — the prospect disengaged before any value was communicated.`,
+        impact:'Medium — improving opening engagement adds pipeline that never gets a chance.',
+        activity:'Review and update the opening 60 seconds of each LOB script. Lead with curiosity and relevance, not product.' });
     }
 
     if (!opps.length) {
-      opps.push({ rank:1, title:'Maintain current performance levels',
+      opps.push({ rank:1,
+        title:'Maintain current performance levels',
         why:'No significant gaps identified this period. Focus on consistency and documenting winning behaviors.',
         impact:'Medium — sustaining current trajectory.',
         activity:'Run a team debrief on what is working well. Document top-performer behaviors for onboarding new reps.' });
@@ -249,67 +274,47 @@ const Insights = (() => {
   function priorityActions(calls, prev) {
     const opps = topOpportunities(calls, prev);
     const reps = Analytics.repStats(calls);
-    const coachNeeded = reps.filter(r=>r.avgQA<60&&r.calls>=2);
+    const urgentCoach = reps.filter(r=>r.priorityCls==='priority-high'&&r.calls>=10);
     const actions = { high:[], medium:[], low:[] };
 
-    if (opps[0]) {
+    if (opps[0]) actions.high.push({ title:opps[0].title, why:opps[0].why, impact:opps[0].impact, activity:opps[0].activity });
+    if (opps[1]) actions.high.push({ title:opps[1].title, why:opps[1].why, impact:opps[1].impact, activity:opps[1].activity });
+
+    if (urgentCoach.length) {
       actions.high.push({
-        title: opps[0].title,
-        why: opps[0].why,
-        impact: opps[0].impact,
-        activity: opps[0].activity,
-      });
-    }
-    if (opps[1]) {
-      actions.high.push({
-        title: opps[1].title,
-        why: opps[1].why,
-        impact: opps[1].impact,
-        activity: opps[1].activity,
+        title:`Immediate 1:1 coaching — ${urgentCoach.slice(0,5).map(r=>r.agent.split(' ')[0]).join(', ')}${urgentCoach.length>5?` + ${urgentCoach.length-5} more`:''}`,
+        why:`${urgentCoach.length} rep${urgentCoach.length!==1?'s':''} flagged as Coach Now with sufficient call volume — conversion patterns are established and correctable now.`,
+        impact:'Direct improvement to team conversion average.',
+        activity:'15-minute focused coaching per rep. Listen to one call together. Identify the single biggest breakdown point. Run a live role-play.',
       });
     }
 
-    if (coachNeeded.length) {
-      actions.high.push({
-        title:`Immediate 1:1 coaching — ${coachNeeded.map(r=>r.agent.split(' ')[0]).join(', ')}`,
-        why:`Scoring below 60 QA with sufficient call volume — patterns are established and correctable now.`,
-        impact:'Direct improvement to team QA average and conversion.',
-        activity:'15-minute focused coaching on top 1 script gap per rep. Listen to best-practice call together. Run a live role-play. Observe next 3 calls.',
-      });
-    }
-
-    if (opps[2]) {
-      actions.medium.push({
-        title: opps[2].title,
-        why: opps[2].why,
-        impact: opps[2].impact,
-        activity: opps[2].activity,
-      });
-    }
+    if (opps[2]) actions.medium.push({ title:opps[2].title, why:opps[2].why, impact:opps[2].impact, activity:opps[2].activity });
+    if (opps[3]) actions.medium.push({ title:opps[3].title, why:opps[3].why, impact:opps[3].impact, activity:opps[3].activity });
 
     actions.medium.push({
-      title:'Review script adherence on all LOBs this week',
-      why:'Average script adherence indicates gaps in phase completion across multiple teams.',
-      impact:'Medium — consistent script use correlates with higher QA and conversion.',
-      activity:'QA at least 2 calls per rep this week specifically scoring for phase completion. Share results at weekly team meeting.',
+      title:'Review call openings across all LOBs',
+      why:'Short-duration call drop-offs indicate engagement is being lost in the first 60–90 seconds.',
+      impact:'Medium — improving opening engagement adds pipeline that never gets a chance to convert.',
+      activity:'Score the first 60 seconds of 5 calls per LOB. Update opening scripts to lead with curiosity, not product.',
     });
 
     actions.low.push({
-      title:'Document and share top-performer behaviors',
+      title:'Document and share top-performer approaches',
       why:'Best practices are not being systematically shared across the team.',
       impact:'Low-Medium — peer learning is more effective than manager-led training.',
-      activity:'Clip 2–3 moments from top-QA calls and share in team chat. Name the behavior, not just the rep.',
+      activity:'Clip 2–3 moments from top-converting calls and share in team chat. Name the behavior specifically.',
     });
 
     actions.low.push({
-      title:'Create a Scratch Club save script for all teams',
-      why:'Cancellation calls handled by non-Retention reps result in zero save attempts.',
-      impact:'Low-Medium — even a 20% save rate on routed cancellations recovers meaningful MRR.',
-      activity:'Write a 3-step Scratch Club save script. Distribute to all team leads by end of week.',
+      title:'Create a save script for all teams handling cancellations',
+      why:'Cancellation calls handled without a structured save offer result in zero retention.',
+      impact:'Low-Medium — even a 15–20% save rate on routed cancellations recovers meaningful MRR.',
+      activity:'Write a 3-step save script. Distribute to all team leads by end of week.',
     });
 
     return actions;
   }
 
-  return { callSnapshot, whatIsHappening, topPerformerBehaviors, topOpportunities, priorityActions };
+  return { callSnapshot, whatIsHappening, topPerformerBehaviors, topOpportunities, priorityActions, callFlowData };
 })();

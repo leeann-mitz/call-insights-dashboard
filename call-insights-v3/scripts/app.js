@@ -66,6 +66,7 @@ const App = (() => {
     populateDropdowns();
     renderKPIs();
     renderOutcomes();
+    renderCallFlow();
     renderSnapshot();
     renderDeclines();
     renderObjections();
@@ -179,6 +180,24 @@ const App = (() => {
       const conv = Analytics.kpis(state.filtered).convRate;
       convEl.innerHTML = `<span style="font-size:1.6rem;font-weight:900;letter-spacing:-.04em">${conv}%</span> <span class="t-label" style="display:block;margin-top:2px">Conversion Rate</span>`;
     }
+  }
+
+  // ── 2b. Call Flow ────────────────────────────────────────
+  const FLOW_COLORS = ['#22c55e','#3b82f6','#a855f7','#eab308','#f97316','#FD3300'];
+  function renderCallFlow() {
+    const el = $('#callflow-bars'); if (!el) return;
+    const phases = Insights.callFlowData(state.filtered);
+    if (!phases.length) { el.innerHTML = ''; return; }
+    const maxPct = phases[0]?.pct || 100;
+    el.innerHTML = phases.map((p, i) => `
+      <div class="flow-row">
+        <div class="flow-label">${esc(p.label)}</div>
+        <div class="flow-bar-wrap">
+          <div class="flow-bar" style="width:${(p.pct/maxPct*100).toFixed(1)}%;background:${FLOW_COLORS[i]||'#555'}"></div>
+        </div>
+        <div class="flow-pct" style="color:${FLOW_COLORS[i]||'#555'}">${p.pct}%</div>
+        <div class="flow-count">${p.count.toLocaleString()}</div>
+      </div>`).join('');
   }
 
   // ── 3. Call Snapshot ─────────────────────────────────────
@@ -428,7 +447,7 @@ const App = (() => {
     const qaCls = stats.avgQA>=80?'qa-high':stats.avgQA>=65?'qa-mid':'qa-low';
     $('#modal-stats').innerHTML = [
       { label:'Calls',       val: stats.calls },
-      { label:'Avg QA',      val: `<span class="${qaCls}">${stats.avgQA}/100</span>` },
+      { label:'Avg QA',      val: stats.qaCount > 0 ? `<span class="${qaCls}">${stats.avgQA}/100</span>` : `<span style="color:var(--text-3)">—</span>` },
       { label:'Conversion',  val: `${stats.conv}%` },
       { label:'Sales',       val: stats.sales },
       { label:'Appointments',val: stats.appts },
