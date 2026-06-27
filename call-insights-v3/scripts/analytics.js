@@ -201,7 +201,7 @@ const Analytics = (() => {
 
   // ── Agent/Rep stats ──────────────────────────────────────
   const SCRIPT_PHASES = {
-    'PG1 Closers':       ['Warm Open','Discovery','Pain Amplification','Product Presentation','Objection Handling','Close'],
+    'PG1':               ['Warm Open','Discovery','Pain Amplification','Product Presentation','Objection Handling','Close'],
     'Internal Setter':   ['Warm Open','Discovery','Root-Flaw Framing','Social Proof','Identity Close','Two-Slot Time Close'],
     'ASR / PG1 Setter':  ['Purchase Confirmation','PG-One Value Intro','Discovery Questions','Advisor Scheduling','VIP Coaching Offer','Appointment Confirmation'],
     'Inbound Customer Care':['Empathy & Acknowledgment','Account Review','Resolution','Retention Offer'],

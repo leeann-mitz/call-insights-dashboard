@@ -308,7 +308,7 @@ const App = (() => {
 
   // ── 9. Phrases ───────────────────────────────────────────
   const BEST_PRACTICES = {
-    'PG1 Closers': [
+    'PG1': [
       { icon:'🎯', title:'Lead with curiosity, not the pitch', say:'"Before I tell you anything about the program — what\'s the one part of your game that\'s been costing you the most strokes?"', avoid:'"Let me tell you about PG1…"', why:'Top closers spend the first 3 minutes in discovery. They sell what the member told them they needed, not what\'s on the script.' },
       { icon:'💰', title:'Anchor value before price', say:'"Members who go through the full program typically shave 5–8 strokes in 90 days. For someone playing twice a week, that\'s a completely different game."', avoid:'"It\'s $X per month…"', why:'Reps who delay price until after value is established convert at 2× the rate of those who lead with cost.' },
       { icon:'🔄', title:'Turn declines into discoveries', say:'"I hear you — a lot of members said the same thing before they started. Can I ask what specifically makes that feel like a concern for your game?"', avoid:'"I understand, no problem."', why:'High performers treat every "no" as a missing piece of information. The real objection is almost never the stated one.' },
@@ -334,13 +334,13 @@ const App = (() => {
   function renderPhrases() {
     const el = $('#phrases-wrap'); if (!el) return;
     const lob = state.filters.lob;
-    // Pick best-match LOB or default to PG1 Closers
-    const key = Object.keys(BEST_PRACTICES).find(k => lob === k) || 'PG1 Closers';
+    // Pick best-match LOB or default to PG1
+    const key = Object.keys(BEST_PRACTICES).find(k => lob === k) || 'PG1';
     const practices = BEST_PRACTICES[key];
     el.innerHTML = `
       <div style="margin-bottom:18px">
         <p class="t-label" style="color:var(--text-3)">
-          ${lob ? `Showing best practices for <strong style="color:var(--text-2)">${esc(lob)}</strong>` : 'Select a LOB filter above to see LOB-specific practices. Showing PG1 Closers by default.'}
+          ${lob ? `Showing best practices for <strong style="color:var(--text-2)">${esc(lob)}</strong>` : 'Select a LOB filter above to see LOB-specific practices. Showing PG1 by default.'}
         </p>
       </div>
       ${practices.map(p => `
