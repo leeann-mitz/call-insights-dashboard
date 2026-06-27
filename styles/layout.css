@@ -36,16 +36,16 @@
 /* Filter pills */
 .header-filters { display: flex; gap: 8px; flex: 1; }
 .hfilter {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 5px;
   background: #252220; border: 1px solid #3a3330;
-  border-radius: var(--radius-sm); padding: 5px 10px;
-  flex: 1; max-width: 180px;
+  border-radius: var(--radius-sm); padding: 4px 8px;
+  flex: 1; max-width: 160px;
 }
-.hfilter label { font-size: .62rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .06em; color: #5a5250; white-space: nowrap; }
+.hfilter label { font-size: .6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: #5a5250; white-space: nowrap; flex-shrink: 0; }
 .hfilter select {
   background: transparent; border: none; color: #c8c0b8;
-  font: .75rem var(--font); outline: none; cursor: pointer;
+  font: .72rem var(--font); outline: none; cursor: pointer;
   flex: 1; min-width: 0;
 }
 .hfilter select option { background: #1a1816; color: #c8c0b8; }
@@ -239,6 +239,25 @@ tr:last-child td { border-bottom: none; }
 .coaching-body p  { font-size: .82rem; color: var(--text-2); line-height: 1.6; margin: 0; }
 
 /* ── Phrase Cards ───────────────────────────────────────── */
+/* Best practice cards (Section 9) */
+.phrase-practice {
+  display: flex; gap: 16px; padding: 16px 0;
+  border-bottom: 1px solid var(--border-1);
+}
+.phrase-practice:last-child { border-bottom: none; }
+.phrase-practice-icon { font-size: 1.4rem; flex-shrink: 0; width: 32px; text-align: center; margin-top: 2px; }
+.phrase-practice-body { flex: 1; }
+.phrase-practice-title { font-size: .88rem; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+.phrase-say-wrap { display: flex; align-items: flex-start; gap: 8px; }
+.phrase-tag { font-size: .6rem; font-weight: 800; letter-spacing: .06em; padding: 2px 6px;
+  border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+.phrase-tag-say   { background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44; }
+.phrase-tag-avoid { background: #ef444422; color: #ef4444; border: 1px solid #ef444444; }
+.phrase-say   { font-size: .8rem; color: var(--text-1); font-style: italic; line-height: 1.5; }
+.phrase-avoid { font-size: .78rem; color: var(--text-3); font-style: italic; line-height: 1.5; }
+.phrase-why   { font-size: .75rem; color: var(--text-2); margin-top: 10px; line-height: 1.5;
+  background: var(--surface-3); border-radius: 6px; padding: 8px 10px; }
+
 .phrase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .phrase-col h4 { font-size: .7rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .07em; color: var(--text-3); margin-bottom: 10px; }
