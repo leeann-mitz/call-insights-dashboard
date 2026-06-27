@@ -31,13 +31,19 @@ const App = (() => {
   };
 
   // ── Init ─────────────────────────────────────────────────
+  const LOB_FILES = [
+    'data/PG1-Closers.json',
+    'data/Inbound-Customer-Care.json',
+    'data/Internal-Setters.json',
+    'data/Retention.json',
+  ];
+
   async function init() {
     try {
-      const res = await fetch('data/calls.json');
-      const d   = await res.json();
-      state.all = d.calls || [];
+      const results = await Promise.all(LOB_FILES.map(f => fetch(f).then(r => r.json())));
+      state.all = results.flatMap(d => d.calls || []);
     } catch(e) {
-      console.error('Could not load calls.json', e);
+      console.error('Could not load call data', e);
       state.all = [];
     }
     bindEvents();
