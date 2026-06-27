@@ -26,7 +26,7 @@ const App = (() => {
     filtered: [],
     prev: [],
     period: 'all_time',
-    filters: { lob:'', leader:'', agent:'' },
+    filters: { lob:'', leader:'', agent:'', direction:'' },
     sort: { col:'calls', dir:'desc' },
   };
 
@@ -228,9 +228,11 @@ const App = (() => {
       return typeof av === 'number' ? (av-bv)*dir : String(av).localeCompare(String(bv))*dir;
     });
     tbody.innerHTML = sorted.map(r => {
-      const tierCls = r.avgQA>=80?'rep-green':r.avgQA>=65?'rep-yellow':'rep-red';
-      const dotCls  = r.avgQA>=80?'tier-green':r.avgQA>=65?'tier-yellow':'tier-red';
-      const qaCls   = r.avgQA>=80?'qa-high':r.avgQA>=65?'qa-mid':'qa-low';
+      const isGreen  = r.priorityCls==='priority-leader';
+      const isYellow = r.priorityCls==='priority-low' || r.priorityCls==='priority-med';
+      const tierCls  = isGreen?'rep-green':isYellow?'rep-yellow':'rep-red';
+      const dotCls   = isGreen?'tier-green':isYellow?'tier-yellow':'tier-red';
+      const qaCls    = r.avgQA>=80?'qa-high':r.avgQA>=65?'qa-mid':'qa-low';
       return `<tr class="${tierCls}" data-agent="${esc(r.agent)}" title="Click to view ${esc(r.agent)}'s calls" style="cursor:pointer">
         <td class="td-rep"><span class="tier-dot ${dotCls}"></span>${esc(r.agent)}</td>
         <td class="td-lob">${esc(r.lob)}</td>
@@ -282,28 +284,58 @@ const App = (() => {
   }
 
   // ── 9. Phrases ───────────────────────────────────────────
+  const BEST_PRACTICES = {
+    'PG1 Closers': [
+      { icon:'🎯', title:'Lead with curiosity, not the pitch', say:'"Before I tell you anything about the program — what\'s the one part of your game that\'s been costing you the most strokes?"', avoid:'"Let me tell you about PG1…"', why:'Top closers spend the first 3 minutes in discovery. They sell what the member told them they needed, not what\'s on the script.' },
+      { icon:'💰', title:'Anchor value before price', say:'"Members who go through the full program typically shave 5–8 strokes in 90 days. For someone playing twice a week, that\'s a completely different game."', avoid:'"It\'s $X per month…"', why:'Reps who delay price until after value is established convert at 2× the rate of those who lead with cost.' },
+      { icon:'🔄', title:'Turn declines into discoveries', say:'"I hear you — a lot of members said the same thing before they started. Can I ask what specifically makes that feel like a concern for your game?"', avoid:'"I understand, no problem."', why:'High performers treat every "no" as a missing piece of information. The real objection is almost never the stated one.' },
+      { icon:'⏰', title:'Create urgency without pressure', say:'"We typically enroll 2–3 members per coach per month so we can keep the program personalized. I\'d hate for you to call back and have to wait."', avoid:'"This is a limited time offer…"', why:'Scarcity tied to quality (coach capacity) is believable. Discount deadlines feel fake and erode trust.' },
+      { icon:'📞', title:'Always define the next step before hanging up', say:'"I\'m going to send you a quick recap email right now. Can we lock in a 10-minute follow-up for Thursday at 2pm in case you have questions?"', avoid:'"Think about it and call us back."', why:'Calls that end with a defined next step convert at 3× the rate of calls that end open-ended.' },
+    ],
+    'Inbound Customer Care': [
+      { icon:'🤝', title:'Lead with empathy before solutions', say:'"I completely understand how frustrating that must be — let me pull up your account right now and we\'ll get this sorted."', avoid:'"What\'s your account number?"', why:'Members who feel heard are 4× more likely to stay. The first 30 seconds sets the emotional tone for the entire call.' },
+      { icon:'🔒', title:'Confirm before cancelling — always offer the save', say:'"Before I process that, I want to make sure we\'ve looked at every option. A lot of members in your situation have found [pause/discount/swap] works really well — can I walk you through it?"', avoid:'"Sure, I\'ll cancel that for you."', why:'Top care reps save 1 in 3 cancellation calls by asking one more question before processing.' },
+      { icon:'💡', title:'Frame the pause as a win, not a compromise', say:'"A lot of members who travel for work or have a busy season love the pause option — you keep your rate, keep your progress, and pick back up when golf makes sense again."', avoid:'"We can pause it I guess…"', why:'How you present the alternative determines whether the member sees it as a solution or a consolation prize.' },
+      { icon:'📋', title:'End every call with a clear confirmation', say:'"So to confirm — I\'ve [done X], you\'ll see [Y] happen by [date], and if anything comes up you can reach us at [number]. Does that all make sense?"', avoid:'"OK you\'re all set, bye!"', why:'Clear close-out reduces repeat calls by 40% and dramatically improves member satisfaction scores.' },
+      { icon:'🎁', title:'Acknowledge loyalty before resolving', say:'"I can see you\'ve been a member since [year] — thank you for sticking with us. Let\'s make sure this gets resolved the right way."', avoid:'Going straight to the resolution without acknowledgment.', why:'Long-tenure members who feel recognized are significantly less likely to churn even after a negative experience.' },
+    ],
+    'Internal Setters': [
+      { icon:'🎯', title:'Qualify golf frequency in the first 60 seconds', say:'"Quick question before anything else — how often are you getting out on the course these days?"', avoid:'"Do you want to improve your game?"', why:'Top setters only pitch to active golfers. Knowing frequency in the first minute saves 10+ minutes of wasted conversation on non-buyers.' },
+      { icon:'📅', title:'Offer two specific times, never open-ended', say:'"I have Tuesday at 10am or Thursday at 2pm — which works better for your schedule?"', avoid:'"When would you like to book?"', why:'Open questions create friction. Two specific options close 2× faster and reduce "let me check my calendar" stalls.' },
+      { icon:'🏆', title:'Use social proof tied to their handicap or situation', say:'"We just had a 14 handicap from Florida go through the assessment — he knocked 6 strokes off in the first month. That\'s pretty common at that level."', avoid:'Generic "members love it" statements.', why:'Specific, relatable social proof removes the "will this work for me" objection before it surfaces.' },
+      { icon:'⚡', title:'Handle "just send me info" with a question', say:'"Totally — and I will. But the assessment is actually more useful than any email I could send. It takes 20 minutes and shows you exactly where the strokes are going. Is morning or afternoon better for you?"', avoid:'"Sure, what\'s your email?"', why:'Sending info without a booked appointment converts at under 2%. Top setters redirect info requests back to booking every time.' },
+      { icon:'🔁', title:'Follow up with a reason, not a check-in', say:'"I\'m calling back because we just had a spot open up with Coach [Name] — she specializes in exactly the distance problem you mentioned."', avoid:'"Just following up to see if you\'re still interested."', why:'Follow-ups with a new, specific reason to act convert 5× better than generic check-ins.' },
+    ],
+  };
+
   function renderPhrases() {
     const el = $('#phrases-wrap'); if (!el) return;
-    const d = Analytics.phrases(state.filtered);
-    const commonHtml = d.common.length ? d.common.map(([p,n]) => `
-      <div class="phrase-item">
-        <div class="phrase-quote">"${esc(p)}"</div>
-        <div class="phrase-count">${n}×</div>
-      </div>`).join('') : '<div class="empty" style="text-align:left">No phrases recorded this period.</div>';
-    const altHtml = d.overused.length ? d.overused.map(p => `
-      <div class="phrase-alt">
-        <div class="phrase-overused">"${esc(p)}"</div>
-        <div class="phrase-better">${d.better[p]||'—'}</div>
-      </div>`).join('') : '<p class="t-body">No overused phrases flagged this period.</p>';
+    const lob = state.filters.lob;
+    // Pick best-match LOB or default to PG1 Closers
+    const key = Object.keys(BEST_PRACTICES).find(k => lob === k) || 'PG1 Closers';
+    const practices = BEST_PRACTICES[key];
     el.innerHTML = `
-      <div class="phrase-grid">
-        <div class="phrase-col">
-          <h4>Most Used Phrases</h4>${commonHtml}
-        </div>
-        <div class="phrase-col">
-          <h4>Suggested Improvements</h4>${altHtml}
-        </div>
-      </div>`;
+      <div style="margin-bottom:18px">
+        <p class="t-label" style="color:var(--text-3)">
+          ${lob ? `Showing best practices for <strong style="color:var(--text-2)">${esc(lob)}</strong>` : 'Select a LOB filter above to see LOB-specific practices. Showing PG1 Closers by default.'}
+        </p>
+      </div>
+      ${practices.map(p => `
+        <div class="phrase-practice">
+          <div class="phrase-practice-icon">${p.icon}</div>
+          <div class="phrase-practice-body">
+            <h4 class="phrase-practice-title">${esc(p.title)}</h4>
+            <div class="phrase-say-wrap">
+              <span class="phrase-tag phrase-tag-say">SAY</span>
+              <span class="phrase-say">${esc(p.say)}</span>
+            </div>
+            <div class="phrase-say-wrap" style="margin-top:6px">
+              <span class="phrase-tag phrase-tag-avoid">AVOID</span>
+              <span class="phrase-avoid">${esc(p.avoid)}</span>
+            </div>
+            <div class="phrase-why">💡 ${esc(p.why)}</div>
+          </div>
+        </div>`).join('')}`;
   }
 
   // ── 10. WoW ──────────────────────────────────────────────
@@ -446,9 +478,10 @@ const App = (() => {
 
   // ── Events ───────────────────────────────────────────────
   function bindEvents() {
-    $('#filter-lob')?.addEventListener('change', e=>{state.filters.lob=e.target.value;applyFilters();});
-    $('#filter-leader')?.addEventListener('change',e=>{state.filters.leader=e.target.value;applyFilters();});
-    $('#filter-agent')?.addEventListener('change', e=>{state.filters.agent=e.target.value;applyFilters();});
+    $('#filter-lob')?.addEventListener('change',       e=>{state.filters.lob=e.target.value;applyFilters();});
+    $('#filter-leader')?.addEventListener('change',    e=>{state.filters.leader=e.target.value;applyFilters();});
+    $('#filter-agent')?.addEventListener('change',     e=>{state.filters.agent=e.target.value;applyFilters();});
+    $('#filter-direction')?.addEventListener('change', e=>{state.filters.direction=e.target.value;applyFilters();});
 
     // Modal close
     $('#modal-close-btn')?.addEventListener('click', closeRepModal);

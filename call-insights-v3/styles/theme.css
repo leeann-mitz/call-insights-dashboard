@@ -183,16 +183,14 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
   background: var(--red-bg); color: var(--red);
   border: 1px solid rgba(239,68,68,.2);
 }
-.modal-listen-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 12px; border-radius: 99px; font-size: .72rem; font-weight: 700;
-  background: rgba(253,51,0,.12); color: var(--orange);
-  border: 1px solid rgba(253,51,0,.25); text-decoration: none;
-  transition: all var(--t); white-space: nowrap; flex-shrink: 0;
+.modal-call-link {
+  font-size: .75rem; font-weight: 600; color: var(--orange);
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  transition: opacity var(--t);
 }
-.modal-listen-btn:hover { background: rgba(253,51,0,.22); border-color: rgba(253,51,0,.5); }
-.modal-listen-disabled {
-  opacity: .35; cursor: not-allowed;
+.modal-call-link:hover { opacity: .75; text-decoration: underline; }
+.modal-call-link-empty {
+  font-size: .72rem; color: var(--text-3); white-space: nowrap; flex-shrink: 0;
 }
 .modal-strength-tag {
   font-size: .68rem; padding: 2px 8px; border-radius: 99px;

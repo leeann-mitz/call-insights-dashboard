@@ -71,9 +71,10 @@ const Analytics = (() => {
     const {start,end} = getRange(period);
     return calls.filter(c => {
       if (!inRange(c,start,end))                             return false;
-      if (filters.lob    && c.lob         !== filters.lob)  return false;
-      if (filters.leader && c.teamLeader  !== filters.leader)return false;
-      if (filters.agent  && c.agent       !== filters.agent) return false;
+      if (filters.lob       && c.lob         !== filters.lob)       return false;
+      if (filters.leader    && c.teamLeader  !== filters.leader)    return false;
+      if (filters.agent     && c.agent       !== filters.agent)     return false;
+      if (filters.direction && c.direction   !== filters.direction) return false;
       return true;
     });
   }
@@ -217,18 +218,28 @@ const Analytics = (() => {
       if (c.scriptGaps) r.gaps.push(...c.scriptGaps);
     });
     return Object.values(map).map(r => {
-      const avgQA   = r.qaCount   ? Math.round(r.qaSum/r.qaCount)     : 0;
+      const avgQA   = r.qaCount   ? Math.round(r.qaSum/r.qaCount)     : null;
       const avgScript = r.scriptCount ? Math.round(r.scriptSum/r.scriptCount) : 0;
       const avgDurS = r.durCount  ? Math.round(r.durSum/r.durCount)   : 0;
       const connected = r.calls;
       const conv    = connected ? pct(r.sales+r.appts, connected) : 0;
-      let priority  = 'Leader', priorityCls = 'priority-leader';
-      if (avgQA < 60) { priority='Coach Now';  priorityCls='priority-high'; }
-      else if (avgQA < 75) { priority='Monitor';   priorityCls='priority-med';  }
-      else if (avgQA < 83) { priority='On Track';  priorityCls='priority-low';  }
+      let priority, priorityCls;
+      if (avgQA != null) {
+        // QA-based priority
+        if (avgQA >= 83)      { priority='Leader';    priorityCls='priority-leader'; }
+        else if (avgQA >= 75) { priority='On Track';  priorityCls='priority-low';   }
+        else if (avgQA >= 60) { priority='Monitor';   priorityCls='priority-med';   }
+        else                  { priority='Coach Now'; priorityCls='priority-high';  }
+      } else {
+        // Conversion-based priority when no QA scores
+        if (conv >= 30)       { priority='Leader';    priorityCls='priority-leader'; }
+        else if (conv >= 20)  { priority='On Track';  priorityCls='priority-low';   }
+        else if (conv >= 12)  { priority='Monitor';   priorityCls='priority-med';   }
+        else                  { priority='Coach Now'; priorityCls='priority-high';  }
+      }
       const topGap = [...new Set(r.gaps)].slice(0,1)[0] || '';
-      return { ...r, avgQA, avgScript, avgDurS, avgDur:dur(avgDurS), conv, priority, priorityCls, topGap };
-    }).sort((a,b)=>b.avgQA-a.avgQA);
+      return { ...r, avgQA: avgQA ?? 0, avgScript, avgDurS, avgDur:dur(avgDurS), conv, priority, priorityCls, topGap };
+    }).sort((a,b)=>b.conv-a.conv);
   }
 
   // ── Period call counts ───────────────────────────────────
