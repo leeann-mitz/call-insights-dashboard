@@ -197,7 +197,6 @@ const App = (() => {
         <div class="decline-label">${esc(d.reason)}</div>
         <div class="decline-count">${d.count}</div>
         <div class="decline-pct">${d.pct}%</div>
-        <div>${trendHtml(d.trend, true)}</div>
       </div>`).join('');
   }
 
@@ -221,7 +220,7 @@ const App = (() => {
   function renderRepTable() {
     const tbody = $('#rep-tbody'); if (!tbody) return;
     const data = Analytics.repStats(state.filtered);
-    if (!data.length) { tbody.innerHTML = `<tr><td colspan="9"><div class="empty">No rep data for this period.</div></td></tr>`; return; }
+    if (!data.length) { tbody.innerHTML = `<tr><td colspan="8"><div class="empty">No rep data for this period.</div></td></tr>`; return; }
     const sorted = [...data].sort((a,b) => {
       const av = a[state.sort.col] ?? '', bv = b[state.sort.col] ?? '';
       const dir = state.sort.dir === 'asc' ? 1 : -1;
@@ -238,7 +237,6 @@ const App = (() => {
         <td class="td-lob">${esc(r.lob)}</td>
         <td class="td-mono">${r.calls}</td>
         <td class="td-mono">${r.conv}%</td>
-        <td class="td-mono ${qaCls}">${r.avgQA}</td>
         <td class="td-mono">${r.sales}</td>
         <td class="td-mono">${r.appts}</td>
         <td class="td-mono">${r.avgDur}</td>
