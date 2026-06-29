@@ -203,7 +203,9 @@ const Analytics = (() => {
   const SCRIPT_PHASES = {
     'PG1':               ['Warm Open','Discovery','Pain Amplification','Product Presentation','Objection Handling','Close'],
     'Internal Setter':   ['Warm Open','Discovery','Root-Flaw Framing','Social Proof','Identity Close','Two-Slot Time Close'],
+    'ASR':               ['Purchase Confirmation','PG-One Value Intro','Discovery Questions','Advisor Scheduling','VIP Coaching Offer','Appointment Confirmation'],
     'ASR / PG1 Setter':  ['Purchase Confirmation','PG-One Value Intro','Discovery Questions','Advisor Scheduling','VIP Coaching Offer','Appointment Confirmation'],
+    'PG1 Closers':       ['Warm Open','Discovery','Pain Amplification','Product Presentation','Objection Handling','Close'],
     'Inbound Customer Care':['Empathy & Acknowledgment','Account Review','Resolution','Retention Offer'],
     'Follow Up':         ['Reconnect','Account Review','Save Offer (Pause/Discount)','Resolution & Confirm'],
     'PG1':               ['Warm Open','Discovery','Solution Presentation','Objection Handling','Close'],
