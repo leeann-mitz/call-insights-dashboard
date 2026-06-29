@@ -38,6 +38,7 @@ const App = (() => {
     'data/Retention.json',
     'data/ASR-ASR.json',
     'data/PG1C-PG1-Closers.json',
+    'data/FP-Follow-Up.json',
   ];
 
   async function init() {
