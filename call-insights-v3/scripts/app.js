@@ -49,6 +49,14 @@ const App = (() => {
       console.error('Could not load call data', e);
       state.all = [];
     }
+    // Stamp last-updated date from latest call in data
+    const latest = state.all.reduce((max, c) => c.callDate > max ? c.callDate : max, '');
+    if (latest) {
+      const d = new Date(latest + 'T00:00:00');
+      const label = d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+      const el = document.getElementById('last-updated');
+      if (el) el.textContent = 'Data as of ' + label;
+    }
     bindEvents();
     buildPeriodTabs();
     applyFilters();
