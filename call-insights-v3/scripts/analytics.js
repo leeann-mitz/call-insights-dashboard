@@ -177,6 +177,12 @@ const Analytics = (() => {
       tip:'Review checkout and onboarding email clarity. Add explicit consent checkpoints to all subscription enrollment flows.' },
     { theme:'Low Usage / Frequency',keys:['rarely','2 to 3','few times','don\'t play'],
       tip:'Add a play-frequency qualifier to enrollment. Route low-frequency golfers to a different product tier.' },
+    { theme:'Cancellation – Not Using', keys:['cancel','cancellation','not using','haven\'t used','no time to use','scratch club','champions pass','vip coaching','training program','physical product'],
+      tip:'Trigger a proactive check-in at 30 days post-purchase. Identify usage barriers early before they become cancellation calls.' },
+    { theme:'Refund / Dissatisfied',  keys:['refund','refunded','unhappy','dissatisfied','doesn\'t work','not what i expected','waste'],
+      tip:'Flag refund requests for senior rep handling. Offer a pause, swap, or concession before processing — save rate on retained offers is significantly higher than cold cancels.' },
+    { theme:'Already Purchased / Duplicate', keys:['already purchased','already bought','already have','duplicate','signed up'],
+      tip:'Check CRM for existing active memberships before dialing. Flag duplicate accounts for cleanup to avoid wasted touches.' },
   ];
 
   function objections(calls, prev) {
