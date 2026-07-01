@@ -131,7 +131,7 @@ const Analytics = (() => {
 
   // ── Outcomes ─────────────────────────────────────────────
   function outcomes(calls) {
-    const order = ['Sale','Appointment Set','Saved','No Interest','Refund','No Contact','Callback','Transferred','Voicemail'];
+    const order = ['Sale','Appointment Set','Saved','No Interest','Refund','No Contact','Info Only','Callback','Transferred','Voicemail'];
     const map = {};
     calls.forEach(c => { map[c.outcome] = (map[c.outcome]||0) + 1; });
     const total = calls.length || 1;

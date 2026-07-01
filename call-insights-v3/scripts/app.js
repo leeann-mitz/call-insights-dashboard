@@ -14,11 +14,12 @@ const App = (() => {
   const OUTCOME_COLORS = {
     'Sale':'#22c55e','Appointment Set':'#3b82f6','Saved':'#a855f7',
     'No Interest':'#dc2626','Refund':'#ea580c','Voicemail':'#B3AAA3',
-    'Callback':'#ca8a04','Transferred':'#0891b2','Disconnected':'#6b7280',
+    'Info Only':'#6366f1','Callback':'#ca8a04','Transferred':'#0891b2','Disconnected':'#6b7280',
   };
   const OUTCOME_BADGE = {
     'Sale':'badge-sale','Appointment Set':'badge-appt','Saved':'badge-saved',
-    'No Interest':'badge-no-int','Refund':'badge-refund','Voicemail':'badge-voicemail','Callback':'badge-callback',
+    'No Interest':'badge-no-int','Refund':'badge-refund','Voicemail':'badge-voicemail',
+    'Info Only':'badge-info','Callback':'badge-callback',
   };
 
   const state = {
