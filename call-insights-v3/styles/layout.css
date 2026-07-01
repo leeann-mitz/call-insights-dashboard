@@ -98,8 +98,7 @@
   padding: 2px 5px; flex-shrink: 0;
 }
 .section-q { font-size: .72rem; color: #6B7280; font-style: italic; }
-.t-h1 { color: #111827; }
-#main { color: #111827; }
+.section-title h2 { color: #111827; }
 
 /* ── Card ───────────────────────────────────────────────── */
 .card {
