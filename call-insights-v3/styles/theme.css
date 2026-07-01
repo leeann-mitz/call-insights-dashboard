@@ -3,25 +3,25 @@
   --orange:   #FD3300;
   --orange-d: #DB2C00;
 
-  /* Light palette */
-  --black:    #F4F6F9;
+  /* Palette */
+  --page-bg:  #F0F2F5;
   --surface-1:#FFFFFF;
-  --surface-2:#1E1E1E;
+  --surface-2:#1E1C1B;
   --surface-3:#2A2826;
   --border-1: #E2E6ED;
-  --border-2: #CDD2DA;
-  --text-1:   #111827;
-  --text-2:   #4B5563;
-  --text-3:   #9CA3AF;
+  --border-2: #383432;
+  --text-1:   #F5F2EF;
+  --text-2:   #C0B8B0;
+  --text-3:   #7A7068;
 
   /* Semantic */
-  --bg:          var(--black);
+  --bg:          var(--page-bg);
   --surface:     var(--surface-1);
   --border:      var(--border-1);
   --border-soft: var(--border-1);
   --text:        var(--text-1);
-  --text-secondary: var(--text-2);
-  --text-muted:  var(--text-3);
+  --text-secondary: #374151;
+  --text-muted:  #9CA3AF;
   --accent:      var(--orange);
 
   /* Status — vivid on dark */

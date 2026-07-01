@@ -66,12 +66,12 @@
 .snav-item {
   display: inline-flex; align-items: center; gap: 5px;
   padding: 5px 10px; border-radius: var(--radius-sm);
-  font-size: .72rem; font-weight: 600; color: var(--text-2);
+  font-size: .72rem; font-weight: 600; color: #4B5563;
   cursor: pointer; white-space: nowrap;
   transition: all var(--t); border: none; background: transparent;
   text-decoration: none;
 }
-.snav-item:hover { color: var(--text-1); background: #F3F4F6; }
+.snav-item:hover { color: #111827; background: #F3F4F6; }
 .snav-item.active { color: var(--orange); background: rgba(253,51,0,.08); }
 .snav-num {
   display: inline-flex; align-items: center; justify-content: center;
@@ -97,7 +97,9 @@
   background: #E5E7EB; color: #6B7280; border-radius: 4px;
   padding: 2px 5px; flex-shrink: 0;
 }
-.section-q { font-size: .72rem; color: var(--text-3); font-style: italic; }
+.section-q { font-size: .72rem; color: #6B7280; font-style: italic; }
+.t-h1 { color: #111827; }
+#main { color: #111827; }
 
 /* ── Card ───────────────────────────────────────────────── */
 .card {
