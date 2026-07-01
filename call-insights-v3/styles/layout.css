@@ -5,7 +5,7 @@
 #header {
   position: sticky; top: 0; z-index: 50;
   height: var(--header-h);
-  background: var(--black);
+  background: #0F0E0E;
   display: flex; align-items: center;
   padding: 0 20px; gap: 16px;
   border-bottom: 1px solid #2a2523;
@@ -56,7 +56,7 @@
 /* ── Section Nav Bar ────────────────────────────────────── */
 #section-nav {
   position: sticky; top: var(--header-h); z-index: 40;
-  background: var(--surface-1); border-bottom: 1px solid var(--border-1);
+  background: #ffffff; border-bottom: 1px solid var(--border-1);
   padding: 0 20px; overflow-x: auto; white-space: nowrap;
   display: flex; align-items: center; gap: 4px;
   height: var(--nav-h);
@@ -71,13 +71,13 @@
   transition: all var(--t); border: none; background: transparent;
   text-decoration: none;
 }
-.snav-item:hover { color: var(--text-1); background: var(--surface-3); }
-.snav-item.active { color: var(--orange); background: rgba(253,51,0,.1); }
+.snav-item:hover { color: var(--text-1); background: #F3F4F6; }
+.snav-item.active { color: var(--orange); background: rgba(253,51,0,.08); }
 .snav-num {
   display: inline-flex; align-items: center; justify-content: center;
   width: 16px; height: 16px; border-radius: 4px;
   font-size: .6rem; font-weight: 800; font-family: var(--mono);
-  background: var(--surface-3); color: var(--text-3);
+  background: #E5E7EB; color: #6B7280;
 }
 .snav-item.active .snav-num { background: rgba(253,51,0,.15); color: var(--orange); }
 
@@ -94,7 +94,7 @@
 .section-title { display: flex; align-items: center; gap: 8px; }
 .section-num {
   font-size: .6rem; font-weight: 800; font-family: var(--mono);
-  background: var(--fog); color: var(--stone); border-radius: 4px;
+  background: #E5E7EB; color: #6B7280; border-radius: 4px;
   padding: 2px 5px; flex-shrink: 0;
 }
 .section-q { font-size: .72rem; color: var(--text-3); font-style: italic; }
