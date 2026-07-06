@@ -241,7 +241,7 @@ const App = (() => {
   // ── 5. Objections ────────────────────────────────────────
   function renderObjections() {
     const el = $('#objections-grid'); if (!el) return;
-    const data = Analytics.objections(state.filtered, state.prev.length?state.prev:null);
+    const data = Analytics.objections(state.filtered, state.prev.length?state.prev:null, state.filters.lob);
     if (!data.length) { el.innerHTML = `<div class="empty">No objection data for this period.</div>`; return; }
     el.innerHTML = data.map(o => `
       <div class="objection-card">

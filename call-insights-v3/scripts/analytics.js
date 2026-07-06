@@ -159,34 +159,107 @@ const Analytics = (() => {
 
   // ── Objection grouping ───────────────────────────────────
   const OBJ_GROUPS = [
-    { theme:'Too Expensive',       keys:['price','cost','expensive','afford','budget','investment'],
-      tip:'Delay price reveal until value is fully established. Use the customization frame: "cost varies based on your specific game." Focus on ROI — cost per round saved.' },
-    { theme:'Need Time to Think',  keys:['think','consider','time','decide','talk'],
-      tip:'Treat "think about it" as an information gap, not a delay. Ask: "What specifically would help you feel confident making a decision today?" Nail down the real objection.' },
-    { theme:'Needs Spouse Approval',keys:['spouse','wife','husband','partner'],
-      tip:'Include the decision-maker early. "Would it make sense to have your spouse join us for this part of the conversation?" Never let a call end without a defined next step.' },
-    { theme:'Location / Travel',   keys:['location','travel','florida','texas','california','local','distance'],
-      tip:'Add a location qualifier in the first 2 minutes. Have a virtual/online alternative ready for location-blocked prospects instead of a dead end.' },
-    { theme:'Time / Schedule',     keys:['time','busy','schedule','5 day','work','profession','demands'],
-      tip:'Offer a shorter-format option for time-poor professionals. Frame it as a single focused session vs. a multi-day commitment.' },
-    { theme:'Not Interested / DNC',keys:['not interested','stop calling','dNC','every day','already spoken'],
-      tip:'Review CRM contact frequency before dialing. Flag accounts with 2+ recent touches for manager review.' },
+    { theme:'Too Expensive', keys:['price','cost','expensive','afford','budget','investment'],
+      tips:{
+        'PG1':          'Stack the value before price — rounds saved, strokes gained, coaching access. Use: "Most members say it pays for itself in 2–3 rounds." Never lead with price.',
+        'PG1 Closers':  'Re-anchor to what they said they wanted in discovery. "You mentioned shooting in the 80s — what would that be worth?" Then revisit the investment.',
+        'ASR':          'Remind them they already invested in PG1. Frame VIP as protecting that investment: "This is what makes the program actually work for you."',
+        'Internal Setters': 'De-risk the conversation — reps are not closing price, they are setting an appointment. Redirect: "The advisor will walk you through all the options. Your only job today is to show up."',
+        'Inbound Customer Care': 'Acknowledge the concern without discounting. Offer a pause or lower-tier alternative before a full cancel. "Let me see what I can do to make this work within your budget."',
+        'Retention':    'Offer a pause, product swap, or partial credit. Cancellation should always be the last option — present at least two save alternatives first.',
+        'VIP':          'Tie VIP price to their existing PG1 commitment. "You already invested in the program — VIP is what unlocks the full result." ROI frame: cost per lesson vs. coaching access.',
+        'default':      'Delay price reveal until value is fully established. Focus on ROI and outcomes, not the number itself.',
+      }},
+    { theme:'Need Time to Think', keys:['think','consider','decide','talk'],
+      tips:{
+        'PG1':          '"Think about it" almost always means a hidden objection. Ask: "What specifically is making you hesitate?" and stay silent. Isolate the real concern before ending the call.',
+        'PG1 Closers':  'Set a hard callback with a specific time before hanging up. "Let\'s lock in Thursday at 10am — if it\'s not a fit I\'ll let you off the hook." Vague follow-ups rarely convert.',
+        'ASR':          'Create urgency around the appointment slot: "Your advisor only has a few openings this week. Let\'s secure a time now and you can always reschedule." Remove the friction.',
+        'Internal Setters': 'Reps should not be handling this — it means discovery was incomplete. Coach reps to identify the real blocker before pitching the appointment.',
+        'Inbound Customer Care': 'This usually signals dissatisfaction, not indecision. Ask what would need to be true for them to feel confident staying. Listen more, pitch less.',
+        'Retention':    'A member who wants to "think about it" is already halfway out. Offer a 30-day pause now: "No pressure to decide today — I can put your account on hold while you think."',
+        'VIP':          'Book a follow-up slot before the call ends. "I\'ll hold this VIP spot for you for 48 hours — let\'s confirm a time to reconnect." Never leave it open-ended.',
+        'default':      'Treat "think about it" as an information gap. Ask what would help them feel confident deciding today and isolate the real objection.',
+      }},
+    { theme:'Needs Spouse Approval', keys:['spouse','wife','husband','partner'],
+      tips:{
+        'PG1':          'Introduce the spouse early in discovery: "Is this something your partner would want to be part of?" Loop them in before the close, not after.',
+        'PG1 Closers':  'Offer a 3-way callback: "Let\'s get your spouse on a quick 10-minute call — I\'ll walk you both through it together." Never let the call end without a next step locked.',
+        'ASR':          'Shift focus to the appointment: "No commitment needed today — the advisor will answer all your questions together with your spouse on the call." Make it easy to say yes.',
+        'default':      'Include the decision-maker early. Never let a call end without a defined next step — offer a 3-way callback.',
+      }},
+    { theme:'Location / Travel', keys:['location','travel','florida','texas','california','local','distance'],
+      tips:{
+        'PG1':          'Add a location qualifier in the first 2 minutes. Lead with virtual/online option for distance prospects — do not wait for them to raise it as an objection.',
+        'PG1 Closers':  'Position the online coaching delivery: "Everything is delivered virtually — your rep connects with you on your schedule, wherever you are."',
+        'Internal Setters': 'Qualify location before pitching the appointment. If they\'re not local to a facility, route to the virtual track immediately.',
+        'default':      'Have a virtual/online alternative ready. Add a location qualifier early in the call — never let it become a late-stage objection.',
+      }},
+    { theme:'Time / Schedule', keys:['time','busy','schedule','5 day','work','profession','demands'],
+      tips:{
+        'PG1':          'Offer a condensed format option: "We have members who do this in weekend blocks — it\'s designed around your schedule, not the other way around."',
+        'PG1 Closers':  'Reframe the time commitment: "You\'re already spending time on the course — this just makes every round count more." Tie to their stated goal.',
+        'ASR':          'The appointment is 20–30 minutes. Emphasize the time is minimal: "Your advisor will work around your calendar — it\'s a single focused session."',
+        'Internal Setters': 'Anchor to the appointment time, not the program: "It\'s just a 20-minute call — your advisor will handle all the details." Reduce the perceived commitment.',
+        'Inbound Customer Care': 'Acknowledge their schedule and offer to find the best contact window. Don\'t let time become a reason to cancel — schedule a follow-up instead.',
+        'Retention':    'Offer a pause rather than cancellation for members citing time. "Let\'s put your account on hold for 30–60 days and pick it back up when your schedule opens."',
+        'default':      'Offer a shorter-format or flexible option. Frame as fitting their schedule, not the other way around.',
+      }},
+    { theme:'Not Interested / DNC', keys:['not interested','stop calling','every day','already spoken'],
+      tips:{
+        'PG1':          'Do not push past a firm no. Log the outcome correctly and flag for CRM review. Repeated calls to DNC contacts are a compliance risk.',
+        'ASR':          'Check CRM notes before dialing — if the contact has declined before, escalate to a supervisor rather than re-pitching. Protect the brand.',
+        'Inbound Customer Care': 'Honor the DNC request immediately. Confirm the removal, document it, and escalate to CRM ops to update the record.',
+        'Retention':    'If the member is firm, process the cancel cleanly. A bad exit creates chargebacks and reviews — a respectful close keeps the door open for a future return.',
+        'default':      'Review CRM contact frequency before dialing. Flag accounts with 2+ recent touches for manager review.',
+      }},
     { theme:'Login / Tech Issues', keys:['login','access','tech','download','app','log in'],
-      tip:'Add a proactive login troubleshooting step to the post-purchase onboarding flow within 48 hours of purchase.' },
-    { theme:'Billing Surprise',    keys:['charge','billing','didn\'t know','enrolled','member'],
-      tip:'Review checkout and onboarding email clarity. Add explicit consent checkpoints to all subscription enrollment flows.' },
-    { theme:'Low Usage / Frequency',keys:['rarely','2 to 3','few times','don\'t play'],
-      tip:'Add a play-frequency qualifier to enrollment. Route low-frequency golfers to a different product tier.' },
+      tips:{
+        'ASR':          'This is the #1 reason members disengage before their first session. Route to tech support immediately — do not let the rep try to troubleshoot on the call.',
+        'Inbound Customer Care': 'Own the fix before ending the call. Walk through login steps live, or schedule a screen-share with support. Never close the ticket until access is confirmed.',
+        'Retention':    'Login issues masking a cancel request are common. Solve the access problem first — a member who can\'t log in has never experienced the product.',
+        'PG1':          'Warm-transfer to customer care for tech issues during a sales call. Do not let tech friction kill a hot prospect — hand it off and reconnect after.',
+        'default':      'Route to tech support immediately. Add a proactive login troubleshooting step to onboarding within 48 hours of purchase.',
+      }},
+    { theme:'Billing Surprise', keys:['charge','billing','didn\'t know','enrolled','member'],
+      tips:{
+        'Inbound Customer Care': 'Acknowledge immediately without being defensive. Pull the account, review the charge, and explain clearly. Offer a credit or refund where appropriate.',
+        'Retention':    'A billing surprise is often the first sign of a cancellation. Resolve it fast and follow up with a goodwill gesture — a credit or bonus session builds trust back.',
+        'ASR':          'If the member was charged unexpectedly, escalate to billing ops. Do not promise refunds you cannot authorize — route to the right team.',
+        'default':      'Review checkout and onboarding email clarity. Add explicit consent checkpoints to all subscription enrollment flows.',
+      }},
+    { theme:'Low Usage / Frequency', keys:['rarely','2 to 3','few times','don\'t play'],
+      tips:{
+        'Retention':    'Low usage is the #1 precursor to cancellation. Lead with value reminder: "Let\'s get you back on track — what\'s been getting in the way?" Then offer a restart plan.',
+        'Inbound Customer Care': 'Proactively identify low-usage accounts and reach out before the cancel call comes. A check-in call at 45 days of inactivity can save the membership.',
+        'PG1':          'Qualify play frequency early. Low-frequency golfers may need a different product tier — flag for the advisor rather than forcing a bad fit.',
+        'default':      'Add a play-frequency qualifier to enrollment. Route low-frequency golfers to a different product tier or offer a usage restart plan.',
+      }},
     { theme:'Cancellation – Not Using', keys:['cancel','cancellation','not using','haven\'t used','no time to use','scratch club','champions pass','vip coaching','training program','physical product'],
-      tip:'Trigger a proactive check-in at 30 days post-purchase. Identify usage barriers early before they become cancellation calls.' },
-    { theme:'Refund / Dissatisfied',  keys:['refund','refunded','unhappy','dissatisfied','doesn\'t work','not what i expected','waste'],
-      tip:'Flag refund requests for senior rep handling. Offer a pause, swap, or concession before processing — save rate on retained offers is significantly higher than cold cancels.' },
+      tips:{
+        'Retention':    'Never accept the first cancel request. Always present 3 options: pause, downgrade, or a guided re-engagement session. Only process a cancel after all three are declined.',
+        'Inbound Customer Care': 'Identify the root cause — is it cost, time, tech, or unmet expectations? The fix determines the save. Ask: "What would have to change for you to want to continue?"',
+        'PG1 Closers':  'If a member is cancelling a product you closed, flag it for rep coaching. High cancel rates from specific reps signal a pitch-reality gap.',
+        'ASR':          'Members cancelling after ASR calls may have been oversold. Review the call summary and flag to TL if expectations were misset during the appointment.',
+        'default':      'Trigger a proactive check-in at 30 days post-purchase. Identify usage barriers early before they become cancellation calls.',
+      }},
+    { theme:'Refund / Dissatisfied', keys:['refund','refunded','unhappy','dissatisfied','doesn\'t work','not what i expected','waste'],
+      tips:{
+        'Retention':    'Flag for senior rep immediately. Offer a pause + bonus session before any refund discussion. Save rate on retained offers is significantly higher than cold cancels.',
+        'Inbound Customer Care': 'Acknowledge the disappointment first — do not defend the product. Then ask: "What would a good outcome look like for you?" Match the offer to their answer.',
+        'PG1 Closers':  'High refund rates from a closer signal overpromising. Pull recent call recordings for reps with refund rates above 15% and review for expectation-setting gaps.',
+        'default':      'Flag for senior rep handling. Offer a pause, swap, or concession before processing — save rate on retained offers is significantly higher than cold cancels.',
+      }},
     { theme:'Already Purchased / Duplicate', keys:['already purchased','already bought','already have','duplicate','signed up'],
-      tip:'Check CRM for existing active memberships before dialing. Flag duplicate accounts for cleanup to avoid wasted touches.' },
+      tips:{
+        'ASR':          'Check CRM for active memberships before dialing. If a member already has the product, route to a VIP upsell or a scheduling call — not a re-sell.',
+        'Internal Setters': 'Verify account status at the start of every call. A duplicate pitch wastes time and damages trust with existing members.',
+        'PG1':          'Flag duplicate accounts to CRM ops for cleanup. Route existing members to ASR or Customer Care — not back into the PG1 pitch flow.',
+        'default':      'Check CRM for existing active memberships before dialing. Flag duplicate accounts for cleanup to avoid wasted touches.',
+      }},
   ];
 
-  function objections(calls, prev) {
-    // Derive objections from declineReason + summary keywords (no c.objections array in CSV data)
+  function objections(calls, prev, activeLob) {
     function matchGroups(calls) {
       const counts = {};
       calls.forEach(c => {
@@ -197,10 +270,15 @@ const Analytics = (() => {
       });
       return counts;
     }
-    const cur  = matchGroups(calls);
-    const prv  = matchGroups(prev||[]);
+    const cur = matchGroups(calls);
+    const prv = matchGroups(prev||[]);
     return OBJ_GROUPS
-      .map(g => ({ ...g, count: cur[g.theme]||0, pCount: prv[g.theme]||0, trend: trend(cur[g.theme]||0, prv[g.theme]||0) }))
+      .map(g => {
+        const tip = g.tips
+          ? (g.tips[activeLob] || g.tips['default'] || '')
+          : (g.tip || '');
+        return { ...g, tip, count: cur[g.theme]||0, pCount: prv[g.theme]||0, trend: trend(cur[g.theme]||0, prv[g.theme]||0) };
+      })
       .filter(g => g.count > 0)
       .sort((a,b) => b.count - a.count);
   }
