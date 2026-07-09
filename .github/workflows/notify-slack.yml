@@ -1,0 +1,17 @@
+name: Notify Slack on Call Insights Update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data "{\"text\":\"📊 Call Insights Dashboard updated — new data pushed to main.\"}" \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
