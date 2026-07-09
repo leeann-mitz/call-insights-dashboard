@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          curl -X POST -H 'Content-type: application/json' \
-          --data "{\"text\":\"📊 Call Insights Dashboard updated — new data pushed to main.\"}" \
-          ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl -X POST -H "Content-type: application/json" --data "{\"text\":\"Call Insights Dashboard updated - new data pushed to main.\"}" "$SLACK_WEBHOOK_URL"
